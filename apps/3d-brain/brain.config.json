@@ -1,0 +1,50 @@
+{
+  "name": "My Second Brain",
+  "root": "../..",
+  "port": 4782,
+  "maxNodes": 800,
+  "sources": [
+    {
+      "id": "context",
+      "label": "หน้าที่",
+      "paths": [
+        "context"
+      ],
+      "color": "#1670A9"
+    },
+    {
+      "id": "work",
+      "label": "งาน",
+      "paths": [
+        "work",
+        "notes"
+      ],
+      "color": "#B86E10"
+    },
+    {
+      "id": "knowledge",
+      "label": "ความรู้",
+      "paths": [
+        "llm-wiki/wiki"
+      ],
+      "color": "#7959AE"
+    },
+    {
+      "id": "sources",
+      "label": "แหล่งข้อมูล",
+      "paths": [
+        "llm-wiki/raw",
+        "references"
+      ],
+      "color": "#16846B"
+    },
+    {
+      "id": "skills",
+      "label": "Skills",
+      "paths": [
+        ".agents/skills"
+      ],
+      "color": "#B33E63"
+    }
+  ]
+}

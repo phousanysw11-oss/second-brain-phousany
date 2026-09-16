@@ -1,0 +1,27 @@
+# Personal content should never be pushed back to the public starter.
+aios-intake.md
+context/
+data/
+work/
+notes/
+inbox/
+projects/
+brainstorms/
+decisions/
+audits/
+archives/
+connections.md
+references/voice.md
+llm-wiki/raw/
+llm-wiki/wiki/
+app/config.json
+apps/3d-brain/data/
+.second-brain-install.json
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+Thumbs.db
+
+*.tmp

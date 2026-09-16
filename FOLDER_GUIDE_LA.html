@@ -1,0 +1,27 @@
+<!doctype html><html lang="lo"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>My Second Brain — Start Here</title><style>
+@font-face{font-family:Phetsarath;src:url('fonts/Phetsarath-Regular.ttf')}@font-face{font-family:Phetsarath;src:url('fonts/Phetsarath-Bold.ttf');font-weight:700}*{box-sizing:border-box}body{font-family:Phetsarath,sans-serif;font-size:21px;line-height:1.8;color:#263a34;background:#f4f8f5;max-width:1080px;margin:auto;padding:32px}h1,h2,h3{line-height:1.4}h1{font-size:38px}h2{font-size:28px}section{background:white;border:1px solid #dce7df;border-radius:18px;padding:26px;margin:22px 0}a{color:#186548}code,pre{font-family:Consolas,monospace;font-size:17px}pre{background:#edf3ef;padding:20px;overflow:auto;line-height:1.6}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #dce7df;padding:12px;text-align:left;vertical-align:top}img{max-width:100%;height:auto}@media print{body{background:white;padding:0}section{break-inside:avoid}}</style><h1>Folder & File Guide</h1><section><p>Folder ເກັບໄຟລ໌. ໄຟລ໌ .md ແມ່ນເອກະສານຂໍ້ຄວາມ Markdown ທີ່ຄົນແລະ AI ອ່ານໄດ້. ເສັ້ນກິ່ງໃນຮູບບອກວ່າໄຟລ໌ຢູ່ບ່ອນໃດ.</p><pre>MY_SECOND_BRAIN/
+├─ README.md
+├─ AGENTS.md
+├─ CLAUDE.md
+├─ context/
+│  └─ me.md
+├─ work/
+│  └─ tasks.md
+├─ data/
+│  └─ state.json
+├─ llm-wiki/
+│  ├─ AGENTS.md
+│  ├─ raw/
+│  └─ wiki/
+│     └─ index.md
+├─ .agents/skills/
+│  ├─ onboard/ ... 3d-brain/
+│  └─ workspace-from-todos/
+│     ├─ SKILL.md
+│     ├─ references/
+│     ├─ scripts/
+│     └─ assets/template/
+├─ .claude/skills/  [same skills]
+├─ app/
+├─ apps/3d-brain/
+└─ fonts/</pre><p>ນີ້ແມ່ນເສັ້ນທາງຫຼັກ; ບາງລາຍການໃນ Skill ຖືກຫຍໍ້ເພື່ອໃຫ້ອ່ານງ່າຍ.</p></section><section><table><tr><th>Folder / File</th><th>Meaning</th></tr><tr><td><code>MY_SECOND_BRAIN/</code></td><td>ບ່ອນເກັບລະບົບວຽກຂອງທ່ານ</td></tr><tr><td><code>README.md</code></td><td>ຄູ່ມືເລີ່ມຕົ້ນສຳລັບຄົນ</td></tr><tr><td><code>AGENTS.md</code></td><td>ກະຕິກາແລະທາງໄປອ່ານໄຟລ໌ສຳລັບ Codex</td></tr><tr><td><code>CLAUDE.md</code></td><td>ກະຕິກາດຽວກັນສຳລັບ Claude Code</td></tr><tr><td><code>context/</code></td><td>ຂໍ້ມູນຊ່ວຍໃຫ້ AI ເຂົ້າໃຈວຽກ</td></tr><tr><td><code>context/me.md</code></td><td>ໜ້າທີ່ ເປົ້າໝາຍ ແລະ ຂໍ້ຈຳກັດຂອງທ່ານ</td></tr><tr><td><code>work/</code></td><td>ເອກະສານທີ່ກ່ຽວກັບວຽກ</td></tr><tr><td><code>work/tasks.md</code></td><td>ລາຍການວຽກທີ່ Dashboard ຂຽນໃຫ້ອ່ານ</td></tr><tr><td><code>data/state.json</code></td><td>ຂໍ້ມູນຫຼັກຂອງ Dashboard; ແກ້ຜ່ານແອັບ</td></tr><tr><td><code>llm-wiki/</code></td><td>ຄັງຄວາມຮູ້ທີ່ AI ຊ່ວຍຈັດ</td></tr><tr><td><code>llm-wiki/AGENTS.md</code></td><td>ຄູ່ມືການນຳເຂົ້າແລະກວດ Wiki</td></tr><tr><td><code>llm-wiki/raw/</code></td><td>ຕົ້ນສະບັບທີ່ເກັບໄວ້ອ້າງອີງ</td></tr><tr><td><code>llm-wiki/wiki/</code></td><td>ບົດສະຫຼຸບທີ່ເຊື່ອມກັບຕົ້ນສະບັບ</td></tr><tr><td><code>llm-wiki/wiki/index.md</code></td><td>ສາລະບານຫາຫົວຂໍ້</td></tr><tr><td><code>.agents/skills/</code></td><td>Skills ສຳລັບ Codex</td></tr><tr><td><code>.claude/skills/</code></td><td>Skills ສຳລັບ Claude Code</td></tr><tr><td><code>SKILL.md</code></td><td>ຄູ່ມືບອກເວລາໃຊ້ ຂັ້ນຕອນ ແລະ ເກນກວດຂອງ Skill</td></tr><tr><td><code>references/</code></td><td>ເອກະສານອ້າງອີງຂອງ Skill ທີ່ມີໄວ້</td></tr><tr><td><code>scripts/</code></td><td>ໂປຣແກຣມຊ່ວຍເຮັດບາງຂັ້ນຕອນຂອງ Skill</td></tr><tr><td><code>assets/</code></td><td>ແມ່ແບບແລະໄຟລ໌ປະກອບຂອງ Skill</td></tr><tr><td><code>app/</code></td><td>ໂປຣແກຣມ Dashboard ຫຼັກ</td></tr><tr><td><code>apps/3d-brain/</code></td><td>ໂປຣແກຣມແຜນທີ່ຄວາມຮູ້</td></tr><tr><td><code>fonts/</code></td><td>Phetsarath ແລະ ໃບອະນຸຍາດ</td></tr><tr><td><code>OPEN_WINDOWS.cmd</code></td><td>ເປີດແອັບໃນ Windows</td></tr><tr><td><code>OPEN_MAC.command</code></td><td>ເປີດແອັບໃນ Mac</td></tr><tr><td><code>CHECK_WINDOWS.cmd / CHECK_MAC.command</code></td><td>ກວດ Node.js ແລະ ໄຟລ໌ກ່ອນໃຊ້</td></tr></table></section><section><p>ຊື່ທີ່ເລີ່ມດ້ວຍ . ອາດຖືກເຊື່ອງໃນເຄື່ອງ. ໃນ Mac ກົດ Command+Shift+. ເພື່ອສະແດງ. ຢ່າຄັດລອກສະເພາະໄຟລ໌ທີ່ເຫັນ; ໃຫ້ແຕກ ZIP ທັງໝົດ.</p><p><a href="START_HERE_LA.html">Start Here</a></p></section></html>

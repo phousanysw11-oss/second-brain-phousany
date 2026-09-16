@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f9f8">
+  <title>พื้นที่ทำงาน · Work & Second Brain</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">ข้ามไปเนื้อหา</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="เมนูหลัก" data-i18n-aria="navigation">
+      <a class="brand" href="#today"><span class="brand-mark" aria-hidden="true">w<span>·</span></span><span>Work &<br> Second Brain</span></a>
+      <p class="nav-label" data-i18n="workspace">พื้นที่ของคุณ</p>
+      <nav id="navigation"></nav>
+      <div class="sidebar-bottom">
+        <div class="local-label"><span class="status-dot" aria-hidden="true"></span><span data-i18n="browserLocal">เก็บในเบราว์เซอร์นี้</span></div>
+        <p data-i18n="localDetail">ไม่ซิงก์ข้ามอุปกรณ์ สำรองข้อมูลไว้เป็นระยะ</p>
+        <button class="text-button" data-action="open-data" data-i18n="dataBackup">ข้อมูลและสำรองข้อมูล</button>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="global-search" type="search" placeholder="ค้นหางานและบันทึก…" aria-label="ค้นหางานและบันทึก" data-i18n-placeholder="searchPlaceholder" data-i18n-aria="search" autocomplete="off"></label>
+        <div class="toolbar-actions"><button id="language-toggle" class="utility-button" aria-label="Switch interface to English">EN</button><button id="theme-toggle" class="icon-button" aria-label="ใช้ธีมมืด"></button><button id="add-task" class="button primary"><span aria-hidden="true">+</span><span data-i18n="addTask">เพิ่มงาน</span></button></div>
+      </header>
+      <div id="storage-banner" role="alert"></div>
+      <main id="main" tabindex="-1"></main>
+      <footer class="workspace-footer"><span data-i18n="footer">พื้นที่ทำงานส่วนตัว · การแจ้งเตือนแสดงเฉพาะเมื่อเปิดหน้านี้</span><button class="text-button" data-action="open-data" data-i18n="backup">สำรองข้อมูล</button></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="task-dialog" aria-labelledby="task-dialog-title"></dialog>
+  <dialog id="note-dialog" aria-labelledby="note-dialog-title"></dialog>
+  <dialog id="list-import-dialog" aria-labelledby="list-dialog-title"></dialog>
+  <dialog id="data-dialog" aria-labelledby="data-dialog-title"></dialog>
+  <dialog id="backup-import-dialog" aria-labelledby="backup-dialog-title"></dialog>
+  <dialog id="recovery-dialog" aria-labelledby="recovery-dialog-title"></dialog>
+  <noscript><p>กรุณาเปิด JavaScript เพื่อใช้พื้นที่ทำงานนี้ / Enable JavaScript to use this workspace.</p></noscript>
+</body>
+</html>
