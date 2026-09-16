@@ -21,3 +21,7 @@ The final documentation-only changes were followed by another full archive/Power
 The main flow starts onboarding by reading the local SKILL.md, so a skill menu refresh is not required to ask the first question. A native menu check can be made in a new local session after installation.
 
 The current ZIP size and digest are in release.json and SHA256SUMS.txt.
+
+## Published GitHub route
+
+Verified on 2026-09-16 after publication: the repository is Public through an unauthenticated API request. Anonymous downloads of README, INSTALL.md and both bootstrap scripts match the reviewed release. The published PowerShell bootstrap downloaded the public ZIP and installed every payload file into a fresh Windows folder containing spaces. Both project skill directories contain 14 skills, and the initial profile/tasks/intake are blank. No GitHub login was used for the download test. This does not establish a physical macOS test or a recipient's native skill-menu discovery.
