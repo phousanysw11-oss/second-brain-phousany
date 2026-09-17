@@ -26,8 +26,8 @@ For macOS, save this repository's scripts/install-from-github.sh alongside the Z
 ## Exact release
 
 - Package: `https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/MY_SECOND_BRAIN.zip`
-- Version: 3.0.0
-- SHA-256: `4a58257b63ae4ac65b7e8e2eedd51a79edfc1f77556d00048b5a51e199fa09e7`
+- Version: 3.0.1
+- SHA-256: `30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8`
 - Bootstrap checks detect a version mismatch even if the branch changes. Checksums establish file integrity, not an independent publisher signature.
 
 ## What success means

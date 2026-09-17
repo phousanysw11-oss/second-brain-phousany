@@ -3,8 +3,8 @@
 set -euo pipefail
 destination=${1:-"$PWD"}
 archive=${2:-}
-expected='4a58257b63ae4ac65b7e8e2eedd51a79edfc1f77556d00048b5a51e199fa09e7'
-manifest_sha='be2fcac444dfe4fba0845b8d198b01afa6f79e50e65a5436491d66ef84d2871a'
+expected='30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8'
+manifest_sha='842864b84e348b8342829182d5388450f8ba40f5be944dcbc760bc4c36bade76'
 url='https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/MY_SECOND_BRAIN.zip'
 fail() { printf 'INSTALL STOPPED: %s\n' "$*" >&2; exit 1; }
 for command in unzip find cmp mkdir cat; do command -v "$command" >/dev/null || fail "Missing $command"; done
@@ -71,5 +71,5 @@ while IFS= read -r -d '' file; do
     if [ ! -e "$target" ]; then (set -C; cat "$file" > "$target"); fi
     cmp -s "$file" "$target" || fail "Read-back failed: $relative"
 done < <(find "$source_dir" -type f -print0)
-(set -C; printf '{"package":"MY_SECOND_BRAIN","version":"3.0.0","manifest_sha256":"%s","status":"installed"}\n' "$manifest_sha" > "$receipt")
+(set -C; printf '{"package":"MY_SECOND_BRAIN","version":"3.0.1","manifest_sha256":"%s","status":"installed"}\n' "$manifest_sha" > "$receipt")
 printf 'INSTALLED AND VERIFIED: %s\nNext: ask your AI to read the local onboard SKILL.md and start one question at a time.\n' "$destination"

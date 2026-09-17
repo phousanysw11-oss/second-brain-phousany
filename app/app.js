@@ -2,7 +2,8 @@ const $=s=>document.querySelector(s),esc=v=>String(v??'').replace(/[&<>"']/g,c=>
 const labels={Today:'วันนี้',Week:'สัปดาห์',Month:'เดือน',Projects:'โครงการ',Team:'ทีม', 'Second Brain':'ความรู้'};
 const statusLabel={todo:'ยังไม่เริ่ม',doing:'กำลังทำ',blocked:'ติดขัด',done:'เสร็จแล้ว'};
 const deptLabel={operations:'Operation',marketing:'การตลาด',sourcing:'หาสินค้า',bd:'BD',admin:'แอดมิน',purchasing:'จัดซื้อ',warehouse:'คลังสินค้า',cod:'COD',service:'บริการลูกค้า',finance:'การเงิน',hr:'HR'};
-const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Vientiane'});
+const calendarDate=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+const today=()=>calendarDate(new Date());
 let state,localToken,config,view='Today',snapshot={records:[]},live=null,idToken='',refreshTimer=null,notes=[];
 function notice(text,error=false){$('#notice').textContent=text;$('#notice').className=error?'error':'';}
 async function request(url,options={}){const r=await fetch(url,options),d=await r.json();if(!r.ok)throw new Error(d.error||'อ่านข้อมูลไม่สำเร็จ');return d;}
@@ -10,10 +11,10 @@ async function save(next){const result=await request('/api/state',{method:'PUT',
 function heading(title,sub,button=''){return `<div class="heading"><div><h1>${esc(title)}</h1><p class="sub">${esc(sub)}</p></div>${button}</div>`;}
 function stats(tasks){const done=tasks.filter(t=>t.status==='done').length,late=tasks.filter(t=>t.due&&t.due<today()&&t.status!=='done').length;return `<div class="summary"><div class="stat"><strong>${tasks.length}</strong><span>งานที่บันทึก</span></div><div class="stat"><strong>${done}</strong><span>เสร็จพร้อมหลักฐาน</span></div><div class="stat"><strong>${late}</strong><span>เกินวันส่ง</span></div><div class="stat"><strong>${tasks.filter(t=>t.status==='blocked').length}</strong><span>ติดขัด</span></div></div>`;}
 function taskRows(tasks,shared=false){if(!tasks.length)return '<div class="empty"><strong>พื้นที่สำหรับงานที่สำคัญ</strong>เพิ่มงานจริงหนึ่งเรื่อง ระบุผลส่งมอบและขั้นตอนถัดไป แล้วเริ่มลงมือทำ</div>';return tasks.map(t=>`<article class="task"><span class="dot ${esc(t.status)}" aria-hidden="true"></span><div><div class="task-title">${esc(t.title)} ${t.priority==='focus'?'<span class="tag">โฟกัสวันนี้</span>':''}</div><div class="meta">${esc(statusLabel[t.status])} · ${esc(t.owner||'ยังไม่ระบุผู้รับผิดชอบ')} · ${esc(t.project||'ยังไม่ระบุโครงการ')} <span class="${t.due&&t.due<today()&&t.status!=='done'?'late':''}">${t.due?'· ส่ง '+esc(t.due):'· ยังไม่กำหนดวันส่ง'}</span></div>${t.next?`<p class="task-next">ขั้นต่อไป: ${esc(t.next)}</p>`:''}${t.status==='blocked'?`<p class="task-next error">ติดขัด: ${esc(t.blocker||'ยังไม่ระบุเหตุผล')}</p>`:''}${t.status==='done'?`<p class="task-next">หลักฐาน: ${esc(t.evidence)}</p>`:''}</div>${shared?`<span class="tag">${esc(deptLabel[t.department]||t.department)}</span>`:`<button data-edit="${esc(t.id)}">เปิดงาน</button>`}</article>`).join('');}
-function profile(){return `<section class="panel"><h2>หน้าที่และเป้าหมายของฉัน</h2><form id="profileForm"><div class="form-grid"><label>ชื่อ<input name="name" value="${esc(state.profile.name)}" required></label><label>แผนก<select name="department">${Object.entries(deptLabel).map(([k,v])=>`<option value="${k}" ${state.profile.department===k?'selected':''}>${v}</option>`).join('')}</select></label><label>หน้าที่<input name="role" value="${esc(state.profile.role)}" required></label><label>เป้าหมายที่รับผิดชอบ<input name="goal" value="${esc(state.profile.goal)}" required></label></div><p class="muted">ข้อมูลนี้ใช้ช่วยวางแผนของคุณ สิทธิ์ข้อมูลทีมกำหนดจากบัญชีที่ผู้ดูแลยืนยัน</p><button class="primary">บันทึกโปรไฟล์</button></form></section>`;}
+function profile(){return `<section class="panel"><h2>หน้าที่และเป้าหมายของฉัน</h2><form id="profileForm"><div class="form-grid"><label>ชื่อ<input name="name" value="${esc(state.profile.name)}"></label><label>แผนก / กลุ่ม (ถ้ามี)<input name="department" list="departmentSuggestions" value="${esc(state.profile.department)}"><datalist id="departmentSuggestions">${Object.entries(deptLabel).map(([k,v])=>`<option value="${esc(k)}">${esc(v)}</option>`).join('')}</datalist></label><label>หน้าที่<input name="role" value="${esc(state.profile.role)}"></label><label>เป้าหมายที่รับผิดชอบ<input name="goal" value="${esc(state.profile.goal)}"></label></div><p class="muted">ข้อมูลนี้ใช้ช่วยวางแผนของคุณ สิทธิ์ข้อมูลทีมกำหนดจากบัญชีที่ผู้ดูแลยืนยัน</p><button class="primary">บันทึกโปรไฟล์</button></form></section>`;}
 function safeLink(v){try{const u=new URL(v);return ['https:','http:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
 function render(){
- $('#identity').textContent=(state.profile.name||'ผู้เรียนใหม่')+' · '+(deptLabel[state.profile.department]||'กรอกโปรไฟล์เพื่อเริ่ม');
+ $('#identity').textContent=(state.profile.name||'ผู้เรียนใหม่')+' · '+(deptLabel[state.profile.department]||state.profile.department||'พื้นที่ส่วนตัว');
  $('#nav').innerHTML=Object.entries(labels).map(([k,v])=>`<button data-view="${k}" class="${view===k?'active':''}" ${view===k?'aria-current="page"':''}>${k} <small>· ${v}</small></button>`).join('');
  const add='<button class="primary" id="addTask">+ เพิ่มงาน</button>';let html='';
  if(view==='Today'){
@@ -22,7 +23,7 @@ function render(){
   if(!state.profile.name)html+=profile();
   html+=`<h2>งานสำคัญของฉัน</h2>${taskRows(tasks)}`;
  }else if(view==='Week'||view==='Month'){
-  const now=new Date(today()+'T12:00:00+07:00'),end=new Date(now);end.setDate(now.getDate()+6);const endStr=end.toLocaleDateString('en-CA',{timeZone:'Asia/Vientiane'});
+  const now=new Date();now.setHours(12,0,0,0);const end=new Date(now);end.setDate(now.getDate()+6);const endStr=calendarDate(end);
   const tasks=state.tasks.filter(t=>view==='Month'?(t.due||'').slice(0,7)===today().slice(0,7):t.due&&t.due>=today()&&t.due<=endStr).sort((a,b)=>a.due.localeCompare(b.due));
   html=heading(view==='Week'?'แผน 7 วันข้างหน้า':'งานในเดือนนี้',view==='Week'?today()+' ถึง '+endStr:today().slice(0,7),add)+stats(tasks)+taskRows(tasks)+`<h2>งานที่ยังไม่กำหนดวันส่ง</h2>${taskRows(state.tasks.filter(t=>!t.due&&t.status!=='done'))}`;
  }else if(view==='Projects'){
@@ -46,7 +47,7 @@ function render(){
  document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));
  $('#addTask')?.addEventListener('click',()=>edit());
  $('#refresh')?.addEventListener('click',()=>refresh().catch(e=>notice(e.message,true)));
- $('#profileForm')?.addEventListener('submit',async e=>{e.preventDefault();try{const p=Object.fromEntries(new FormData(e.target));await save({...state,profile:p});}catch(e){notice(e.message,true);}});
+ $('#profileForm')?.addEventListener('submit',async e=>{e.preventDefault();try{const p=Object.fromEntries(new FormData(e.target));await save({...state,profile:{...state.profile,...p}});}catch(e){notice(e.message,true);}});
  $('#noteForm')?.addEventListener('submit',async e=>{e.preventDefault();try{const d=await request('/api/note',{method:'POST',headers:{'content-type':'application/json','x-local-token':localToken},body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});notes=await request('/api/files');render();notice('บันทึก '+d.path+' แล้ว เปิด 3D Brain และกด Rebuild');}catch(e){notice(e.message,true);}});
  document.querySelectorAll('[data-note]').forEach(b=>b.onclick=async()=>{try{const d=await request('/api/read?path='+encodeURIComponent(b.dataset.note));$('#readText').textContent=d.text;$('#reader').showModal();}catch(e){notice(e.message,true);}});
  $('#kpiSearch')?.addEventListener('input',e=>document.querySelectorAll('#kpiTable tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(e.target.value.toLowerCase())));
@@ -54,7 +55,7 @@ function render(){
 function edit(id){const t=state.tasks.find(t=>t.id===id)||{id:crypto.randomUUID(),title:'',owner:state.profile.name,project:'',due:'',priority:'normal',next:'',doneWhen:'',evidence:'',status:'todo',blocker:''};const f=$('#taskForm');for(const k of ['id','title','owner','project','due','priority','next','doneWhen','evidence','status','blocker'])f.elements[k].value=t[k]||'';$('#formError').textContent='';$('#editor').showModal();}
 $('#closeEditor').onclick=()=>$('#editor').close();$('#closeReader').onclick=()=>$('#reader').close();
 $('#taskForm').onsubmit=async e=>{
- e.preventDefault();const t=Object.fromEntries(new FormData(e.target)),old=state.tasks.find(x=>x.id===t.id);if(old?.sharedId){t.sharedId=old.sharedId;t.sharedRevision=old.sharedRevision;}
+ e.preventDefault();const fields=Object.fromEntries(new FormData(e.target)),old=state.tasks.find(x=>x.id===fields.id),t={...old,...fields};
  if(t.status==='done'&&(!t.doneWhen.trim()||!t.evidence.trim())){$('#formError').textContent='ก่อนปิดงาน ระบุเกณฑ์เสร็จและหลักฐานผลงาน';return;}
  try{
   const tasks=state.tasks.some(x=>x.id===t.id)?state.tasks.map(x=>x.id===t.id?t:x):[...state.tasks,t];await save({...state,tasks});$('#editor').close();

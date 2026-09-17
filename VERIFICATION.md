@@ -22,6 +22,10 @@ The main flow starts onboarding by reading the local SKILL.md, so a skill menu r
 
 The current ZIP size and digest are in release.json and SHA256SUMS.txt.
 
+## Version 3.0.1 regression review
+
+The usability review reproduced and repaired custom/blank department changes, dropped profile/task metadata, hardcoded Laos dates, the app-first Lao guide and the old company label. All 10 focused browser checks and 23 package/installer checks passed on the revised release; 24 local guide links resolved. See [the review and remaining acceptance checks](REVIEW.md). The previously stated runtime and recipient-testing limits still apply.
+
 ## Published GitHub route
 
 Verified on 2026-09-16 after publication: the repository is Public through an unauthenticated API request. Anonymous downloads of README, INSTALL.md and both bootstrap scripts match the reviewed release. The published PowerShell bootstrap downloaded the public ZIP and installed every payload file into a fresh Windows folder containing spaces. Both project skill directories contain 14 skills, and the initial profile/tasks/intake are blank. No GitHub login was used for the download test. This does not establish a physical macOS test or a recipient's native skill-menu discovery.
