@@ -28,4 +28,6 @@ The usability review reproduced and repaired custom/blank department changes, dr
 
 ## Published GitHub route
 
+Reverified on 2026-09-17 at 00:09 UTC for version 3.0.1 (payload commit `b259a52306aa64389f42da003642aa3275c2dd04`). Anonymous public entrypoint/script comparisons passed. The downloaded Windows bootstrap fetched the published ZIP and installed all payload bytes into a new folder with spaces. Both hosts contained 14 skills and blank user state. ZIP SHA-256: `30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8`.
+
 Verified on 2026-09-16 after publication: the repository is Public through an unauthenticated API request. Anonymous downloads of README, INSTALL.md and both bootstrap scripts match the reviewed release. The published PowerShell bootstrap downloaded the public ZIP and installed every payload file into a fresh Windows folder containing spaces. Both project skill directories contain 14 skills, and the initial profile/tasks/intake are blank. No GitHub login was used for the download test. This does not establish a physical macOS test or a recipient's native skill-menu discovery.
