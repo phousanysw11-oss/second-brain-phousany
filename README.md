@@ -16,7 +16,9 @@ Use the [one installation message](INSTALL_MESSAGE.txt), then [เริ่ม�
 3. **Paste this into the AI:**
 
 ```text
-Install the CEO team preview from https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops into this local project folder. Follow that branch's INSTALL.md, preserve my files and customizations, include all project skills and eight native Codex roles, and verify setup. Then ask only the first missing company question. Do not use main for this preview.
+ติดตั้ง Second Brain รุ่น CEO preview จาก https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops ในโฟลเดอร์โปรเจกต์นี้
+อ่านและทำตาม https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md รวมทีม CEO, workshop เดิม และ project skills ทั้งหมด รักษาข้อมูล คำตอบเดิม และคำสั่งที่ฉันปรับเอง ตรวจการติดตั้งและแจ้งไฟล์ที่ชนกัน
+จากนั้นใช้คำตอบเดิม ถามเฉพาะข้อมูลบริษัทที่ยังขาดทีละคำถาม
 ```
 
 The AI installs Second Brain and its skills, then asks you one question at a time.

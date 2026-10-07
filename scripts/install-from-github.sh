@@ -3,7 +3,7 @@
 set -euo pipefail
 destination=${1:-"$PWD"}
 archive=${2:-}
-expected='09036bc801d5c9acc936f6f7d09ec24f2c5b9ce54bec95a15a1ce6c0d5209550'
+expected='07f4a6388f1c32807171430a4be5d5557d4db12e71f1ebfc1e55f5303715041c'
 url='https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip'
 fail() { printf 'INSTALL STOPPED: %s\n' "$*" >&2; exit 1; }
 for command in unzip find cmp mkdir cat awk; do command -v "$command" >/dev/null || fail "Missing $command"; done

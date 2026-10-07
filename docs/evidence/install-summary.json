@@ -105,5 +105,17 @@
       "status": "NOT TESTED",
       "reason": "Local installation does not authenticate or exercise external accounts."
     }
-  ]
+  ],
+  "published_install": {
+    "observed_date": "2026-10-07",
+    "source_commit": "1ed88fbd2ab6ddf9c06296163027f46c214a3201",
+    "bootstrap_url": "https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/scripts/install-from-github.ps1",
+    "archive_sha256": "09036bc801d5c9acc936f6f7d09ec24f2c5b9ce54bec95a15a1ce6c0d5209550",
+    "result": "PASS",
+    "files_verified": 376,
+    "roles": 8,
+    "skills_per_host": 32,
+    "conflicts": [],
+    "scope": "Actual download and pinned installation from public GitHub into a new disposable folder; bootstrap compared with inspected local source before execution. Subsequent Thai handoff and evidence-only edits require a new archive hash in release.json. No model discovery is implied."
+  }
 }

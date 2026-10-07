@@ -10,7 +10,7 @@ Environment: Windows, Node.js 24.18.0, Codex CLI 0.160.1, bundled Python 3.11, W
 
 | Requirement | Observed status | Evidence / limit |
 |---|---|---|
-| 1. Clean empty install using documented flow | PASS for pinned Windows bootstrap with local release ZIP | Fresh disposable folder, all manifest files verified; final artifact check below. Online published download is checked separately after push. |
+| 1. Clean empty install using documented flow | PASS for local and published pinned Windows bootstrap | Fresh disposable folder downloaded the public branch bootstrap and its ZIP; 376 files verified, eight roles and 32 skills checked. Published snapshot details are recorded in install-summary.json. This is the observed installer flow, not a model-driven learner session. |
 | 2. Fresh Codex discovers eight roles/skills and routes naturally | BLOCKED, not passed | Two fresh CLI processes received ordinary WS1–3 requests. Execution policy rejected local reads, including pwd. Dispatch exposed no custom-role selector. No native specialist completion observed. |
 | 3. All six actual model outputs, five Board initials, Monday three priorities | NOT TESTED | Six original contracts and fixtures retained; 11 deterministic fixture groups pass. They do not prove generated answers, delegation or Monday behavior. |
 | 4. Desk edit/save/reopen/restore agrees with state | PASS in tested browser | Nine actual browser checks, plus shared state tests. Original source HTML hash preserved; served adapter uses data/state.json. |

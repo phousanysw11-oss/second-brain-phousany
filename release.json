@@ -1,9 +1,9 @@
 {
   "branch": "codex/ceo-team-workshops",
-  "bytes": 2922260,
+  "bytes": 2923590,
   "files": 376,
   "macos_native_tested": false,
-  "manifest_sha256": "685ae82712502f379615248ef60d034ca770b9505ca9b8d9bcb3da58061728a3",
+  "manifest_sha256": "c9a9e886a4e9c470cf9a454561f063a5d24aaa1eba2dd89be0433df057d0765f",
   "native_role_count": 8,
   "native_roles": [
     ".codex/agents/ceo_ai_employee_builder.toml",
@@ -16,7 +16,7 @@
     ".codex/agents/ceo_lao_business_advisor.toml"
   ],
   "package": "MY_SECOND_BRAIN.zip",
-  "sha256": "09036bc801d5c9acc936f6f7d09ec24f2c5b9ce54bec95a15a1ce6c0d5209550",
+  "sha256": "07f4a6388f1c32807171430a4be5d5557d4db12e71f1ebfc1e55f5303715041c",
   "skill_names": [
     "3d-brain",
     "audit",

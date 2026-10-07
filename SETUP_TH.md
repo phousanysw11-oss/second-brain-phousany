@@ -18,7 +18,9 @@ The original Lao guides and HTML remain as historical starter material. For the 
 3. **Paste this into the AI:**
 
 ```text
-Install the CEO preview of https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops into this local project folder. Read and follow https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md. Include its CEO team, workshops and all project skills. Preserve my saved answers, files and custom instructions; verify the install and report any upgrade conflicts. Then start or resume onboarding one question at a time.
+ติดตั้ง Second Brain รุ่น CEO preview จาก https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops ในโฟลเดอร์โปรเจกต์นี้
+อ่านและทำตาม https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md รวมทีม CEO, workshop เดิม และ project skills ทั้งหมด รักษาข้อมูล คำตอบเดิม และคำสั่งที่ฉันปรับเอง ตรวจการติดตั้งและแจ้งไฟล์ที่ชนกัน
+จากนั้นใช้คำตอบเดิม ถามเฉพาะข้อมูลบริษัทที่ยังขาดทีละคำถาม
 ```
 
 The AI installs Second Brain and its skills, then asks you one question at a time.
