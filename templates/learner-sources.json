@@ -1,0 +1,32 @@
+{
+  "source": "MY_SECOND_BRAIN.zip 3.0.1",
+  "source_manifest_sha256": "842864b84e348b8342829182d5388450f8ba40f5be944dcbc760bc4c36bade76",
+  "files": [
+    "aios-intake.md",
+    "app/config.json",
+    "apps/3d-brain/brain.config.json",
+    "brainstorms/README.md",
+    "connections.md",
+    "context/me.md",
+    "context/preferences.md",
+    "context/priorities.md",
+    "data/state.json",
+    "decisions/log.md",
+    "inbox/README.md",
+    "llm-wiki/raw/methods/training-principles-2026-09-15.md",
+    "llm-wiki/wiki/index.md",
+    "llm-wiki/wiki/log.md",
+    "llm-wiki/wiki/methods/3d-brain.md",
+    "llm-wiki/wiki/methods/done.md",
+    "llm-wiki/wiki/methods/four-cs.md",
+    "llm-wiki/wiki/methods/llm-wiki.md",
+    "llm-wiki/wiki/methods/priorities.md",
+    "llm-wiki/wiki/methods/second-brain.md",
+    "llm-wiki/wiki/methods/skills.md",
+    "llm-wiki/wiki/methods/three-ms.md",
+    "notes/README.md",
+    "projects/README.md",
+    "references/voice.md",
+    "work/tasks.md"
+  ]
+}

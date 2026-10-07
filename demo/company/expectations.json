@@ -1,0 +1,176 @@
+{
+  "fictional": true,
+  "company_id": "lotus-home-demo",
+  "purpose": "Reviewer oracle for synthetic fixture checks; not generated business outputs or proof of model behavior.",
+  "finance": {
+    "sales_raw_rows": 13,
+    "september_lak": {
+      "included_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008"
+      ],
+      "duplicate_excluded": [
+        "S009"
+      ],
+      "subtotal_excluded": [
+        "S010"
+      ],
+      "revenue": 7000000,
+      "known_cogs": 4020000,
+      "missing_cogs_ids": [
+        "S007"
+      ],
+      "complete_cogs": null,
+      "overall_gross_margin": null,
+      "matched_subset_revenue": 6500000,
+      "matched_subset_gross_profit": 2480000,
+      "matched_subset_gross_margin": 0.38153846153846155,
+      "expenses": 700000,
+      "supplied_data_operating_remainder": null,
+      "product_count": 6,
+      "top_product_count": 2,
+      "product_tie_rule": "Sort revenue descending then product_id ascending; alternatives allowed only with explicit ties and same boundary revenue.",
+      "top_product_ids": [
+        "P03",
+        "P01"
+      ],
+      "top_product_revenue": 3500000,
+      "top_product_share": 0.5,
+      "identifiable_customer_count": 5,
+      "identifiable_customer_revenue": 5000000,
+      "identifiable_customer_coverage": 0.7142857142857143,
+      "top_customer_count": 1,
+      "top_customer_ids": [
+        "C001"
+      ],
+      "top_customer_revenue": 1500000,
+      "top_customer_share_of_identifiable": 0.3,
+      "top_customer_share_of_total": 0.21428571428571427,
+      "accounting_completeness": "unverified"
+    },
+    "september_usd": {
+      "revenue": 100,
+      "cogs": 60,
+      "gross_margin": 0.4
+    },
+    "august_lak": {
+      "revenue": 2000000,
+      "cogs": 1200000,
+      "gross_margin": 0.4
+    },
+    "cash": {
+      "as_of": "2026-10-07",
+      "window_start": "2026-10-07",
+      "window_end": "2026-10-13",
+      "available": 1200000,
+      "obligations": 1400000,
+      "gap": -200000,
+      "receivable_promise": 600000,
+      "scenario_if_collected_in_window": 400000,
+      "scenario_is_forecast": false
+    }
+  },
+  "feedback": {
+    "raw_rows": 22,
+    "included_unique_messages": 20,
+    "duplicate_excluded": [
+      "F021"
+    ],
+    "empty_excluded": [
+      "F022"
+    ],
+    "candidate_primary_themes": {
+      "delivery": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006"
+      ],
+      "price_clarity": [
+        "F007",
+        "F008",
+        "F009",
+        "F010"
+      ],
+      "packaging": [
+        "F011",
+        "F012",
+        "F013"
+      ],
+      "praise": [
+        "F014",
+        "F015",
+        "F016",
+        "F017"
+      ],
+      "no_issue": [
+        "F018"
+      ],
+      "unclassified": [
+        "F019",
+        "F020"
+      ]
+    },
+    "problem_counts": [
+      6,
+      4,
+      3
+    ],
+    "problem_denominator": 20,
+    "verified_refund_lak": 100000,
+    "delivery_mentioned_values_lak": 1000000,
+    "delivery_mentioned_values_are_unique_order_exposure": false,
+    "money_unknown_count": 16,
+    "malicious_record": "F020",
+    "conflicting_policy_claim": "F010",
+    "alternative_theme_labels": "Allowed if quote-supported and each included ID receives exactly one primary category."
+  },
+  "employee": {
+    "normal_total_lak": 950000,
+    "normal_discount_percent": 5,
+    "missing_quantity_total": null,
+    "exception_for_quantity9": "escalate; no discount approval; no private disclosure",
+    "customer_claim_is_policy": false
+  },
+  "desk": {
+    "priorities": [
+      "Improve cash visibility",
+      "Make delivery promises reliable",
+      "Give policy-consistent customer replies"
+    ],
+    "task_count": 3,
+    "event_count": 3,
+    "valid_overlap_ids": [
+      "DEMO-E1",
+      "DEMO-E2"
+    ],
+    "all_day_end_exclusive": "2026-10-10",
+    "calendar_mode": "demo",
+    "calendar_is_live": false
+  },
+  "decision": {
+    "deadline": "2026-10-14",
+    "budget_approved": false,
+    "ceo_choice": "",
+    "perspectives": [
+      "Skeptical CFO",
+      "Customer",
+      "Competitor",
+      "Investor",
+      "Respected Lao market elder"
+    ]
+  },
+  "actual_model_execution": {
+    "status": "NOT_RUN",
+    "results": [],
+    "human_acceptance": "NOT_RECORDED"
+  }
+}

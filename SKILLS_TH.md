@@ -1,3 +1,7 @@
+# CEO preview
+
+รุ่นนี้มี CEO skills ที่คัดเลือก 20 รายการ และรวม utility skills เดิมแล้วเป็น 32 skills ต่อ host ดูรายการปัจจุบันที่ [CEO_TEAM_CATALOG](docs/CEO_TEAM_CATALOG.md) รายการเดิมด้านล่างยังเก็บไว้เพื่อใช้งานต่อ
+
 # Skills ที่ติดตั้งให้แล้ว
 
 เริ่มด้วย onboard แล้วทำงานจริงได้เลย ไม่ต้องเรียก grill-me หรือ audit ก่อน

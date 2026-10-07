@@ -3,6 +3,14 @@
 A personal Second Brain in a folder on your computer, for **Claude Code or Codex**.
 Includes project skills, notes, a knowledge wiki, and optional Dashboard / 3D Brain.
 
+## CEO preview entry
+
+Use **codex/ceo-team-workshops** for this preview. It includes **32 project skills per host** and **eight native Codex role files**; the curated CEO set has 20 capabilities and reuses two original skills. Start CEO work at [CEO_START_TH.md](CEO_START_TH.md), with [the installation message](INSTALL_MESSAGE.txt) and [observed test results](docs/TEST_REPORT.md).
+
+Native Codex role discovery and model workshop execution remain **NOT TESTED** in this preview. A fresh nested session could not read local files because of its execution policy; its tool bridge did not expose named-role selection. Installed files alone do not establish native execution. Claude receives skill mirrors; this does not install native Claude agents. See [installation evidence](docs/evidence/install-summary.json).
+
+The original Lao guides and HTML remain as historical starter material. For the revised CEO workflow, follow [CEO_START_TH.md](CEO_START_TH.md) and the current branch instructions below. CEO Desk and its state tools need an available Node.js runtime; initial Windows file installation and onboarding do not.
+
 ## Start in three steps
 
 1. Create a folder on your computer, for example **My Second Brain**.
@@ -10,7 +18,7 @@ Includes project skills, notes, a knowledge wiki, and optional Dashboard / 3D Br
 3. Paste this message into the AI:
 
 ```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
+Install the CEO preview of https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops into this local project folder. Read and follow https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md. Include its CEO team, workshops and all project skills. Preserve my saved answers, files and custom instructions; verify the install and report any upgrade conflicts. Then start or resume onboarding one question at a time.
 ```
 
 The AI installs the files, checks them, then asks the first onboarding question.
@@ -40,9 +48,7 @@ AI จะติดตั้งแล้วถามทีละข้อ ข้�
 
 ## What is included
 
-Onboard plus 13 supporting skills: grill-me, audit, level-up, 3d-brain, workspace-from-todos,
-start-my-work, plan-my-day, finish-my-task, read-team-performance, wiki-helper, weekly-review,
-open-3d-brain, and prioritize-work-four-factors. Both project skill folders are included.
+All 14 original skills are retained, plus 18 CEO/workshop skills, for 32 skills in each project skill folder. The CEO capability catalog reuses prioritize-work-four-factors and weekly-review to make its curated set of 20. Read [the CEO catalog](docs/CEO_TEAM_CATALOG.md) for routing; the learner need not choose a role.
 
 Dashboard and 3D Brain are optional local apps; those need Node.js 22+.
 Ask your AI to open them when needed. See [optional apps](OPTIONAL_APPS.md).
@@ -50,10 +56,10 @@ All personal files stay in your chosen folder unless you explicitly share them. 
 
 ## If installation needs attention
 
-- If a skill is missing from the menu, start a new session in the same folder; the direct-file message above also works.
-- If the AI cannot open the GitHub page, it can fetch https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/INSTALL.md.
-- If network access is unavailable, download [MY_SECOND_BRAIN.zip](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip), place it in your chosen folder, and tell the AI: “Read INSTALL.md inside this ZIP, install it here, verify it, then start onboarding.”
-- Existing conflicting files are preserved. The AI identifies the conflict so you can choose a new empty folder or a specific merge. Repeating the same installer keeps saved answers.
+- If a skill is missing from the menu, start a new session in the same folder; the direct-file message above is the documented fallback; verify it in the recipient session before claiming success.
+- If the AI cannot open the GitHub page, it can fetch https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md.
+- If network access is unavailable, download [MY_SECOND_BRAIN.zip](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip), place it in your chosen folder, and tell the AI: “Read INSTALL.md inside this ZIP, install it here, verify it, then start onboarding.”
+- Existing custom files and saved answers are preserved. Modified shipped files are staged for review outside active role/skill folders; exit 2 means needs_review, not a completed upgrade. Use the exact report and incoming copies to review the merge. See [recovery details](INSTALL.md#preservation-and-recovery).
 - If the AI can only chat and cannot write local files, open the folder in local Claude Code or Codex first.
 
 Maintainer details: [installation procedure](INSTALL.md), [sources and notices](SOURCE_NOTICES.md).

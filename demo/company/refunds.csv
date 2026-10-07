@@ -1,0 +1,2 @@
+fixture,row_id,order_id,message_row_id,paid_at,currency,amount,state,source_version
+FICTIONAL,REFUND003,DEMO-ORDER3,F003,2026-09-22,LAK,100000,completed_in_synthetic_receipt,FIN-REFUND-v1

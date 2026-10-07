@@ -3,6 +3,14 @@
 Your personal Second Brain in a folder on your computer. Works with **Claude Code and Codex**.
 It learns about you, keeps useful knowledge, and helps you get work done.
 
+## CEO preview entry
+
+Use **codex/ceo-team-workshops** for this preview. It includes **32 project skills per host** and **eight native Codex role files**; the curated CEO set has 20 capabilities and reuses two original skills. Start CEO work at [CEO_START_TH.md](CEO_START_TH.md), with [the installation message](INSTALL_MESSAGE.txt) and [observed test results](docs/TEST_REPORT.md).
+
+Native Codex role discovery and model workshop execution remain **NOT TESTED** in this preview. A fresh nested session could not read local files because of its execution policy; its tool bridge did not expose named-role selection. Installed files alone do not establish native execution. Claude receives skill mirrors; this does not install native Claude agents. See [installation evidence](docs/evidence/install-summary.json).
+
+The original Lao guides and HTML remain as historical starter material. For the revised CEO workflow, follow [CEO_START_TH.md](CEO_START_TH.md) and the current branch instructions below. CEO Desk and its state tools need an available Node.js runtime; initial Windows file installation and onboarding do not.
+
 ## Start here
 
 1. **Create a folder** on your computer, such as My Second Brain.
@@ -10,7 +18,7 @@ It learns about you, keeps useful knowledge, and helps you get work done.
 3. **Paste this into the AI:**
 
 ```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
+Install the CEO preview of https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops into this local project folder. Read and follow https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md. Include its CEO team, workshops and all project skills. Preserve my saved answers, files and custom instructions; verify the install and report any upgrade conflicts. Then start or resume onboarding one question at a time.
 ```
 
 The AI installs Second Brain and its skills, then asks you one question at a time.
@@ -35,7 +43,7 @@ Use a signed-in local Claude Code or Codex app with access to this folder.
 
 **ภาษาไทย:** สร้างโฟลเดอร์ → เปิดใน Codex หรือ Claude Code → วางข้อความข้างบน → ตอบทีละข้อ แล้วเริ่มทำงานได้เลย
 
-[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
+[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
 
 Inspired by [Nate Herk's AIS-OS](https://github.com/nateherkai/AIS-OS). Adapted for a simple folder-first setup.
 [Sources and licenses](SOURCE_NOTICES.md).

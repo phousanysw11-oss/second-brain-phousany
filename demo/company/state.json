@@ -1,0 +1,262 @@
+{
+  "revision": 0,
+  "profile": {
+    "name": "Fictional CEO",
+    "department": "Leadership",
+    "role": "CEO",
+    "goal": "Improve cash visibility, delivery reliability and policy-consistent replies"
+  },
+  "tasks": [
+    {
+      "id": "DEMO-T1",
+      "title": "Reconcile the missing organizer COGS",
+      "owner": "Finance Lead",
+      "due": "2026-10-09",
+      "status": "todo",
+      "next": "Find matched cost for S007",
+      "doneWhen": "S007 cost source identified and checked",
+      "evidence": "",
+      "blocker": "",
+      "project": "Fictional workshop",
+      "priority": "high",
+      "source_ids": [
+        "PROFILE-v1",
+        "S007"
+      ],
+      "review_status": "draft",
+      "owner_acceptance": "not recorded"
+    },
+    {
+      "id": "DEMO-T2",
+      "title": "Check delivery promises against five recent orders",
+      "owner": "Operations Lead",
+      "due": "2026-10-12",
+      "status": "doing",
+      "next": "Compare promise and arrival evidence",
+      "doneWhen": "Five comparisons reviewed",
+      "evidence": "",
+      "blocker": "",
+      "project": "Fictional workshop",
+      "priority": "normal",
+      "source_ids": [
+        "PROFILE-v1",
+        "VOICE-v1"
+      ],
+      "review_status": "draft",
+      "owner_acceptance": "not recorded"
+    },
+    {
+      "id": "DEMO-T3",
+      "title": "Choose whether to test a broader discount",
+      "owner": "Fictional CEO",
+      "due": "2026-10-14",
+      "status": "blocked",
+      "next": "Review evidence and one bounded test",
+      "doneWhen": "CEO decision recorded in their own words",
+      "evidence": "",
+      "blocker": "Overall September COGS and conversion baseline unavailable",
+      "project": "Fictional workshop",
+      "priority": "high",
+      "source_ids": [
+        "DECISION-v1"
+      ],
+      "review_status": "draft",
+      "owner_acceptance": "not recorded"
+    }
+  ],
+  "ceo": {
+    "company": {
+      "id": "lotus-home-demo",
+      "name": "Lotus Home Demo",
+      "fictional": true,
+      "timezone": "Asia/Vientiane",
+      "currencies": [
+        "LAK",
+        "USD"
+      ]
+    },
+    "priorities": [
+      "Improve cash visibility",
+      "Make delivery promises reliable",
+      "Give policy-consistent customer replies"
+    ],
+    "calendar": {
+      "mode": "demo",
+      "source": "demo/company/calendar.json / CAL-v1",
+      "retrieved_at": "2026-10-07T09:00:00+07:00",
+      "range_start": "2026-10-07",
+      "range_end": "2026-10-13",
+      "events": [
+        {
+          "id": "DEMO-E1",
+          "title": "Fictional operations review",
+          "start": "2026-10-07T10:00:00+07:00",
+          "end": "2026-10-07T11:00:00+07:00",
+          "source_id": "CAL-E1",
+          "timezone": "Asia/Vientiane"
+        },
+        {
+          "id": "DEMO-E2",
+          "title": "Fictional supplier review",
+          "start": "2026-10-07T10:30:00+07:00",
+          "end": "2026-10-07T11:15:00+07:00",
+          "source_id": "CAL-E2",
+          "timezone": "Asia/Vientiane"
+        },
+        {
+          "id": "DEMO-E3",
+          "title": "Fictional stock count",
+          "start": "2026-10-09",
+          "end": "2026-10-10",
+          "all_day": true,
+          "source_id": "CAL-E3",
+          "timezone": "Asia/Vientiane"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "FIN-SALES-v1",
+        "path": "demo/company/sales.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-08-01 to 2026-09-30",
+        "currency": "LAK/USD",
+        "review_status": "fixture",
+        "source_date": "2026-09-30"
+      },
+      {
+        "id": "FIN-EXP-v1",
+        "path": "demo/company/expenses.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-09-01 to 2026-09-30",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-09-30"
+      },
+      {
+        "id": "FIN-CASH-v1",
+        "path": "demo/company/cash.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "FIN-OBL-v1",
+        "path": "demo/company/obligations.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07 to 2026-10-13",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "FIN-AR-v1",
+        "path": "demo/company/receivables.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "FIN-STOCK-v1",
+        "path": "demo/company/stock.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-09-30",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-09-30"
+      },
+      {
+        "id": "VOICE-v1",
+        "path": "demo/company/feedback.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-09-20 to 2026-10-06",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "POLICY-v1",
+        "path": "demo/company/policy.md",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "effective 2026-10-01",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "CAL-v1",
+        "path": "demo/company/calendar.json",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07 to 2026-10-13",
+        "currency": "",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "DECISION-v1",
+        "path": "demo/company/decision.md",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "PROFILE-v1",
+        "path": "demo/company/profile.md",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-10-07",
+        "currency": "",
+        "review_status": "fixture",
+        "source_date": "2026-10-07"
+      },
+      {
+        "id": "FIN-REFUND-v1",
+        "path": "demo/company/refunds.csv",
+        "version": "1",
+        "business_id": "lotus-home-demo",
+        "fictional": true,
+        "period": "2026-09-22",
+        "currency": "LAK",
+        "review_status": "fixture",
+        "source_date": "2026-09-22"
+      }
+    ],
+    "results": [],
+    "decision": {
+      "id": "DEMO-D1",
+      "question": "Should the company test a broader discount, keep the current policy, or delay?",
+      "deadline": "2026-10-14",
+      "currency": "LAK",
+      "proposed_test_cap": 200000,
+      "budget_approved": false,
+      "ceo_choice": ""
+    }
+  }
+}

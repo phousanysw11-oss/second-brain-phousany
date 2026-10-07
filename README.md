@@ -3,6 +3,12 @@
 Your personal Second Brain in a folder on your computer. Works with **Claude Code and Codex**.
 It learns about you, keeps useful knowledge, and helps you get work done.
 
+## CEO team preview
+
+This branch includes eight native Codex roles and a curated 20-skill CEO set, while retaining the original utility skills and all six BNI workshop segments. The installed skill count is 32 because two curated capabilities reuse the existing set.
+
+Use the [one installation message](INSTALL_MESSAGE.txt), then [เริ่มใช้ทีม CEO](CEO_START_TH.md). Read [observed test results](docs/TEST_REPORT.md) before wider learner rollout. Native team execution is for Codex; Claude skill mirrors do not install native Claude agents.
+
 ## Start here
 
 1. **Create a folder** on your computer, such as My Second Brain.
@@ -10,7 +16,7 @@ It learns about you, keeps useful knowledge, and helps you get work done.
 3. **Paste this into the AI:**
 
 ```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
+Install the CEO team preview from https://github.com/phousanysw11-oss/second-brain-phousany/tree/codex/ceo-team-workshops into this local project folder. Follow that branch's INSTALL.md, preserve my files and customizations, include all project skills and eight native Codex roles, and verify setup. Then ask only the first missing company question. Do not use main for this preview.
 ```
 
 The AI installs Second Brain and its skills, then asks you one question at a time.
@@ -35,7 +41,7 @@ Use a signed-in local Claude Code or Codex app with access to this folder.
 
 **ภาษาไทย:** สร้างโฟลเดอร์ → เปิดใน Codex หรือ Claude Code → วางข้อความข้างบน → ตอบทีละข้อ แล้วเริ่มทำงานได้เลย
 
-[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
+[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
 
 Inspired by [Nate Herk's AIS-OS](https://github.com/nateherkai/AIS-OS). Adapted for a simple folder-first setup.
 [Sources and licenses](SOURCE_NOTICES.md).

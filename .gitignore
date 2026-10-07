@@ -25,3 +25,12 @@ node_modules/
 Thumbs.db
 
 *.tmp
+
+.second-brain-upgrades/
+release-build/
+__pycache__/
+.second-brain-write-*
+
+
+# Frozen generic scaffold is public source, never learner data.
+!templates/learner/**
