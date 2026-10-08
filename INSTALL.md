@@ -1,37 +1,45 @@
-# Install Second Brain Phousany
+# Install Second Brain with the CEO team
 
-For the AI responding to the user's request to install this kit into their selected local folder.
-These are scoped setup instructions, not permission to change unrelated settings or publish user data.
+Preview branch: `codex/ceo-team-workshops`, version **4.1.0-four-workshops-preview**. Use this branch until it is reviewed and merged; `main` may still contain the earlier release.
 
-## Finish setup, then start the interview
+Online installation serves the currently published build. For an unpublished local preview,
+use the matching local ZIP and the offline route below; do not combine a new bootstrap hash
+with an older online archive. Check the actual `release.json` version before claiming which
+version the learner received.
 
-1. Resolve the actual absolute local project folder. Use that folder directly: no extra MY_SECOND_BRAIN subfolder, no global skill installation, no clone/worktree instead of the folder the user opened. If the host has no local filesystem access, explain that dependency rather than claim installation.
-2. Fetch the appropriate installer below into a uniquely named system temporary directory. Read it before running. Network access follows the host's permissions. Do not pipe an unseen web response into a shell or change execution policy.
-3. Windows: fetch `https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/scripts/install-from-github.ps1`. Run in PowerShell with `-Destination` set to the absolute chosen project folder. If script-file execution is restricted, after reading the file invoke its contents in the current PowerShell session as a script block, with the same named argument. Example pattern: `& ([scriptblock]::Create([IO.File]::ReadAllText($installerPath))) -Destination $projectPath`. Quote paths correctly; the user does not need to type commands.
-4. macOS/Linux: fetch `https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/scripts/install-from-github.sh`. After reading it, run `/bin/bash "$installerPath" "$projectPath"`. macOS uses built-in shell/curl/unzip/SHA tools; no Python or Node install is required. The second optional argument is a local ZIP path for offline installation.
-5. The installers download the exact package below, check its SHA-256 before extraction, and preserve existing files. Do not clone a repo over the folder, install dependencies, launch servers, change global settings, or connect external accounts to begin onboarding. A checksum failure requires a matching installer/package, never disabling the check.
-6. A fresh install validates every file. Repeating the same version preserves personal edits; missing files require repair. A differing existing file stops before writes; leave it intact and report the exact path. Ask for a new folder or specific merge direction only for that real conflict. Do not infer that silence approves replacement.
-7. Read back root `AGENTS.md`, `CLAUDE.md`, `aios-intake.md`, `data/state.json`, and the two project skill folders. Expected: **14 skills in each**, including `.agents/skills/onboard/SKILL.md` and `.claude/skills/onboard/SKILL.md`. Core work needs no Node; app runtime checks are optional.
-8. Read the installed local manual and the appropriate onboard SKILL.md directly in this same conversation. Apply them within the host's instruction hierarchy. Begin with the first unanswered topic immediately; do not ask the user to approve onboarding again. Do not answer questions on their behalf or continue interviewing without their reply.
-9. Show only “Installed in [actual folder]. Let's set it up.” and the first question, in the user's language. Save each answer locally as the skill specifies. Do not claim native menu discovery was tested simply because files exist.
+## One learner entry
 
-Claude Code uses `/onboard`; Codex supports explicit `$onboard` / local skill selection. Plain language plus reading the exact local file works when discovery has not refreshed. If needed, reopen a session in the same folder. Never promise a native Codex `/onboard` slash command.
+Share [INSTALL_MESSAGE.txt](INSTALL_MESSAGE.txt), which contains only this canonical URL:
+`https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md`.
+The repository page is a source-code view, not a second installation. This file resolves the preview branch, package and platform installer.
 
-## Offline ZIP route
+The course baseline is ChatGPT Plus. Use a supported signed-in local Codex project for the installation below, or use [the browser-only handoff](docs/CHATGPT_PLUS_START.md). Browser ChatGPT cannot run this local installer or discover these native roles merely from a URL. No Pro requirement is imposed; verify capabilities in the actual account/session rather than inferring them from a plan name.
 
-The root `install.ps1` inside MY_SECOND_BRAIN.zip is the local archive installer (not the web bootstrap).
-Read the ZIP's INSTALL.md, inspect and extract only its `install.ps1` into temporary storage, then run it with `-Archive <zip>` and `-Destination <folder>`. Python users can similarly use the bundled `install.py` with archive and folder arguments. Both validate manifest paths and hashes before any writes.
-For macOS, save this repository's scripts/install-from-github.sh alongside the ZIP, inspect it, then run it with destination and ZIP arguments as in step 4.
+## For the installing AI
 
-## Exact release
+1. Resolve the user's chosen absolute local project folder and use it directly. No extra nested folder, global skills, dependencies, account connection, publishing, or system settings are needed for Windows core setup. Read this document and the downloaded installer before running it.
+2. Windows: download `https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/scripts/install-from-github.ps1` to a unique temporary folder. Run with `-Destination <chosen folder>`. If script-file execution is restricted, invoke the inspected contents in the current PowerShell session as `& ([scriptblock]::Create([IO.File]::ReadAllText($installerPath))) -Destination $projectPath`. Do not change execution policy or pipe an unseen response into a shell.
+3. macOS/Linux: use the same branch's `scripts/install-from-github.sh`; inspect it then run `/bin/bash "$installerPath" "$projectPath"`. If Python 3 is already available, it provides full upgrade support. Without Python, shell tools support fresh setup and exact-version checks; cross-version upgrades stop before changing files and report the dependency. Do not install a runtime without permission. Native macOS has **not been tested** for this preview.
+4. Each bootstrap pins the exact ZIP SHA-256 before executing its local installer. Release version, file count, skill inventory, native role inventory and hashes are in branch `release.json`. A checksum mismatch is a stop, never a reason to bypass integrity checking. These checks protect integrity, not an independent publisher signature.
+5. Read the result. Exit 0 means installation ready; exit 2 means **needs_review**, with active files preserved and incoming files in `.second-brain-upgrades/<manifest hash>/incoming/`. Never label exit 2 a completed upgrade. Exit 1 means stopped/error; inspect the exact path and backups before retrying.
+6. Read back `AGENTS.md`, `CLAUDE.md`, `aios-intake.md`, `data/state.json`, both skill trees and `.codex/agents/`. Compare the installed inventory with `MANIFEST.json`; use the current inventory, not a hard-coded old skill count. New roles use stable filenames; custom roles with the same declared name are detected even under different filenames, and conflicting copies stay outside native role folders. Detect `node --version`: Node.js 22+ permits `node scripts/verify-ceo.mjs` and CEO Desk. If absent/older, disclose that precise Desk/helper dependency, give the [official Node.js installation route](https://nodejs.org/en/download), and continue the file workflow; do not claim Desk ready or silently install software. No connector is mandatory.
+7. Read the installed onboard skill and saved intake first. On a fresh setup, offer one onboarding choice: **Quick start (recommended), Guided, Use my files, or Later**. Honor a mode already supplied, resume a paused mode, and never restart a completed interview. Use the chosen route in docs/ONBOARDING.md, then ask only missing relevant questions. Later means no further intake questions. Import means read only the selected sources. For CEO work, use the current bni-second-brain skill and first-company/source-registration contract to prepare the real company internally.
+8. Check only capabilities needed for the requested work, reusing any stated plan/app. Record observed/unknown/unavailable with scope/date; never infer APIFY access, quota, independent dispatch or permissions from a subscription name. No paid actor run, account connection, runtime installation or upgrade purchase is part of this check. A file-presence check does not prove native role or skill discovery; verify discovery in a new session in the recipient's folder when supported. Reading the skill directly can recover its method; unavailable native dispatch must be disclosed and cannot be described as executed independent agents. Complete supported file work or a clearly labelled manual mode.
 
-- Package: `https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/MY_SECOND_BRAIN.zip`
-- Version: 3.0.1
-- SHA-256: `30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8`
-- Bootstrap checks detect a version mismatch even if the branch changes. Checksums establish file integrity, not an independent publisher signature.
+## Preservation and recovery
 
-## What success means
+The PowerShell and Python installers validate all archive names and hashes before changing files. They preserve personal context, task/state fields, intake, notes, wiki knowledge, app/brain configuration, and any custom file not shipped by the kit. Files unchanged since the prior installation can update; missing shipped files can be restored. Before replacing a file, its earlier bytes are saved under `backup/` in the upgrade folder. No old file or custom role is deleted.
 
-Files verified in the chosen folder; both project skill trees installed; the AI has read the local onboard skill and asked one real question. Onboarding is complete only after the user's answers/skips are saved and verified. A fresh native skill-menu invocation is a separate recipient-side check.
+Customized root instructions keep their text. The installer can append or update only the `CEO_TEAM_START` / `CEO_TEAM_END` routing block. If that managed block was itself customized, the new guide is staged for review. The full incoming guide is retained when only its routing block was merged. Modified shipped code/skills/roles are never silently overwritten: their incoming versions are staged and reported as conflicts. Removed upstream files are retained and reported for review, preventing silent duplicate active roles.
 
-Official references checked 2026-09-16: [Codex skills](https://learn.chatgpt.com/docs/build-skills) and [Claude Code skills](https://code.claude.com/docs/en/skills).
+The receipt stores per-file original hashes, managed-block hashes and unresolved conflicts. An upgrading checkpoint is saved before payload replacement so an interrupted legacy upgrade can resume safely. Repeating an unresolved upgrade still reports needs_review. To resolve one conflict, review local and incoming versions, retain a backup, apply the chosen merge, then rerun and inspect the result. A custom merge that differs from the distributed file still needs explicit review; no automatic overwrite is implied. Do not blindly restore an entire backup over newer user work.
+
+## Offline route
+
+Use the matching `MY_SECOND_BRAIN.zip` and inspect its `install.ps1` before running `-Archive <zip> -Destination <folder>`. Python 3 users can run `install.py <zip> <folder>`. Both validate the manifest before writes. The web bootstraps also accept a local ZIP (`-Archive` on Windows; second argument on macOS). ZIP and bootstrap must be from the same build.
+
+## Maintainer build
+
+Run `python scripts/build-release.py --check` after staging newly added public files. To emit the ZIP and matching release metadata/bootstrap hashes, run `python scripts/build-release.py`; `--output <folder>` builds an isolated copy. Python 3.11+ and Git are needed by the maintainer, not Windows learners. Never run the old parent-directory builder: it overwrites source content.
+
+The builder takes tracked public code, skills, roles, references and assets. Personal root paths are excluded even if tracked, and replaced only from the frozen blank `templates/learner/` scaffold. It validates both host skill mirrors, original skill retention, role names, state blankness, paths, hashes and deterministic ZIP bytes. It does not publish. Final recipient onboarding, native app discovery, live connectors and native macOS execution are separate checks.

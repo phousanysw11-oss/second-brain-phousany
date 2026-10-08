@@ -1,41 +1,18 @@
-# Second Brain Phousany
+# เริ่มใช้ Second Brain
 
-Your personal Second Brain in a folder on your computer. Works with **Claude Code and Codex**.
-It learns about you, keeps useful knowledge, and helps you get work done.
+ใช้ทางเข้าเดียวที่ [README.md](README.md) และคัดลอก [ข้อความติดตั้ง](INSTALL_MESSAGE.txt)
+ข้อความมี URL เดียวไปยัง INSTALL.md ซึ่งระบุแพ็กเกจและตัวติดตั้งไว้แล้ว ไม่ต้องติดตั้งสองรอบ
 
-## Start here
+สร้างหรือเลือกโฟลเดอร์ → เปิดเป็น local project ใน Codex หรือ Claude Code → วางข้อความติดตั้ง → เลือก onboarding
 
-1. **Create a folder** on your computer, such as My Second Brain.
-2. **Open that folder** as a local project in Codex or as your working folder in Claude Code.
-3. **Paste this into the AI:**
+- **เริ่มเร็ว (แนะนำ):** ใช้ข้อมูลธุรกิจ เป้าหมาย และแหล่งข้อมูลเท่าที่มี แล้วเริ่มงานจริง
+- **ให้ AI พาถาม:** ถามทีละข้อ ข้ามหรือหยุดพักได้
+- **ใช้ไฟล์ที่มี:** เลือกไฟล์ให้ AI อ่าน สรุปพร้อมแหล่งอ้างอิง แล้วถามเฉพาะช่องว่างสำคัญ
+- **ทำภายหลัง:** เก็บสถานะไว้และเริ่มงานได้เลย
 
-```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
-```
+ถ้ามีคำตอบเดิม AI ต้องใช้ต่อ ไม่ถามเริ่มใหม่ อ่าน [รายละเอียด onboarding](docs/ONBOARDING.md)
+หลังจากนั้นพิมพ์ “เริ่ม WS1” ดูผลลัพธ์ของ workshop ที่ [คู่มือ CEO](CEO_START_TH.md)
+เมนู skill ไม่ขึ้น ให้เปิดแชตใหม่ในโฟลเดอร์เดิม หรือบอก AI ให้อ่าน onboard SKILL.md ในโปรเจกต์โดยตรง
 
-The AI installs Second Brain and its skills, then asks you one question at a time.
-Answer in your own language. You can skip a question or continue later.
-
-## After setup
-
-Open the same folder and talk to your AI:
-
-- “What should I work on today?”
-- “Help me finish this task.”
-- “Save this into my Second Brain.”
-
-To start or resume setup: **`/onboard` in Claude Code · `$onboard` in Codex**.
-You can also just say **“Start onboarding.”** If a skill is missing from the menu, open a new session in the same folder.
-
-## What you get
-
-Personal context · project skills for both apps · LLM Wiki · optional Dashboard and 3D Brain.
-No manual skill installation. No Git or Node.js needed to start; the optional visual apps use Node.js.
-Use a signed-in local Claude Code or Codex app with access to this folder.
-
-**ภาษาไทย:** สร้างโฟลเดอร์ → เปิดใน Codex หรือ Claude Code → วางข้อความข้างบน → ตอบทีละข้อ แล้วเริ่มทำงานได้เลย
-
-[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
-
-Inspired by [Nate Herk's AIS-OS](https://github.com/nateherkai/AIS-OS). Adapted for a simple folder-first setup.
-[Sources and licenses](SOURCE_NOTICES.md).
+แพ็กเกจนี้สำหรับแอปที่อ่านและเขียนโฟลเดอร์ได้ การส่งลิงก์ใน browser chat อย่างเดียวไม่ติดตั้ง local skills
+บัญชีและเครื่องมือที่ใช้ได้ต้องตรวจจาก session จริง ดู [HELP.md](HELP.md)

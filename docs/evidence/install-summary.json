@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-07",
+  "release": "4.0.0-ceo-preview",
+  "branch": "codex/ceo-team-workshops",
+  "scope": "Observed installer, archive and packaging checks using synthetic local learner files. This is not model/workshop acceptance.",
+  "installer_suite": {
+    "test_file": "tests/test_install.py",
+    "command": "python -m unittest discover -s tests -v",
+    "unique_tests": 30,
+    "backends": [
+      "Python stdlib installer",
+      "Windows PowerShell 5.1 native installer"
+    ],
+    "normal_run": {
+      "passed": 28,
+      "skipped": 2,
+      "failed": 0
+    },
+    "skipped_reason": "Sandbox could not create a test symlink/junction.",
+    "targeted_rerun": {
+      "command": "python -m unittest discover -s tests -k linked_destination -v",
+      "outside_sandbox": true,
+      "passed": 2,
+      "failed": 0
+    },
+    "aggregate": {
+      "passed": 30,
+      "unverified": 0,
+      "failed": 0
+    },
+    "cases_per_backend": [
+      "clean install and exact reinstall",
+      "legacy upgrade preserves custom state, instructions, roles and skills",
+      "modified shipped code remains a conflict until resolved",
+      "same-path custom role remains active with incoming staged",
+      "differently named custom role with same declared name prevents duplicate",
+      "edited managed routing block is preserved and reported",
+      "missing file repair",
+      "interrupted legacy checkpoint resume",
+      "parent-file collision preflight",
+      "tampered legacy manifest stop",
+      "unsafe paths and reserved names",
+      "archive integrity failure",
+      "case-colliding entries",
+      "file-directory collision",
+      "linked destination rejection"
+    ]
+  },
+  "real_archive_migration": {
+    "test_script": "tests/check-real-upgrade.py",
+    "from_version": "3.0.1",
+    "from_archive_sha256": "30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8",
+    "initial_install": "Original installer inside verified 3.0.1 archive",
+    "upgrade_backend": "Windows PowerShell native installer",
+    "result": "PASS",
+    "preserved": [
+      "state bytes including custom task/profile/root fields",
+      "custom instructions",
+      "context",
+      "custom skill",
+      "custom role"
+    ],
+    "managed_router_occurrences": 1,
+    "native_roles_including_one_custom": 9,
+    "repeat_result": "already_installed",
+    "environment_note": "Sandbox blocked an atomic replacement on the first fixture. The migration passed outside the sandbox using a fresh synthetic fixture."
+  },
+  "preliminary_package": {
+    "artifact_stage": "preliminary_source_snapshot_not_final_release",
+    "sha256": "56749884bdf05c3a3e016b6b65f503b66b5b171bcace9a6d3c071e21d4edb944",
+    "files_verified": 365,
+    "skills_per_host": 32,
+    "native_roles": 8,
+    "deterministic_zip_check": "PASS",
+    "path_and_manifest_hash_checks": "PASS",
+    "blank_scaffold_validation": "PASS",
+    "windows_pinned_bootstrap_offline_archive": "PASS",
+    "note": "Final packaging must include subsequent installer and documentation changes. Consult final release.json for the delivered artifact inventory and hash."
+  },
+  "platform_checks": {
+    "windows_local_install_upgrade": "PASS",
+    "bash_syntax": "PASS via installed Git Bash, syntax check only",
+    "native_macos": "NOT TESTED",
+    "macos_upgrade_dependency": "Full upgrade uses an already available Python 3 runtime. Without it, shell fallback supports fresh setup and exact-version checks; cross-version upgrade stops before changing files."
+  },
+  "unverified_workflow_dependencies": [
+    {
+      "check": "Fresh Codex native role discovery",
+      "status": "NOT TESTED",
+      "reason": "Fresh nested session execution policy rejected local reads; tool bridge did not expose named-role selection."
+    },
+    {
+      "check": "Model-generated workshop/Board/AI Employee acceptance",
+      "status": "NOT TESTED",
+      "reason": "No completed recipient native model execution evidence; source-file and deterministic checks cannot substitute."
+    },
+    {
+      "check": "Native Claude agents",
+      "status": "NOT PROVIDED",
+      "reason": "This release includes Claude skill mirrors, not native Claude role definitions."
+    },
+    {
+      "check": "Live connectors and recipient authentication",
+      "status": "NOT TESTED",
+      "reason": "Local installation does not authenticate or exercise external accounts."
+    }
+  ],
+  "published_install": {
+    "observed_date": "2026-10-07",
+    "source_commit": "1ed88fbd2ab6ddf9c06296163027f46c214a3201",
+    "bootstrap_url": "https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/scripts/install-from-github.ps1",
+    "archive_sha256": "09036bc801d5c9acc936f6f7d09ec24f2c5b9ce54bec95a15a1ce6c0d5209550",
+    "result": "PASS",
+    "files_verified": 376,
+    "roles": 8,
+    "skills_per_host": 32,
+    "conflicts": [],
+    "scope": "Actual download and pinned installation from public GitHub into a new disposable folder; bootstrap compared with inspected local source before execution. Subsequent Thai handoff and evidence-only edits require a new archive hash in release.json. No model discovery is implied."
+  }
+}

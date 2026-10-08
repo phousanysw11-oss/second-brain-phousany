@@ -1,41 +1,54 @@
-# Second Brain Phousany
+# Second Brain for your business
 
-Your personal Second Brain in a folder on your computer. Works with **Claude Code and Codex**.
-It learns about you, keeps useful knowledge, and helps you get work done.
+One local folder holds your business profile, sources, decisions and finished work.
+Use the folder in a signed-in local Codex or Claude Code app.
 
-## Start here
+## Install with one message
 
-1. **Create a folder** on your computer, such as My Second Brain.
-2. **Open that folder** as a local project in Codex or as your working folder in Claude Code.
-3. **Paste this into the AI:**
+1. Create or choose your Second Brain folder.
+2. Open that folder as a local project in Codex or as your working folder in Claude Code.
+3. Paste the [installation message](INSTALL_MESSAGE.txt):
 
 ```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
+ติดตั้ง Second Brain ในโฟลเดอร์โปรเจกต์นี้ โดยอ่านและทำตาม https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md
+รักษาข้อมูล คำตอบเดิม และคำสั่งที่ฉันปรับเอง ตรวจการติดตั้งและแจ้งไฟล์ที่ต้องตรวจทาน
+เมื่อติดตั้งแล้ว เสนอตัวเลือก onboarding: เริ่มเร็ว / ให้ AI พาถาม / ใช้ไฟล์ที่มี / ทำภายหลัง ใช้ข้อมูลเดิมและถามเฉพาะที่ขาดทีละคำถาม
 ```
 
-The AI installs Second Brain and its skills, then asks you one question at a time.
-Answer in your own language. You can skip a question or continue later.
+Only **one URL** is needed. INSTALL.md identifies this preview branch, the verified package and the right installer. The repository page is for inspecting source code; it is not a second installation.
 
-## After setup
+## Choose your first step
 
-Open the same folder and talk to your AI:
+After installation, the AI offers one choice:
 
-- “What should I work on today?”
-- “Help me finish this task.”
-- “Save this into my Second Brain.”
+| Choice | What happens |
+|---|---|
+| Quick start, recommended | Confirm your business, the result you want and the first useful source; begin real work. |
+| Guided onboarding | Work through context, priority, first task, information and preferences one question at a time. |
+| Use my files | Read only files you select, extract facts with sources, then ask about consequential gaps. |
+| Later | Save setup as deferred and let you work immediately. |
 
-To start or resume setup: **`/onboard` in Claude Code · `$onboard` in Codex**.
-You can also just say **“Start onboarding.”** If a skill is missing from the menu, open a new session in the same folder.
+Already have saved answers? Resume them; no repeated interview. You can change the route, skip a question or continue later.
+Say “Start onboarding” in either app; native skill syntax is `$onboard` in Codex or `/onboard` in Claude Code.
 
-## What you get
+## Four connected workshops
 
-Personal context · project skills for both apps · LLM Wiki · optional Dashboard and 3D Brain.
-No manual skill installation. No Git or Node.js needed to start; the optional visual apps use Node.js.
-Use a signed-in local Claude Code or Codex app with access to this folder.
+ChatGPT Plus ($20) is the baseline; [start here for Plus](docs/CHATGPT_PLUS_START.md).
+Business X-ray → Market X-ray with Apify → Winning Zone → Website for Netlify Drop.
+Desk, 3D Brain and the independent AI Board are optional tools. No Pro requirement.
+The local package is a review preview; recipient-account and live-service checks remain separate.
 
-**ภาษาไทย:** สร้างโฟลเดอร์ → เปิดใน Codex หรือ Claude Code → วางข้อความข้างบน → ตอบทีละข้อ แล้วเริ่มทำงานได้เลย
+## Work from your own evidence
 
-[More help](HELP.md) · [Download ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip) · [For the installing AI](INSTALL.md)
+See [the CEO start guide](CEO_START_TH.md) for the workshop outputs and natural commands.
+Use real data for one business. A fictional company is available only when you request a demo.
+CEO Desk and 3D Brain are optional ways to use saved work; they are not setup prerequisites.
 
-Inspired by [Nate Herk's AIS-OS](https://github.com/nateherkai/AIS-OS). Adapted for a simple folder-first setup.
-[Sources and licenses](SOURCE_NOTICES.md).
+The AI checks capabilities actually available in your session. A subscription name alone does not prove file tools, web research, APIFY access or independent agent dispatch.
+Core local file work needs no extra connector; Desk and 3D Brain need Node.js 22+. No software or paid service is installed automatically.
+Browser-only chat does not install these local skills or roles. Claude skill mirrors do not install native Claude agents.
+
+This is the `codex/ceo-team-workshops` preview. [Observed test evidence](docs/TEST_REPORT.md) describes what has and has not run; local tests do not certify every learner account.
+See [help](HELP.md), [onboarding details](docs/ONBOARDING.md), [optional apps](OPTIONAL_APPS.md) and [installer/recovery details](INSTALL.md).
+
+Inspired by [Nate Herk's AIS-OS](https://github.com/nateherkai/AIS-OS). [Sources and licenses](SOURCE_NOTICES.md).

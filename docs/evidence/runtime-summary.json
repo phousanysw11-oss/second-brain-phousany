@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-07",
+  "state_tests": {
+    "command": "node --test tests/ceo-state.test.mjs",
+    "passed": 6,
+    "failed": 0
+  },
+  "cli_tests": {
+    "command": "node --test tests/ceo-cli.test.mjs",
+    "passed": 8,
+    "failed": 0
+  },
+  "fixture_tests": {
+    "command": "node tests/workshop-contracts.mjs",
+    "passed_groups": 11,
+    "scope": "fixture/schema/calculation oracle consistency; no LLM behavior"
+  },
+  "browser_checks": {
+    "passed": 9,
+    "failed": 0,
+    "runner": "tests/desk-browser.cjs",
+    "browser": "headless installed Chrome via Playwright",
+    "scope": "synthetic local state, edit/save/reopen/restore/conflict"
+  },
+  "repairs_observed": [
+    "Failed-save backup remains enabled and attempted edits can be downloaded",
+    "Committed state with projection failure returns warning rather than false failure",
+    "Nonempty role-only profile blocks demo initialization",
+    "Impossible dates and invalid canonical Calendar rejected",
+    "Scoped source registry and metadata whitelist exclude prior Board/oracles",
+    "Traversal outside selected evidence directory rejected"
+  ],
+  "limits": [
+    "Atomic replacement in the restrictive Windows sandbox produced EPERM; corresponding state/browser tests passed in the authorized normal Windows process",
+    "No human learner outcome or model workshop correctness measured"
+  ]
+}

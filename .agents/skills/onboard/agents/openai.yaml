@@ -1,6 +1,6 @@
 interface:
   display_name: "Second Brain Onboard"
-  short_description: "Set up or resume your personal Second Brain"
-  default_prompt: "Use $onboard to start or resume my Second Brain, one question at a time."
+  short_description: "Choose quick, guided, file-based or later setup"
+  default_prompt: "Use $onboard to offer setup choices or resume my saved answers."
 policy:
   allow_implicit_invocation: true

@@ -1,0 +1,40 @@
+> Historical optional reference. Current four-workshop runtime overrides numbering, storage, and execution. This is not a main-course workshop. Board = AI_BOARD; Desk = CEO_DESK; Hidden Signals = HIDDEN_SIGNALS. Browser users use explicit artifact export, not local CLI assumptions.
+
+# WS2 templates and source-check rubric
+
+## Output_Template_LO.md
+
+# WS2 Checked Output
+Business / Workspace ID: [ ]
+Date / Timezone: [ ]
+Priorities: [ ]
+WS1 action and source: [ ]
+Tasks / owner / due / status / source / review: [ ]
+Calendar route / source / range / retrieved at: [ ]
+Browser checks / backup filename: [ ]
+Unknowns and next manual refresh: [ ]
+Status: Draft / PARTIAL / Checked by learner
+Checked by / Date / Corrections: [ ]
+
+## Acceptance_Checklist_LO.md
+
+# Check your CEO Desk
+- [ ] ຊື່ທຸລະກິດ, workspace ID ແລະ timezone ຖືກ.
+- [ ] 3 priorities ຕົງກັບຄຳຕອບຂອງທ່ານ.
+- [ ] ວຽກທຽບກັບ source. owner/due ທີ່ບໍ່ຮູ້ຍັງວ່າງ.
+- [ ] ເພີ່ມ 1 ວຽກ, ແກ້, Mark done, reload ແລ້ວຍັງຢູ່.
+- [ ] Download backup. ທົດລອງ Import ຄືນ ແລ້ວທຽບງານ/ສະຖານະ.
+- [ ] ກວດນັດໝາຍ 1 ລາຍການກັບ Calendar ຫຼື ຮູບຕົ້ນສະບັບ.
+- [ ] Source/Range/Retrieved ຕາມຈິງ. ບໍ່ອ້າງ auto sync.
+- [ ] ບໍ່ມີນັດໝາຍຖືກຂຽນ/ປ່ຽນ. ບໍ່ມີ token ໃນ JSON.
+- [ ] ບັນທຶກ CEO_DESK_Checked_Output ແລະ ກວດອ່ານຄືນຈາກ Project.
+Checked by: [ ] Date: [ ] Unresolved: [ ]
+
+Handoff: maintain the result and actual human-check state in the same conversation. Do not request a separate Skill, prompt pack or register upload. Export one combined CEO_Second_Brain_State.md at session end.
+
+
+## Current compatibility checks
+- Local native backup/restore was tested with actual state; it is separate from standalone projection.
+- Standalone JSON comes only from desk-data-standalone, not native desk-data.
+- Task count/field limits reject incompatible content; optional result/rich-field omissions are disclosed.
+- Projection is labelled incomplete and never presented as a recovery backup or native state replacement.

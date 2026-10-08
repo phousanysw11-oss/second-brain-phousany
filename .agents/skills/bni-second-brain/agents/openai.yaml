@@ -1,0 +1,6 @@
+interface:
+  display_name: "BNI CEO Second Brain"
+  short_description: "Run five CEO workshops from one simple entry"
+  default_prompt: "Use $bni-second-brain to start WS1 using my selected business data."
+policy:
+  allow_implicit_invocation: true

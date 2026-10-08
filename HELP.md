@@ -1,59 +1,46 @@
-# Second Brain Phousany
+# Installation and first-use help
 
-A personal Second Brain in a folder on your computer, for **Claude Code or Codex**.
-Includes project skills, notes, a knowledge wiki, and optional Dashboard / 3D Brain.
+Start with [README.md](README.md) and the single [installation message](INSTALL_MESSAGE.txt).
+INSTALL.md is the canonical installation entry. The repository page is a source browser, not a second requirement.
 
-## Start in three steps
+## Existing installation
 
-1. Create a folder on your computer, for example **My Second Brain**.
-2. Open that folder as your **local project in Codex**, or as your **working folder in Claude Code**. Use the chosen folder directly, not a cloud task or an isolated worktree.
-3. Paste this message into the AI:
+Use the same folder. The installer checks a manifest, preserves saved context and custom files, and stages conflicting shipped files outside active skill/role folders.
+Exit 0 means files are ready; exit 2 means **needs_review**, not a completed upgrade. Read the report and incoming copies before merging.
+See [preservation and recovery](INSTALL.md#preservation-and-recovery). Do not replace your folder with a fresh ZIP over existing data.
 
-```text
-Install https://github.com/phousanysw11-oss/second-brain-phousany into this local project folder. Follow its INSTALL.md, include all project skills, preserve my existing files, and verify setup. Then start onboarding one question at a time.
-```
+Resume onboarding from saved answers. A completed interview is not repeated. “Change onboarding to quick start” or “Do onboarding later” changes the route.
+See [the mode guide](docs/ONBOARDING.md).
 
-The AI installs the files, checks them, then asks the first onboarding question.
-Answer one question at a time. You can say **skip** or return later.
-No manual copying of skills, GitHub account, plugin, API key, Node.js or Git is needed for core setup.
-Your AI app must already be signed in and able to read/write the selected local folder and download the public package.
+## Missing skill or team capability
 
-## Already installed? Start working
-
-Open the same folder and say **Start onboarding** or **Resume onboarding**.
-Claude Code: `/onboard`. Codex: `$onboard` (or choose the local onboard skill).
-If it is not in the menu yet, use this in either app:
+Open a new local chat in the same folder. If a skill is not in the menu, say:
 
 ```text
-Read this project's .agents/skills/onboard/SKILL.md (Codex) or .claude/skills/onboard/SKILL.md (Claude Code), then start or resume onboarding one question at a time.
+Read this project's .agents/skills/onboard/SKILL.md in Codex, or .claude/skills/onboard/SKILL.md in Claude Code, and resume from saved answers.
 ```
 
-After onboarding, ask **What should I work on first today, and why?**
-You can also ask **Help me finish this task**, **Save this document into my wiki**, or **Review my week**.
-Skills are already installed in the project; you do not need to memorize their names.
+Reading the method directly does not prove native skill discovery or independent agent dispatch.
+Claude skill mirrors do not install native Claude agents. A browser-only ChatGPT conversation cannot install these local files into a local app.
+Use available capabilities and report exact limits; do not invent team execution.
 
-## เริ่มใช้ภาษาไทย
+## Subscription and tools
 
-สร้างโฟลเดอร์ → เปิดโฟลเดอร์เป็นโปรเจกต์ใน Codex หรือ Claude Code → วางข้อความข้างบน
-AI จะติดตั้งแล้วถามทีละข้อ ข้ามสิ่งที่ยังไม่รู้ได้ ครั้งต่อไปเปิดโฟลเดอร์เดิมแล้วบอก “เริ่ม onboarding” หรือ “ทำต่อจากครั้งก่อน”
-เริ่มทำงานได้เลย ไม่ต้องเปิด Dashboard หรือเชื่อม Google Drive ก่อน
+Check the actual session before recommending an upgrade. The core interview/file workflows need an AI session with authorized local read/write access.
+Public web research, local execution, APIFY, visual previews and independent agents are separate capabilities.
+A plan label is not proof of any of them. Record only what was observed in this session; unknown remains unknown.
 
-## What is included
+The optional local apps need Node.js 22+. If missing, use the file workflow and show the official installation route when useful.
+APIFY requires the user's own supported connection and permission for any paid run. Available tools or credits do not authorize spending.
+Never request passwords, tokens or card details in chat. Authentication belongs in the provider's secure sign-in flow.
 
-Onboard plus 13 supporting skills: grill-me, audit, level-up, 3d-brain, workspace-from-todos,
-start-my-work, plan-my-day, finish-my-task, read-team-performance, wiki-helper, weekly-review,
-open-3d-brain, and prioritize-work-four-factors. Both project skill folders are included.
+## No network access
 
-Dashboard and 3D Brain are optional local apps; those need Node.js 22+.
-Ask your AI to open them when needed. See [optional apps](OPTIONAL_APPS.md).
-All personal files stay in your chosen folder unless you explicitly share them. Files you provide to your AI are processed under that AI provider's service; this is not an offline language model.
+Obtain the matching [preview ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip) with its matching bootstrap/checksum.
+Tell the local AI: “Read INSTALL.md inside the ZIP, install it in this folder, verify it, then offer onboarding choices.”
+Do not bypass checksum failure. Read [the offline route](INSTALL.md#offline-route).
 
-## If installation needs attention
+## What verification means
 
-- If a skill is missing from the menu, start a new session in the same folder; the direct-file message above also works.
-- If the AI cannot open the GitHub page, it can fetch https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/main/INSTALL.md.
-- If network access is unavailable, download [MY_SECOND_BRAIN.zip](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/main/MY_SECOND_BRAIN.zip), place it in your chosen folder, and tell the AI: “Read INSTALL.md inside this ZIP, install it here, verify it, then start onboarding.”
-- Existing conflicting files are preserved. The AI identifies the conflict so you can choose a new empty folder or a specific merge. Repeating the same installer keeps saved answers.
-- If the AI can only chat and cannot write local files, open the folder in local Claude Code or Codex first.
-
-Maintainer details: [installation procedure](INSTALL.md), [sources and notices](SOURCE_NOTICES.md).
+Installation checks prove the tested files and preservation behavior. They do not prove workshop answer quality, private account access, learner acceptance or business results.
+Review [observed tests](docs/TEST_REPORT.md). Native macOS installation and individual learner-account behavior remain separate tests.

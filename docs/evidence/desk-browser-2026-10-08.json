@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checks": [
+    "saved result opens allowed Markdown as inert text",
+    "add task saved to canonical state",
+    "rich next action/criterion/blocker/project/priority fields persist and escape source text",
+    "edit/complete marks unverified user report",
+    "reload and reopen persist",
+    "actual downloaded backup restored including rich fields",
+    "wrong-company restore rejected",
+    "Calendar-only update preserves tasks/priorities",
+    "stale API revision rejected",
+    "new browser context and restarted server reuse canonical work",
+    "mobile rich editor scrolls without horizontal page overflow",
+    "60 tasks survive canonical save and served bootstrap without truncation",
+    "failed write retains attempted edits and permits backup download"
+  ],
+  "platform": "win32",
+  "node": "v24.18.0",
+  "original_asset": "preserved",
+  "completion": "User reported; not independent completion evidence"
+}

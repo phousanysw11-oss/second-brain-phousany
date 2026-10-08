@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": [
+    "add task saved to canonical state",
+    "edit/complete marks unverified user report",
+    "reload and reopen persist",
+    "actual downloaded backup restored",
+    "wrong-company restore rejected",
+    "Calendar-only update preserves tasks/priorities",
+    "stale API revision rejected",
+    "new browser context and restarted server reuse canonical work",
+    "failed write retains attempted edits and permits backup download"
+  ],
+  "platform": "win32",
+  "node": "v24.18.0",
+  "original_asset": "preserved",
+  "completion": "User reported; not independent completion evidence"
+}

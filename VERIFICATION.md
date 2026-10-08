@@ -1,3 +1,7 @@
+# Historical 3.0.1 verification
+
+For the CEO preview, use [the current report](docs/TEST_REPORT.md). The retained report below describes the earlier package only.
+
 # Verification — 16 September 2026
 
 The installation flow was exercised in disposable learner folders, not in the author's live Second Brain.
