@@ -1,0 +1,23 @@
+{
+  "based_on": "3.0.1",
+  "branch": "codex/second-brain-core-7",
+  "bytes": 1647822,
+  "custom_agent_count": 0,
+  "dashboard_included": false,
+  "files": 125,
+  "manifest_sha256": "92f42ffe551441c64c5418a8ae49b0131918b4c079e6f0cc15fa90d431da3963",
+  "package": "MY_SECOND_BRAIN.zip",
+  "sha256": "77da2e71774a34c855505df9df0d21c05eeb48e48c4f02bcefd8b147fab2c6f9",
+  "skill_names": [
+    "3d-brain",
+    "audit",
+    "grill-me",
+    "level-up",
+    "onboard",
+    "open-3d-brain",
+    "wiki-helper"
+  ],
+  "skills_per_host": 7,
+  "source_commit": "33360aafce3daa5f95660c87188b5addf03e3128",
+  "version": "3.1.0-core-seven"
+}
