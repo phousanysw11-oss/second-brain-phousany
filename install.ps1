@@ -50,9 +50,9 @@ function Is-UserFile([string]$Name) {
 }
 function Get-Section([byte[]]$Bytes) {
     $text = $utf8.GetString($Bytes).TrimStart([char]0xfeff)
-    $start = '<!-- CEO_TEAM_START -->'; $end = '<!-- CEO_TEAM_END -->'
+    $start = '<!-- SECOND_BRAIN_CORE_START -->'; $end = '<!-- SECOND_BRAIN_CORE_END -->'
     if (!$text.Contains($start) -and !$text.Contains($end)) { return $null }
-    if ([regex]::Matches($text,[regex]::Escape($start)).Count -ne 1 -or [regex]::Matches($text,[regex]::Escape($end)).Count -ne 1 -or $text.IndexOf($start) -gt $text.IndexOf($end)) { throw 'Ambiguous CEO managed section' }
+    if ([regex]::Matches($text,[regex]::Escape($start)).Count -ne 1 -or [regex]::Matches($text,[regex]::Escape($end)).Count -ne 1 -or $text.IndexOf($start) -gt $text.IndexOf($end)) { throw 'Ambiguous core managed section' }
     return $text.Substring($text.IndexOf($start),$text.IndexOf($end)+$end.Length-$text.IndexOf($start))
 }
 function Write-Atomic([string]$Path, [byte[]]$Bytes) {
@@ -108,6 +108,7 @@ try {
     if (Test-LocalPath -LiteralPath $receipt) {
         $old = [IO.File]::ReadAllText($receipt) | ConvertFrom-Json
         if ($old.package -ne 'MY_SECOND_BRAIN') { throw 'Unrecognized installation receipt' }
+        if ($manifest.version -like '*-core-seven' -and $old.manifest_sha256 -ne $manifestSha) { throw 'Core Seven requires a new empty folder or this exact release receipt. Nothing changed.' }
         $baseline = To-Map $old.baseline; $sections = To-Map $old.managed_sections
         if (!$baseline.Count) {
             $priorPath = Join-LocalPath $target 'MANIFEST.json'; Assert-PlainPath $priorPath
@@ -119,6 +120,7 @@ try {
             $baseline['MANIFEST.json'] = Hash-Bytes $priorBytes
         }
     }
+    if ($manifest.version -like '*-core-seven' -and !$old -and [IO.Directory]::Exists($target) -and [IO.Directory]::EnumerateFileSystemEntries($target).GetEnumerator().MoveNext()) { throw 'Core Seven requires a new empty folder. Nothing changed; preserve the existing folder.' }
     foreach ($name in $baseline.Keys) { Assert-Name $name; if ($baseline[$name] -cnotmatch '^[a-f0-9]{64}$') { throw "Invalid baseline hash: $name" } }
     $nextBaseline = $baseline.Clone(); $nextSections = $sections.Clone()
     $pending = @{}; $incoming = @{}; $preserved = @(); $conflicts = @(); $merged = @()

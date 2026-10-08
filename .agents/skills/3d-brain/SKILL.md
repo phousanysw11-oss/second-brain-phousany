@@ -9,6 +9,8 @@ argument-hint: "[open | build | refresh] [existing app path]"
 
 Turn the user's actual AIOS files into a personalized, local 3D knowledge globe. Use the bundled working application, not a new interpretation of its appearance. Preserve its spherical composition, colored categories, central orb, restrained connection particles, Cinema mode, and interactive growth replay.
 
+Run this skill only after an explicit request to open, build, or refresh the 3D Brain. Installation, extraction, file verification, first use, and onboarding do not invoke it, check Node.js, launch a server, or open a browser. Complete the guided onboarding first unless the user explicitly requests this optional app.
+
 The command is `/3d-brain` in Claude Code. In Codex, select the `3d-brain` skill or use `$3d-brain`. Interpret the natural-language phrase “3D brain” the same way. Input comes from `$ARGUMENTS` and the conversation. Work in the current assistant; no subagents, external services, API keys, paid assets, or deployment are required.
 
 ## Open an existing brain first
@@ -38,9 +40,9 @@ It lists candidate folders, not their contents. Also use explicit routes in the 
 Use the host's question tool when available, otherwise ask in plain language. Reuse information already supplied; do not repeat answered questions.
 
 1. **Name:** “What would you like to call your 3D brain?” Accept the exact display name, such as “Atlas Brain,” “Studio Mind,” or “Maya's Second Brain.” Do not silently choose the author's name or brand. A supplied argument can answer this question.
-2. **Categories:** “Which main categories would you like to see?” Offer the categories actually found, each beside its proposed file/folder path. Examples are Business knowledge, Meetings, Video knowledge, Claude memory, Codex Memory, Projects, and Skills. Let the user rename, omit, or add categories. Suggest three to seven for visual clarity; support one to twelve.
+2. **Categories:** “Which main categories would you like to see?” Offer the learner-local categories actually found, each beside its proposed file/folder path. Examples are Business knowledge, Work, Notes, Wiki, Projects, References, and Skills. Let the user rename, omit, or add categories. Suggest three to seven for visual clarity; support one to twelve. External assistant memory is an optional addition only after an explicit request.
 
-The category answer also approves its listed source paths. For a custom category with an unknown path, ask where those files live. Do not guess external memory roots. Codex's curated memory store can cover multiple projects; state that scope when offering it. Include it only if chosen. Claude memory should point to this AIOS's matching memory folder, not every Claude project.
+The category answer also approves its listed source paths. For a custom category with an unknown path, ask where those files live. Default discovery stays inside the selected AIOS. Do not guess or offer external memory roots during first use. Only after the user explicitly requests external assistant memory, run discovery with `--include-external-memory`; it lists paths without reading content. Codex's curated memory store can cover multiple projects; explain that scope and include it only after the user chooses its exact path. Claude memory should point to this AIOS's matching memory folder, not every Claude project.
 
 Show the compact name/category/path mapping in your progress update. Once these choices are supplied, continue building without another generic confirmation. Ask only about unresolved paths, replacing an existing app, or another material ambiguity.
 

@@ -1,3 +1,0 @@
-fixture,row_id,as_of,currency,available_cash,source_version
-FICTIONAL,CASH001,2026-10-07,LAK,1200000,FIN-CASH-v1
-FICTIONAL,CASH-OLD,2026-09-01,LAK,350000,FIN-CASH-v0

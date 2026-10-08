@@ -40,6 +40,13 @@ try{
     'outside.md':'UNSELECTED_FILE_SENTINEL'
   };
   for(const [name,body]of Object.entries(originals))await write(name,body);
+  await write('fake-codex/memories/MEMORY.md','EXTERNAL_MEMORY_DISCOVERY_SENTINEL');
+  const discovered=spawnSync(process.execPath,[path.join(here,'discover.mjs'),'--root',root],{encoding:'utf8',env:{...process.env,CODEX_HOME:path.join(root,'fake-codex')}});
+  assert.equal(discovered.status,0,discovered.stderr);
+  const candidates=JSON.parse(discovered.stdout).candidates;
+  assert.ok(candidates.length>0,'must find learner-local sources');
+  assert.ok(candidates.every(c=>c.path===root || c.path.startsWith(root+path.sep)),'default discovery stays inside learner root');
+  assert.ok(!candidates.some(c=>c.type==='codex-memory' || /Claude memory/i.test(c.label)),'no external memory offer in default discovery');
   if(process.argv.includes('--demo'))for(let i=0;i<180;i++){
     const section=['context','studio','projects'][i%3];
     await write(`${section}/idea-${i}.md`,`# Example idea ${i}\n\nFictional QA fixture, not user knowledge. [[Example idea ${Math.max(0,i-1)}]] connects to [[Example idea ${Math.floor(i/3)}]]. [[Strategy Compass]] guides the work.\n`);
@@ -90,7 +97,7 @@ try{
   for(const [file,body]of Object.entries(originals))assert.equal(await fs.readFile(path.join(root,file),'utf8'),body);
   const bundle=await fs.readFile(path.join(app,'dist/app.js'),'utf8');
   assert.ok(!/C:\\\\Users\\\\Nate|Herk Brain|Nate only|FIREFLIES_API/i.test(bundle));
-  console.log(JSON.stringify({ok:true,fixture:root,app,notes:graph.nodes.length,categories:graph.sources.length,checks:['configuration','scaffold and overwrite refusal','custom name and categories','unique IDs and real links','memory sections','private file exclusions','growth parent ordering and exact final positions','every note readback','static and API path boundaries','origin and host checks','original files unchanged','generic bundle'],bundleSha256:createHash('sha256').update(bundle).digest('hex')},null,2));
+  console.log(JSON.stringify({ok:true,fixture:root,app,notes:graph.nodes.length,categories:graph.sources.length,checks:['configuration','local-only default discovery','scaffold and overwrite refusal','custom name and categories','unique IDs and real links','memory sections','private file exclusions','growth parent ordering and exact final positions','every note readback','static and API path boundaries','origin and host checks','original files unchanged','generic bundle'],bundleSha256:createHash('sha256').update(bundle).digest('hex')},null,2));
 }finally{
   if(child){child.kill();await new Promise(r=>{if(child.exitCode!==null)return r();child.once('exit',r);setTimeout(r,2000);});}
   if(!keep){assert.ok(path.resolve(root).startsWith(path.join(parent,'brain-package-fixture-')));await fs.rm(root,{recursive:true,force:true});}

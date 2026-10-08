@@ -1,14 +1,19 @@
-# เครื่องมือเสริม ใช้เมื่อคุณต้องการ
+# Optional 3D Brain
 
-Second Brain ผ่าน AI และ onboarding ใช้ได้โดยไม่เปิดหน้าเว็บนี้
+Core Seven starts through chat and Markdown context. **3D Brain is the only included optional visual app.** It is never a prerequisite for onboarding or ordinary work.
 
-เมื่อต้องการ Dashboard หรือ 3D Brain ให้บอก AI: "เปิด Dashboard ของ Second Brain นี้" หรือ "เปิด 3D Brain ของฉัน"
-AI ตรวจ Node.js ที่มีอยู่ก่อน หากไม่มี ให้แจ้งว่าเครื่องมือเสริมต้องใช้ Node.js 22+ และขออนุญาตก่อนติดตั้งซอฟต์แวร์เพิ่ม
-เมื่อมี Node แล้ว: `node app/preflight.mjs` ตรวจส่วนแอป จากนั้น `node app/server.mjs` เปิด Dashboard และ 3D Brain บนเครื่อง
-ไฟล์ OPEN_WINDOWS.cmd / OPEN_MAC.command และคู่มือ HTML เดิมเป็นทางเลือกสำหรับเปิดแอป ไม่ใช่ขั้นตอนติดตั้งหลัก
-ถ้าพอร์ตถูกใช้อยู่ ให้ตรวจว่าเป็นแอปของโฟลเดอร์นี้ก่อนใช้ ห้ามหยุดแอปอื่นโดยเดา
+## Open or build only when requested
 
-แหล่งข้อมูลโปรไฟล์/งานร่วมกันคือ data/state.json; context/me.md และ work/tasks.md เป็นภาพอ่านง่ายที่ต้องอัปเดตให้ตรงกัน
-หากแอปทำงานอยู่ ใช้ API ของแอปที่ยืนยันว่าเป็นโฟลเดอร์นี้ หรือหยุดเฉพาะแอปนี้ก่อนแก้ไฟล์โดยตรง ป้องกันข้อมูลเขียนทับกัน
-การ์ดเสร็จงานต้องมี doneWhen และ evidence ไม่ควรเปลี่ยนสถานะจากการสร้างไฟล์เพียงอย่างเดียว
-workspace-from-todos เป็นทางเลือกสร้างแอปอีกแบบและมีที่เก็บข้อมูลของตัวเอง ต้องตกลงแหล่งงานหลักก่อนใช้ ห้ามอ้างว่าซิงก์กับ Dashboard นี้
+After opening the same local project, say "Open my 3D Brain", "Build my 3D Brain", or "Refresh my 3D Brain". The AI reads the applicable `3d-brain` or `open-3d-brain` skill and [the app README](apps/3d-brain/README.md).
+
+A saved brain reuses its name and selected source paths. When building a new brain, choose a name and approve the actual local folders to include. Do not include unrelated folders, global memory or private sources merely because they exist.
+
+Node.js 22+ is required only for this app. Check an existing runtime before starting. If unavailable, explain the dependency and obtain any permission required by the host/user before installing software. Leave unrelated occupied ports and services alone.
+
+Opening, extracting or installing the ZIP does not launch 3D. Installation checks, audit, level-up and Wiki ingestion do not start or refresh it automatically.
+
+## Source truth
+
+The app visualizes selected local files. Markdown context and Wiki sources remain canonical. A graph count, server response or opened link is not evidence of a connected cloud account, verified business result or successful browser UI check.
+
+This package has no Dashboard, CEO Desk or JSON profile/task server.

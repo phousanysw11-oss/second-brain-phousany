@@ -1,4 +1,0 @@
-fixture,row_id,due,currency,amount,description,source_version
-FICTIONAL,OB001,2026-10-09,LAK,900000,Known supplier payment,FIN-OBL-v1
-FICTIONAL,OB002,2026-10-12,LAK,500000,Known operating payment,FIN-OBL-v1
-FICTIONAL,OB-LATER,2026-10-20,LAK,800000,Outside the requested window,FIN-OBL-v1

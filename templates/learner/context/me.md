@@ -1,5 +1,5 @@
-# หน้าที่ของฉัน
+# About me
 
-ยังไม่กรอก เปิด Dashboard และบันทึกโปรไฟล์ หรือให้ AI สัมภาษณ์ทีละข้อ
+Not yet provided. Open this folder in Codex or Claude Code and say "Start onboarding. Ask one question at a time." The AI reuses any recorded answers before asking.
 
-[งานของฉัน](../work/tasks.md) · [คู่มือความรู้](../llm-wiki/wiki/index.md)
+[Saved intake](../aios-intake.md) · [Priorities](priorities.md) · [Tasks](../work/tasks.md)

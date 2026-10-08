@@ -853,6 +853,7 @@ function stopDemo() {
   $('btn-demo').setAttribute('aria-pressed', 'false');
   $('demo-caption').hidden = true;
   document.body.classList.remove('demo-playing','growth-playing');
+  $('visible-status').textContent = `${num(data.nodes.filter(isVisible).length)} notes in view`;
   computeHighlight(selected || hovered); restyleAll();
 }
 function toggleDemo() {

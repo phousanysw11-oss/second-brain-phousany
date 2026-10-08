@@ -1,7 +1,7 @@
 param([string]$Destination = (Get-Location).Path, [string]$Archive)
 $ErrorActionPreference = 'Stop'
-$expected = '82d8a2b9f39f136cb8fd250a86c10448aa26bb4be7acb78e3210e35f353ae4d9'
-$url = 'https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip'
+$expected = '77da2e71774a34c855505df9df0d21c05eeb48e48c4f02bcefd8b147fab2c6f9'
+$url = 'https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/second-brain-core-7/MY_SECOND_BRAIN.zip'
 $scratch = Join-Path ([IO.Path]::GetTempPath()) ('second-brain-' + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($scratch) | Out-Null
 try {

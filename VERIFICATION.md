@@ -1,37 +1,16 @@
-# Historical 3.0.1 verification
+# Core Seven verification
 
-For the CEO preview, use [the current report](docs/TEST_REPORT.md). The retained report below describes the earlier package only.
+Date: 8 October 2026. Version: 3.1.0-core-seven, trimmed from public 3.0.1.
 
-# Verification — 16 September 2026
+The requested distribution contains exactly onboard, grill-me, audit, level-up, wiki-helper, 3d-brain and open-3d-brain. They have matching Codex/Claude copies. Skill UI metadata is not a custom agent. Dashboard, CEO workshops, custom agent-role definitions and the JSON profile runtime are excluded. Frozen learner context is blank Markdown; a build never reads personalized context.
 
-The installation flow was exercised in disposable learner folders, not in the author's live Second Brain.
+Observed development checks:
 
-Verified locally:
+- Shared Python/native Windows installer regression: 36 tests passed, two junction checks unavailable in this environment. Core Seven adds empty-folder/exact-release gates before writes; the exact-archive check separately exercises fresh install, same-release repeats, preserved answers and four populated/older-folder rejection cases across both backends.
+- Real archive checks verify every member hash/size, the seven-skill inventory, both mirrored file trees, concrete Markdown links and blank scaffolds. Exact final build receipts are generated separately; inspect release.json and SHA256SUMS.txt for the published bytes.
+- Both optional 3D runtimes were checked with synthetic sources: 13 package groups and 10 saved-app/browser groups. Cinema, orbit/zoom, replay, pause, reduced motion, note readback and mobile controls worked. Six final targeted assertions checked the repaired note-count status across both bundles. See the 3D skill's package-verification.md for the exact baseline/final boundary and runtime hashes.
+- A fresh-context generic model read an extracted core package and responded with one question: What should I call you? After a synthetic batch answer, it backed up and saved five Markdown files and asked only where the follow-up records were kept. No app/server/JSON state was used. This source-assisted two-turn rehearsal is not recipient-account or native skill-menu discovery acceptance.
 
-- Archive CRC, exact manifest membership and SHA-256 for all payload files.
-- 14 matching skill packages in each host directory, including supporting files and local Markdown skill links.
-- Python and Windows PowerShell archive installers: fresh installation, repeat preservation, partial-install recovery, collision refusal, and rejection of traversal, symlink, duplicate-case and tampered archive inputs.
-- Windows PowerShell and Bash GitHub bootstrap logic using the local release ZIP: fresh installation, hidden skill folders, preserved personal answers, missing-skill detection, conflict refusal and checksum rejection. Bash was exercised through Git Bash on Windows; that is not a physical macOS test.
-- Optional Node app preflight. Dashboard profile/task save, Markdown projections, saved interview preservation, stale-revision rejection and persistence after the process exits.
-- Scan for author-specific absolute computer paths and common credential patterns in the release. No personal business records were added from the surrounding workspace.
+Use a NEW EMPTY folder. Repeating this exact release preserves personal answers. Installing over another full kit is rejected before writes; no automatic downgrade, removal of user customizations or cross-version data migration is supplied. Choose and review specific old context files before moving them.
 
-The final documentation-only changes were followed by another full archive/PowerShell/Python regression run. They do not turn the following untested items into verified outcomes:
-
-- Actual macOS execution.
-- A recipient's native Claude Code `/onboard` or Codex `$onboard` menu discovery.
-- A complete model-led interview on a fresh recipient account. The skill instructions and saving contract were reviewed; file presence is not proof of model behavior.
-- Google connections, background synchronization, publication of a recipient's data, or business/time-saving results.
-
-The main flow starts onboarding by reading the local SKILL.md, so a skill menu refresh is not required to ask the first question. A native menu check can be made in a new local session after installation.
-
-The current ZIP size and digest are in release.json and SHA256SUMS.txt.
-
-## Version 3.0.1 regression review
-
-The usability review reproduced and repaired custom/blank department changes, dropped profile/task metadata, hardcoded Laos dates, the app-first Lao guide and the old company label. All 10 focused browser checks and 23 package/installer checks passed on the revised release; 24 local guide links resolved. See [the review and remaining acceptance checks](REVIEW.md). The previously stated runtime and recipient-testing limits still apply.
-
-## Published GitHub route
-
-Reverified on 2026-09-17 at 00:09 UTC for version 3.0.1 (payload commit `b259a52306aa64389f42da003642aa3275c2dd04`). Anonymous public entrypoint/script comparisons passed. The downloaded Windows bootstrap fetched the published ZIP and installed all payload bytes into a new folder with spaces. Both hosts contained 14 skills and blank user state. ZIP SHA-256: `30b00c7da5a40ef93a402d3fbf87068dc47b116e8d969cecc80ac486e175f9b8`.
-
-Verified on 2026-09-16 after publication: the repository is Public through an unauthenticated API request. Anonymous downloads of README, INSTALL.md and both bootstrap scripts match the reviewed release. The published PowerShell bootstrap downloaded the public ZIP and installed every payload file into a fresh Windows folder containing spaces. Both project skill directories contain 14 skills, and the initial profile/tasks/intake are blank. No GitHub login was used for the download test. This does not establish a physical macOS test or a recipient's native skill-menu discovery.
+Not verified: real learner accounts, native menu discovery, macOS runtime installation, Node22 specifically, maximum-size 3D graphs, business value or time savings. No account connection, paid run, public website deployment or background automation is included. The skill creator's optional validator could not run because the bundled Python lacks PyYAML; source structure, frontmatter, metadata and mirrors were checked separately without installing a dependency.

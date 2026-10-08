@@ -3,8 +3,8 @@
 set -euo pipefail
 destination=${1:-"$PWD"}
 archive=${2:-}
-expected='82d8a2b9f39f136cb8fd250a86c10448aa26bb4be7acb78e3210e35f353ae4d9'
-url='https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip'
+expected='77da2e71774a34c855505df9df0d21c05eeb48e48c4f02bcefd8b147fab2c6f9'
+url='https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/second-brain-core-7/MY_SECOND_BRAIN.zip'
 fail() { printf 'INSTALL STOPPED: %s\n' "$*" >&2; exit 1; }
 for command in unzip find cmp mkdir cat awk; do command -v "$command" >/dev/null || fail "Missing $command"; done
 digest() {
@@ -27,7 +27,7 @@ fi
 unzip -q "$archive" -d "$scratch/package"
 source_dir="$scratch/package"
 if command -v python3 >/dev/null 2>&1; then
-    # Full upgrade path, shared with Windows/Python tests. No runtime is installed.
+    # Core Seven enforces fresh-folder or exact-release repeat. No runtime is installed.
     python3 "$source_dir/install.py" "$archive" "$destination"
     exit $?
 fi
@@ -50,7 +50,7 @@ manifest_sha=$(digest "$source_dir/MANIFEST.json")
 package_version=$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([A-Za-z0-9._-]*\)".*/\1/p' "$source_dir/MANIFEST.json")
 [ -n "$package_version" ] || fail 'Package version is missing from the verified manifest.'
 if [ -e "$receipt" ]; then
-    grep -Eq '"manifest_sha256"[[:space:]]*:[[:space:]]*"'"$manifest_sha"'"' "$receipt" || fail 'This upgrade needs Python 3 already available to the AI. Nothing changed; use an available Python runtime or a new empty folder.'
+    grep -Eq '"manifest_sha256"[[:space:]]*:[[:space:]]*"'"$manifest_sha"'"' "$receipt" || fail 'Core Seven requires a new empty folder or this exact release receipt. Nothing changed.'
     # Only personal scaffold may differ in the fallback; modified shipped code needs review.
     conflicts=0
     while IFS= read -r -d '' file; do
@@ -63,6 +63,11 @@ if [ -e "$receipt" ]; then
     if [ "$conflicts" -ne 0 ]; then printf 'NEEDS REVIEW: files preserved. Use Python 3 for staged incoming copies.\n'; exit 2; fi
     printf 'ALREADY INSTALLED: %s\nSaved answers and personal files preserved.\n' "$destination"
     exit 0
+fi
+if [ -d "$destination" ] && [ ! -e "$receipt" ]; then
+    for item in "$destination"/* "$destination"/.[!.]* "$destination"/..?*; do
+        if [ -e "$item" ] || [ -L "$item" ]; then fail 'Core Seven requires a new empty folder. Nothing changed; preserve the existing folder.'; fi
+    done
 fi
 while IFS= read -r -d '' file; do
     relative=${file#"$source_dir/"}; target="$destination/$relative"
@@ -83,4 +88,4 @@ while IFS= read -r -d '' file; do
     cmp -s "$file" "$target" || fail "Read-back failed: $relative"
 done < <(find "$source_dir" -type f -print0)
 (set -C; printf '{"package":"MY_SECOND_BRAIN","version":"%s","manifest_sha256":"%s","status":"installed"}\n' "$package_version" "$manifest_sha" > "$receipt")
-printf 'INSTALLED AND VERIFIED: %s\nNext: read the local onboard skill; offer quick, guided, import or later, or resume saved answers.\n' "$destination"
+printf 'INSTALLED AND VERIFIED: %s\nNext: read the local onboard skill; start guided onboarding one missing question at a time, reusing saved answers and honoring explicit choices or deferral. No app was started.\n' "$destination"

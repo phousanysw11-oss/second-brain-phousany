@@ -1,6 +1,3 @@
-# บันทึก Wiki
+# Wiki log
 
-## 2026-09-15 · เริ่มชุดเรียน
-- Disposition: New
-- Raw: raw/methods/training-principles-2026-09-15.md
-- บทความสรุปการสอน ไม่มีผลธุรกิจสมมติ
+No ingestion recorded yet. Append a dated entry with source and article paths after a requested ingestion.

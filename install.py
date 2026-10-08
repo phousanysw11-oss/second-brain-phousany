@@ -16,7 +16,7 @@ USER_ROOTS = ('context/', 'data/', 'work/', 'notes/', 'inbox/', 'projects/',
               'llm-wiki/raw/', 'llm-wiki/wiki/', 'apps/3d-brain/data/')
 USER_FILES = {'aios-intake.md', 'connections.md', 'references/voice.md',
               'app/config.json', 'apps/3d-brain/brain.config.json'}
-START, END = '<!-- CEO_TEAM_START -->', '<!-- CEO_TEAM_END -->'
+START, END = '<!-- SECOND_BRAIN_CORE_START -->', '<!-- SECOND_BRAIN_CORE_END -->'
 
 def digest(content):
     return hashlib.sha256(content).hexdigest()
@@ -53,7 +53,7 @@ def section(content):
     if START not in text and END not in text:
         return None
     if text.count(START) != 1 or text.count(END) != 1 or text.index(START) > text.index(END):
-        raise ValueError('Ambiguous CEO managed section')
+        raise ValueError('Ambiguous core managed section')
     return text[text.index(START):text.index(END) + len(END)]
 
 def verified_package(archive):
@@ -117,6 +117,11 @@ def install(archive, destination):
     old = json.loads(receipt.read_text(encoding='utf-8-sig')) if receipt.exists() else {}
     if old and old.get('package') != 'MY_SECOND_BRAIN':
         raise ValueError('Unrecognized installation receipt')
+    if manifest['version'].endswith('-core-seven'):
+        if old and old.get('manifest_sha256') != incoming_sha:
+            raise ValueError('Core Seven requires a new empty folder or this exact release receipt. Nothing changed.')
+        if not old and target.exists() and any(target.iterdir()):
+            raise ValueError('Core Seven requires a new empty folder. Nothing changed; preserve the existing folder.')
     baseline = old.get('baseline', {})
     if old and not baseline:
         prior_manifest = target / 'MANIFEST.json'

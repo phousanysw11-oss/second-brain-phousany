@@ -1,4 +1,0 @@
-interface:
-  display_name: "Work & Second Brain Builder"
-  short_description: "Build a bilingual workspace from your to-do list"
-  default_prompt: "Use $workspace-from-todos to build my Thai/English Work & Second Brain from this to-do list."

@@ -1,4 +1,0 @@
-fixture,row_id,as_of,currency,product_id,stock_units,note,source_version
-FICTIONAL,STOCK001,2026-09-30,LAK,P01,12,Units do not establish accounting value,FIN-STOCK-v1
-FICTIONAL,STOCK002,2026-09-30,LAK,P05,8,Matched COGS for S007 not supplied,FIN-STOCK-v1
-FICTIONAL,STOCK003,2026-09-30,LAK,P04,2,LAK 100000 writeoff already in EXP003,FIN-STOCK-v1

@@ -18,7 +18,7 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('installer',ROOT/'install.py')
 installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installer)
 PS=shutil.which('powershell') or shutil.which('pwsh')
-BLOCK=b'<!-- CEO_TEAM_START -->\nRead references/ceo-team.md.\n<!-- CEO_TEAM_END -->'
+BLOCK=b'<!-- SECOND_BRAIN_CORE_START -->\nRead references/ceo-team.md.\n<!-- SECOND_BRAIN_CORE_END -->'
 OLD={'AGENTS.md':b'Original manual\n','CLAUDE.md':b'Original manual\n',
      'aios-intake.md':b'blank intake\n','data/state.json':b'{"tasks":[],"profile":{}}\n',
      'context/me.md':b'blank\n','app/app.js':b'old code\n',

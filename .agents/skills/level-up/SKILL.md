@@ -1,61 +1,47 @@
 ---
 name: level-up
-description: Improve one selected workflow or close an evidence-backed audit gap, then verify the actual result.
+description: Improve one selected workflow or close one evidenced Second Brain gap, delivering a usable artifact or verified repair. Use when the user asks to level up or simplify repeated work.
 ---
 
-# Improve one useful workflow
+# Level Up
 
-Use when the learner asks to improve how work gets done. This is optional, not a course
-prerequisite. No Day-14 delay, prior audit, MCP connection or weekly schedule is required.
-A recurring ritual starts only when the learner chooses it; this skill installs no schedule.
-Repeated use may help learning, but no number of runs guarantees a changed habit or time saving.
+Turn one meaningful constraint into one useful improvement. A requested run can happen at any time; prior onboarding, an audit, a connector, or a weekly schedule is not a prerequisite.
 
-## Read relevant evidence
-Read the current manual, saved/uploaded priorities and the selected process/audit finding.
-Use the learner's actual project routes; do not assume another person's name, computer or files.
-The [3Ms reference](references/3ms-framework.md) is an optional reasoning aid, not current business evidence.
-For this package, data/state.json is authoritative for profile/tasks and ceo.decisions when present.
-decisions/log.md is historical evidence; do not create a second writable CEO decision store.
-Browser learners use an explicit dated handoff export and retain their source files.
+Read relevant `context/me.md`, `context/priorities.md`, `context/preferences.md`, existing project work, and `decisions/log.md`. Use a supplied audit finding with its evidence and completion check. Avoid a generic interview when the task is already clear. Ask one consequential question at a time only when needed.
 
-## Choose and understand one improvement
-Reuse the stated problem. If unclear, ask one consequential question about the outcome,
-repeated work, failure or constraint. Offer up to three candidates only when selection is needed.
-For the chosen candidate establish trigger, inputs, steps, judgment points, output, owner
-and actual failure/cost evidence. Missing detail is a question or unknown, not a reason to
-dismiss the learner or force a full interview. A supplied complete brief can skip questions.
+For detailed background, read the bundled [3Ms framework](references/3ms-framework.md): Mindset, Method, Machine. Its examples and ratios are illustrations, not verified learner outcomes or required quotas. Retain source attribution in source resources; do not claim the learner will save time or develop habits after a fixed number of runs.
 
-Ask whether a step can be stopped or simplified before proposing automation. Compare a
-manual checklist, deterministic tool, AI-assisted draft and human delegation as relevant.
-Choose the simplest option that meets the outcome and authorization. Percentages such as
-60/30/10 are illustrative only, never claims about the learner's work.
+## 1. Choose the smallest useful change
 
-## Define the bounded work
-State the expected deliverable, source scope, permitted actions, human checkpoint, failure
-handling and observable acceptance. Use a practical measure (error, completion, cycle time,
-quality or another relevant result). If baseline/target is absent, mark unknown and propose
-how to measure; do not invent ROI or refuse useful work just because there is no formal KPI.
-A recommendation is not a CEO decision or the assigned person's acceptance.
+If a problem is already selected, use it. Otherwise identify one to three candidates from actual repeated work, failures, priorities, or a request to simplify something. Recommend one with a reason grounded in evidence. Ask the learner to choose only when the choice materially changes the result.
 
-## Build and verify
-If the request includes implementation, complete the authorized local artifact or fix.
-Repair an existing workflow where possible instead of creating a duplicate skill.
-Read applicable authoring instructions before creating a skill/agent. Do not install a paid
-platform or request credentials as a default. Use sequential one-assistant work unless real
-delegation is available and useful; never fabricate independent review.
+Check whether a step can be removed or simplified before automating it. Stopping unnecessary work can be a valid result when its consequences are understood and authorized. Do not require business growth or a revenue KPI from a learner whose work does not involve those goals.
 
-Check normal input, a material missing-input/exception case and the actual output.
-Prefer reversible changes; preserve unrelated work and source evidence. Start with manual
-review where judgment or consequences require it. Advance autonomy from observed tests and
-the user's explicit scope, not a blanket claim that a higher level is better.
+## 2. Define a completion check
 
-## Record and deliver
-Save the delivered artifact and dated source/check/remaining-gap note in the existing project route.
-Record an actual owner decision only when supplied, through the current canonical state and
-its revision-safe writer. Proposed specs stay in the artifact/handoff. Preserve decision history.
-If browser files are unavailable, return complete content and honest saving instructions.
+Clarify only what is missing:
 
-Finish with the result, what was tested, what remains unverified and the next useful step.
-Do not claim workflow adoption, time saved, business improvement or fresh-session reliability
-from a file existing or a single synthetic test. Stop when the requested improvement is handled.
+- Current problem and the source or example that demonstrates it.
+- Input, trigger, steps, decisions, and output destination.
+- What may be changed and what requires additional authority.
+- A practical check: a recovered source, accurate output, handled failure, fewer manual steps, or another observable result.
 
+Leave unknown baselines and savings unmeasured. Label suggested targets and dates as proposals. Use the simplest level of assistance that solves the task: a manual checklist or saved prompt may be sufficient. Scripts or agents need a real reason, available dependencies, and relevant authorization.
+
+If information is missing, build the permitted draft or smaller test and say what still depends on that gap. Do not claim a completed repair from a recommendation alone.
+
+## 3. Build and verify one improvement
+
+Within the requested scope, complete the selected change. Prefer improving an existing route or workflow to creating another skill or tool. For a new ordinary artifact, use the existing project home or `projects/work/`; do not add an eighth bundled skill merely to show progress.
+
+Back up learner-data files before changing them. Preserve unrelated content and source records. Check new scripts before running them, test the material behavior, and handle missing inputs or dependencies when relevant. Use isolated sample data when a live test would require unauthorized cost, communication, or external changes.
+
+A routing fix is verified by following the changed route to the correct source. A reusable template needs a realistic example and checked result. An automation needs actual execution evidence; writing a schedule or script does not make it active.
+
+Do not launch Dashboard, 3D Brain, browsers, or servers, or create a recurring job as an automatic ending. External messages, publication, spending, installations, and account changes need authority covering that action.
+
+## Close and record
+
+Append a compact dated entry to `decisions/log.md` when an actual decision or repair was completed: problem/source, chosen change, files/output, completion check, result, and remaining gap. Keep assistant proposals distinct from learner decisions. Respect a request not to save.
+
+Return the actual artifact or changed-file links, what was verified, and any precise limitation. A blocked live action is not a successful deployment. Do not claim a higher audit score, measured time savings, or repeated usefulness without the corresponding evidence. A later requested audit or real use can supply that evidence.

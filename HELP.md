@@ -1,46 +1,41 @@
-# Installation and first-use help
+# Using My Second Brain — Core Seven
 
-Start with [README.md](README.md) and the single [installation message](INSTALL_MESSAGE.txt).
-INSTALL.md is the canonical installation entry. The repository page is a source browser, not a second requirement.
+## First use
 
-## Existing installation
+[Download the ZIP](https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/second-brain-core-7/MY_SECOND_BRAIN.zip), extract into a new empty folder, and open that folder in local Codex or Claude Code. Say **Start onboarding. Ask one question at a time.**
 
-Use the same folder. The installer checks a manifest, preserves saved context and custom files, and stages conflicting shipped files outside active skill/role folders.
-Exit 0 means files are ready; exit 2 means **needs_review**, not a completed upgrade. Read the report and incoming copies before merging.
-See [preservation and recovery](INSTALL.md#preservation-and-recovery). Do not replace your folder with a fresh ZIP over existing data.
+Extraction already installed the package. Do not install again. You do not need Node.js, a browser app, Git, a plugin or a new account connection to answer the first question. Your local AI app must already be signed in and able to read/write this folder.
 
-Resume onboarding from saved answers. A completed interview is not repeated. “Change onboarding to quick start” or “Do onboarding later” changes the route.
-See [the mode guide](docs/ONBOARDING.md).
+Onboarding saves answers in [aios-intake.md](aios-intake.md) and corresponding Markdown context. The AI reads saved answers before asking another question. Say **skip** or **unknown** for a missing item, **later** to pause, and **Resume onboarding** to return. A completed interview is reused, not restarted.
 
-## Missing skill or team capability
+**ภาษาไทย:** แตก ZIP ในโฟลเดอร์ใหม่ → เปิดโฟลเดอร์นั้นใน Codex หรือ Claude Code → พิมพ์ “เริ่ม onboarding ถามทีละคำถามและบันทึกคำตอบ” ไม่ต้องเปิด 3D ก่อน
 
-Open a new local chat in the same folder. If a skill is not in the menu, say:
+## Skill menu missing?
+
+Say **Start onboarding**. Or use the exact file:
 
 ```text
-Read this project's .agents/skills/onboard/SKILL.md in Codex, or .claude/skills/onboard/SKILL.md in Claude Code, and resume from saved answers.
+Read this project's .agents/skills/onboard/SKILL.md in Codex, or .claude/skills/onboard/SKILL.md in Claude Code. Read aios-intake.md, reuse saved answers, and ask only the next unanswered question.
 ```
 
-Reading the method directly does not prove native skill discovery or independent agent dispatch.
-Claude skill mirrors do not install native Claude agents. A browser-only ChatGPT conversation cannot install these local files into a local app.
-Use available capabilities and report exact limits; do not invent team execution.
+Claude Code uses `/onboard`; Codex uses `$onboard` or its skill menu. A new session in the same folder may refresh discovery. File presence alone is not proof the client menu has loaded a skill.
 
-## Subscription and tools
+## After onboarding
 
-Check the actual session before recommending an upgrade. The core interview/file workflows need an AI session with authorized local read/write access.
-Public web research, local execution, APIFY, visual previews and independent agents are separate capabilities.
-A plan label is not proof of any of them. Record only what was observed in this session; unknown remains unknown.
+Talk normally: "Help me think through this decision", "Save this source into my Wiki", or "Check my Second Brain". There is no required sequence of seven skills. A specific work request can proceed even when an interview is paused.
 
-The optional local apps need Node.js 22+. If missing, use the file workflow and show the official installation route when useful.
-APIFY requires the user's own supported connection and permission for any paid run. Available tools or credits do not authorize spending.
-Never request passwords, tokens or card details in chat. Authentication belongs in the provider's secure sign-in flow.
+Seven skills are included: onboard, grill-me, audit, level-up, wiki-helper, 3d-brain and open-3d-brain. Host copies do not double the count; there are no custom agent roles.
 
-## No network access
+## Optional 3D Brain
 
-Obtain the matching [preview ZIP](https://github.com/phousanysw11-oss/second-brain-phousany/raw/refs/heads/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip) with its matching bootstrap/checksum.
-Tell the local AI: “Read INSTALL.md inside the ZIP, install it in this folder, verify it, then offer onboarding choices.”
-Do not bypass checksum failure. Read [the offline route](INSTALL.md#offline-route).
+Say **Open my 3D Brain** or **Build my 3D Brain** only when you want the visual map. This feature needs Node.js 22+. If no suitable Node runtime exists, the AI should explain the dependency and follow your permission rules before installing anything. [OPTIONAL_APPS.md](OPTIONAL_APPS.md) describes the feature.
 
-## What verification means
+## Keeping previous answers
 
-Installation checks prove the tested files and preservation behavior. They do not prove workshop answer quality, private account access, learner acceptance or business results.
-Review [observed tests](docs/TEST_REPORT.md). Native macOS installation and individual learner-account behavior remain separate tests.
+Keep your earlier folder. Use a new empty folder for this smaller version. Ask the AI to copy only the context or knowledge you choose, after inspection and backups. Repeating this release's installer preserves its saved answers; installing over a different version does not remove old skills or apps automatically.
+
+If the AI can only chat and cannot write local files, use a local Codex or Claude Code project first. In browser ChatGPT, uploaded files are reference material and do not install local skills.
+
+Files stay in the chosen folder unless shared or used through an authorized connection. Files supplied to your AI are processed under its provider's service; this is not an offline language model.
+
+[README.md](README.md) · [Installation contract](INSTALL.md) · [Sources](SOURCE_NOTICES.md)

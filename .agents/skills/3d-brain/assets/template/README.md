@@ -2,6 +2,8 @@
 
 A local, read-only view of the knowledge sources selected in `brain.config.json`.
 
+This app is optional and opens only when explicitly requested. Installation and onboarding do not start it, inspect Node.js, or open a browser. Source selection stays inside the learner workspace by default; external assistant memory requires a separate explicit choice.
+
 Run `node serve.mjs` from this folder, then open the printed localhost link. Node.js 22 or newer is required. The prebuilt renderer is included, so no installation is needed to run it. To edit the renderer, run `npm ci`, edit `src/`, and run `npm run build:js`.
 
 The name, categories, colors, source paths, and port come from `brain.config.json`. Rebuild from disk refreshes notes and connections. Restart the server after changing code or the port. Missing or inaccessible sources appear as notices in the inventory, not invented notes.

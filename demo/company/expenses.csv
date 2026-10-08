@@ -1,4 +1,0 @@
-fixture,row_id,date,currency,category,amount,note,source_version
-FICTIONAL,EXP001,2026-09-01,LAK,rent,400000,September only,FIN-EXP-v1
-FICTIONAL,EXP002,2026-09-30,LAK,outbound_shipping,200000,Not matched product COGS,FIN-EXP-v1
-FICTIONAL,EXP003,2026-09-30,LAK,stock_writeoff,100000,Already includes STOCK003 writeoff do not subtract twice,FIN-EXP-v1

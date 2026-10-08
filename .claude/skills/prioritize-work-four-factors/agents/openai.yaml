@@ -1,4 +1,0 @@
-interface:
-  display_name: "เลือกงานก่อน: เงิน เวลา ผลกระทบ ความถี่"
-  short_description: "จัดลำดับงานด้วยคะแนน 4 ปัจจัย รวม 0–12"
-  default_prompt: "ใช้ $prioritize-work-four-factors ช่วยจัดลำดับงานของฉันด้วยตารางสั้น ๆ และระบุข้อมูลที่ยังขาด"

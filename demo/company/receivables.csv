@@ -1,2 +1,0 @@
-fixture,row_id,as_of,expected_date,currency,amount,collection_state,source_version
-FICTIONAL,AR001,2026-10-07,2026-10-10,LAK,600000,Promise only receipt unverified,FIN-AR-v1
