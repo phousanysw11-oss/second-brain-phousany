@@ -1,18 +1,22 @@
 ---
 name: ceo-monday-brief
-description: "Prepare a Monday CEO Brief from saved workshop results, decisions and the original three priorities."
+description: "Optional Monday brief from current saved evidence, priorities, decisions and tasks, preserving source dates and uncertainty."
 ---
 
-# Monday Brief
+# Optional Monday Brief
+Read the [runtime contract](../bni-second-brain/references/codex-runtime.md) and
+[legacy brief method](../bni-second-brain/references/workshop-5.md) with its [checks](../bni-second-brain/references/workshop-5-acceptance.md).
+This follow-on is outside the four core workshops; local result ID MONDAY_BRIEF.
 
-Read [the shared local runtime contract](../bni-second-brain/references/codex-runtime.md) before work.
-Reuse `data/state.json` and the selected company's accessible files; save outputs under `work/ceo/`.
+Read actual saved/uploaded reports with course_version, source dates and review status.
+In course_version 2026-10-08-four-workshops: WS1 business, WS2 market, WS3 strategy, WS4 website.
+Legacy Desk/Board results keep their original version/history and optional IDs; do not infer
+their meaning from an unversioned WS number. Missing reports stay missing. Avoid rerunning all work.
+Read supplied current priorities, tasks, optional calendar snapshot and owner decisions.
+Return saved priorities as supplied, up to three when that local state exists; never invent
+three for a browser learner. Suggested changes stay separate from accepted choices.
+Include material evidence movement, open questions/risks, next actions and one recommendation
+with its reason/limits. Old snapshots stay old; website completion is not sales success.
+Use actual date/timezone; a future brief is a proposed/simulated draft unless actually scheduled.
+Save/export a concise brief and carry uncertainty forward. A brief request creates no schedule.
 
-Read [WS5 stages 5–6](../bni-second-brain/references/workshop-5.md) and [original checks](../bni-second-brain/references/workshop-5-acceptance.md).
-Read actual saved WS1–4, employee status, tasks, Calendar snapshot and decisions; do not redo the entire analysis.
-List each source's period/date, version, availability and actual review status. Missing data and unchanged snapshots stay explicit.
-Use current review date/timezone; a future Monday is a labelled simulation unless explicitly scheduled.
-Return the ORIGINAL three saved priorities and status. Put suggested replacements separately for the CEO to choose.
-Include cash/margin question, customer signal, one task/time improvement proposal, open decision/experiment and CEO questions.
-Save/register MONDAY_BRIEF. Carry prior limitations and leave CEO choices blank. Before/after time remains unmeasured without evidence.
-Never create a schedule from a brief request. A scheduler and verified project-file access are required for an explicitly requested recurring run.

@@ -1,9 +1,10 @@
-# WS5 AI Employee and Monday CEO Brief
+> Historical optional reference. Current four-workshop runtime overrides numbering, storage, and execution. This is not a main-course workshop. Board = AI_BOARD; Desk = CEO_DESK; Hidden Signals = HIDDEN_SIGNALS. Browser users use explicit artifact export, not local CLI assumptions.
+
+# Optional AI Employee and Monday CEO Brief
 
 ## Goal and team mode
 Build one narrow employee method for the most repeated team question, then a reusable
-Monday CEO Brief. Use native AI Employee Builder, then a separate Evidence Reviewer
-execution on the actual instruction. Chief of Staff assembles the brief from saved work.
+Monday CEO Brief. Use one assistant sequentially by default; use actual native Builder/Reviewer only when available. Label self-check versus independent review accurately. Chief of Staff assembles the brief from saved work.
 These agents run only when dispatched, not as installed background staff.
 
 ## Execute internally
@@ -23,14 +24,14 @@ These agents run only when dispatched, not as installed background staff.
    escalation role, no exception approval, no messages/record changes/private data access.
    Add three starter questions. Keep staff-facing policy separate from private CEO finances,
    feedback and decision notes. No new Custom GPT creation is required for this exercise.
-4. Independently dispatch Evidence Reviewer with that actual instruction and approved
+4. Use a separate actual Evidence Reviewer when available, otherwise a labelled single-assistant self-check, with the instruction and approved
    policy to generate three concrete actual responses:
    normal permitted question, one required input missing, and prohibited exception or
    request for private CEO information. Include a relevant boundary condition such as an
    unlisted discount/quantity just below threshold within those cases. Show test input,
    actual response, source IDs, expected behavior and comparison. Repair material errors
    and rerun affected cases. A self-test is not human acceptance or deployment proof.
-5. Monday briefer reads accessible named WS1–4 outputs and WS2 task/Calendar snapshot,
+5. Monday briefer reads accessible versioned WS1–4 outputs from the current course and optional CEO_DESK task/Calendar snapshot,
    plus actual updates. Use observed current review date/timezone; a future date requires
    explicit labelled simulation. List each source's date, age, version, availability and
    review state. Apply owner-supplied freshness rule only; otherwise current applicability
@@ -40,7 +41,7 @@ These agents run only when dispatched, not as installed background staff.
    improvement proposal, open decision/experiment status, three proposed priorities, and
    questions requiring the CEO. Cite every fact, distinguish updates from unchanged
    evidence, retain unknowns. Suggested owners/dates are proposals. CEO choices blank.
-7. Produce WS5_Checked_Output: instruction reference/content, approved policy version,
+7. Produce optional AI_EMPLOYEE / MONDAY_BRIEF outputs: instruction reference/content, approved policy version,
    actual test responses and comparison, human check state, Monday Brief, source dates,
    open decisions, measured before/after or unmeasured, limits and next manual routine.
    Ask for human test review and corrections only after showing the built results.
@@ -53,8 +54,8 @@ read the saved result ledger and actual instruction/policy files, or state the e
 Do not pretend a generated filename proves saved installation.
 No staff sharing or permissions granted. Never share the private CEO Project to deploy it.
 
-After WS5 save one CEO_Second_Brain_State.md projection with the accessible profile, full
-compact WS1–5 outputs, ledger, sources/versions, actual checks, employee instruction,
+On request export one dated CEO_Second_Brain_State.md projection with the accessible profile, full
+compact versioned outputs, ledger, sources/versions, actual checks, employee instruction,
 Monday routine and unresolved limits. Register/read back the employee and Monday results
 in data/state.json. This Markdown export is a projection, not another authority. Future
 chats reuse actual saved state/files; do not make the learner save each workshop separately.

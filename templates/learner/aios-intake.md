@@ -1,7 +1,11 @@
 # My Second Brain intake
 
 Status: not-started
-Next topic: 1 — name and work
+Mode: not-selected
+Next topic: choose quick / guided / import / later
+
+## Setup choice
+Not yet selected. Reuse existing answers before asking questions.
 
 ## 1. Name and work
 Not yet answered.

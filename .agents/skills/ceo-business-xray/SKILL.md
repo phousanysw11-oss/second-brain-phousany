@@ -1,18 +1,21 @@
 ---
 name: ceo-business-xray
-description: "Analyze business revenue, margins, concentration and cash from supplied company files."
+description: "WS1: read business files, check supported metrics and recommend one practical next action with evidence."
 ---
 
-# Business X-Ray
+# WS1 Business X-Ray
 
-Read [the shared local runtime contract](../bni-second-brain/references/codex-runtime.md) before work.
-Reuse `data/state.json` and the selected company's accessible files; save outputs under `work/ceo/`.
+This file is a workflow entry point, not a data file. Read the complete [method](../bni-second-brain/references/workshop-1.md),
+[checks](../bni-second-brain/references/workshop-1-acceptance.md) and [runtime contract](../bni-second-brain/references/codex-runtime.md).
 
-Read [WS1 method](../bni-second-brain/references/workshop-1.md) and its [original checks](../bni-second-brain/references/workshop-1-acceptance.md).
-Dispatch CFO Analyst with actual files and source IDs; use Evidence Reviewer for independent checks.
-Map sales, matched COGS, expenses, stock, cash and obligations. Exclude subtotal/duplicate rows visibly.
-Recompute supported monthly net revenue, margin and supplied-data operating remainder; never call purchases COGS or incomplete remainder net profit.
-Product/customer concentration uses ceil(0.2*N), actual selected revenue and identifiable-customer coverage.
-Keep period/currency groups separate. Cash less known due payments is snapshot coverage, not a full forecast.
-Deliver original one-page WS1_Checked_Output, evidence annex, three sourced team questions and actual gaps.
-Save/register WS1; ask for the three original human checks only after showing the draft.
+Read the learner's selected files and saved profile first. Identify source, period, currency,
+units and coverage. Clean/reconcile supported revenue, matched COGS, expenses, stock and cash.
+Distinguish symptoms, measurable drivers and cause hypotheses. Compare feasible actions;
+recommend one with source IDs, rationale, trade-off, first step, measure and stop/change rule.
+Preserve gaps: purchases are not COGS, missing costs are not zero, incomplete remainder is not net profit.
+Produce the report, evidence/calculation annex and compact handoff. Review actual source rows and totals.
+Save/export via the available host. Draft/PARTIAL is not human acceptance or achieved business results.
+
+The Plus baseline is one assistant executing the chain sequentially. Native specialist review
+is optional only when the host actually supports it; never fabricate a delegation.
+Missing cash blocks a cash conclusion, not all useful business analysis. WS2 is Market X-Ray.

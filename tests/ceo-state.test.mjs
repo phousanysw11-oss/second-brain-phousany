@@ -3,12 +3,50 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {saveState,readState,toDesk,fromDesk,validateDesk,validateState,servedDesk,emptyCalendar} from '../app/ceo-state.mjs';
+import vm from 'node:vm';
+import {saveState,readState,toDesk,toStandaloneDesk,fromDesk,validateDesk,validateState,servedDesk,emptyCalendar} from '../app/ceo-state.mjs';
 const initial=()=>({revision:0,custom:{keep:true},profile:{name:'Synthetic CEO',department:'',role:'CEO',goal:''},tasks:[{id:'T1',title:'One task',status:'todo',source_ids:['S1'],extra:'preserve'}],ceo:{company:{id:'demo',name:'Synthetic company',fictional:true,timezone:'Asia/Vientiane',currencies:['LAK']},priorities:['A','B','C'],calendar:emptyCalendar(),results:[],decisions:[{id:'D1',status:'undecided'}]}});
 test('Desk round-trip retains unknown metadata and canonical decisions; maps waiting explicitly',()=>{
  const s=initial(),d=toDesk(s);d.tasks[0].status='waiting';d.tasks[0].title='Edited';const n=fromDesk(s,d);
  assert.equal(n.tasks[0].status,'blocked');assert.equal(n.tasks[0].extra,'preserve');assert.deepEqual(n.ceo.decisions,s.ceo.decisions);assert.deepEqual(n.custom,s.custom);
  d.tasks[0].status='done';assert.equal(fromDesk(s,d).tasks[0].completion.kind,'user_reported');
+});
+test('rich task fields and more than 50 tasks survive Desk backup and restore',()=>{
+ const s=initial();s.tasks=Array.from({length:60},(_,i)=>({...s.tasks[0],id:'T'+i,title:'Task '+i,next:'Call supplier',doneWhen:'Owner accepts delivery',evidence:'notes/result.md',blocker:'Stock confirmation',project:'Launch',priority:'focus'}));
+ const d=toDesk(s);assert.equal(validateDesk(d),'full');assert.equal(d.tasks.length,60);
+ const restored=fromDesk(s,JSON.parse(JSON.stringify(d)));for(const k of ['next','doneWhen','evidence','blocker','project','priority'])assert.equal(restored.tasks[59][k],s.tasks[59][k]);
+ d.tasks[0].next={bad:true};assert.throws(()=>validateDesk(d),/Invalid Desk task/);
+});
+
+test('Done reports stay unverified with existing evidence and completion edits invalidate earlier review',()=>{
+ for(const change of [{doneWhen:''},{evidence:'',doneWhen:''},{evidence:'draft result',doneWhen:'owner accepts'}]){
+  const s=initial();s.tasks[0].evidence='existing result';s.tasks[0].doneWhen='';
+  const d=toDesk(s);Object.assign(d.tasks[0],change,{status:'done'});
+  const saved=fromDesk(s,d);assert.equal(validateState(saved),saved);assert.equal(saved.tasks[0].completion.kind,'user_reported');
+ }
+ const s=initial();Object.assign(s.tasks[0],{status:'done',evidence:'checked source',doneWhen:'accepted',completion:{kind:'human_reviewed',reviewer:'synthetic owner'}});
+ let d=toDesk(s);d.tasks[0].owner='New synthetic assignee';assert.deepEqual(fromDesk(s,d).tasks[0].completion,s.tasks[0].completion);
+ d=toDesk(s);d.tasks[0].evidence='changed evidence';const n=fromDesk(s,d);assert.equal(n.tasks[0].completion.kind,'user_reported');assert.equal(validateState(n),n);
+});
+test('four workshops and optional Desk results retain distinct labels and canonical authority',()=>{
+ const s=initial();s.ceo.results=['WS1','WS2','WS3','WS4','CEO_DESK','AI_EMPLOYEE','MONDAY_BRIEF'].map(id=>({id,path:'work/ceo/'+id+'.md',status:'draft',course_version:'2026-10-08-four-workshops'}));
+ const d=toDesk(s);assert.equal(validateDesk(d),'full');assert.equal(d.results.find(r=>r.workshop==='WS2').title,'Market X-Ray');assert.equal(d.results.find(r=>r.workshop==='WS3').title,'Winning Zone');assert.equal(d.results.find(r=>r.workshop==='WS4').title,'Business Website');assert.ok(d.results.find(r=>r.workshop==='CEO_DESK'));
+ d.results[0].title='Client must not rewrite ledger';assert.deepEqual(fromDesk(s,d).ceo.results,s.ceo.results);
+});
+
+test('separate standalone export passes the actual original HTML validator without relabelling optional IDs',async()=>{
+ const s=initial();s.tasks[0].next='Full local next step';s.ceo.results=[{id:'WS2',title:'Market X-ray',course_version:'2026-10-08-four-workshops',status:'Draft',path:'work/ceo/market.md'},{id:'CEO_DESK',status:'Draft',path:'work/ceo/desk.md'}];
+ const html=await fs.readFile(new URL('../.agents/skills/bni-second-brain/assets/CEO_DESK.html',import.meta.url),'utf8');
+ const validator="const statuses=['todo','doing','waiting','done'];\n"+html.slice(html.indexOf('const text='),html.indexOf('function key()'));
+ const check=vm.runInNewContext(validator+'\nvalidate');assert.throws(()=>check(toDesk(s)),/Result index is invalid/);
+ const d=toStandaloneDesk(s);assert.equal(check(d),'full');assert.equal(d.results.length,1);assert.equal(d.results[0].title,'Market X-ray');assert.equal('next' in d.tasks[0],false);assert.equal(s.tasks[0].next,'Full local next step');
+ s.tasks=Array.from({length:51},(_,i)=>({...s.tasks[0],id:'T'+i}));assert.throws(()=>toStandaloneDesk(s),/no tasks were truncated/);
+ s.tasks=s.tasks.slice(0,1);s.tasks[0].owner='x'.repeat(81);assert.throws(()=>toStandaloneDesk(s),/no text was truncated/);
+ s.tasks[0].owner='';s.ceo.calendar.source='x'.repeat(501);assert.throws(()=>toStandaloneDesk(s),/Calendar source\/freshness/);
+ s.ceo.calendar.source='source';s.ceo.calendar.retrieved_at='x'.repeat(501);assert.throws(()=>toStandaloneDesk(s),/Calendar source\/freshness/);
+});
+test('old workshop results keep their original meaning after four-workshop migration',()=>{
+ const s=initial();s.ceo.results=[{id:'WS2',status:'draft',path:'work/ceo/old.md'},{id:'WS4',title:'My old board decision',status:'draft',path:'work/ceo/board.md'}];const d=toDesk(s);assert.equal(d.results[0].title,'CEO Desk (legacy course)');assert.equal(d.results[1].title,'My old board decision (legacy course)');assert.equal(validateDesk(d),'full');
 });
 test('wrong-company backup, mixed demo, duplicate id and impossible date rejected',()=>{
  const s=initial();let d=toDesk(s);d.workspace_id='another';assert.throws(()=>fromDesk(s,d),/another company/);
@@ -36,4 +74,5 @@ test('atomic revision writes, backup and stale-write rejection persist across re
 test('served original Desk uses canonical bootstrap and retains original source unchanged',async()=>{
  const p=new URL('../.agents/skills/bni-second-brain/assets/CEO_DESK.html',import.meta.url),html=await fs.readFile(p,'utf8');const out=servedDesk(html,initial());
  assert.match(out,/ceo-desk-adapter.js/);assert.doesNotMatch(out,/const active=localStorage/);assert.match(out,/Synthetic company/);assert.equal(await fs.readFile(p,'utf8'),html);
+ assert.match(out,/d.tasks.length<=2000/);assert.doesNotMatch(out,/d.tasks.length<=50/);assert.match(out,/CEO_DESK\|AI_BOARD/);
 });

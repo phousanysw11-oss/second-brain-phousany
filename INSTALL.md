@@ -1,6 +1,19 @@
 # Install Second Brain with the CEO team
 
-Preview branch: `codex/ceo-team-workshops`, version **4.0.0-ceo-preview**. Use this branch until it is reviewed and merged; `main` may still contain the earlier release.
+Preview branch: `codex/ceo-team-workshops`, version **4.1.0-four-workshops-preview**. Use this branch until it is reviewed and merged; `main` may still contain the earlier release.
+
+Online installation serves the currently published build. For an unpublished local preview,
+use the matching local ZIP and the offline route below; do not combine a new bootstrap hash
+with an older online archive. Check the actual `release.json` version before claiming which
+version the learner received.
+
+## One learner entry
+
+Share [INSTALL_MESSAGE.txt](INSTALL_MESSAGE.txt), which contains only this canonical URL:
+`https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/INSTALL.md`.
+The repository page is a source-code view, not a second installation. This file resolves the preview branch, package and platform installer.
+
+The course baseline is ChatGPT Plus. Use a supported signed-in local Codex project for the installation below, or use [the browser-only handoff](docs/CHATGPT_PLUS_START.md). Browser ChatGPT cannot run this local installer or discover these native roles merely from a URL. No Pro requirement is imposed; verify capabilities in the actual account/session rather than inferring them from a plan name.
 
 ## For the installing AI
 
@@ -10,7 +23,8 @@ Preview branch: `codex/ceo-team-workshops`, version **4.0.0-ceo-preview**. Use t
 4. Each bootstrap pins the exact ZIP SHA-256 before executing its local installer. Release version, file count, skill inventory, native role inventory and hashes are in branch `release.json`. A checksum mismatch is a stop, never a reason to bypass integrity checking. These checks protect integrity, not an independent publisher signature.
 5. Read the result. Exit 0 means installation ready; exit 2 means **needs_review**, with active files preserved and incoming files in `.second-brain-upgrades/<manifest hash>/incoming/`. Never label exit 2 a completed upgrade. Exit 1 means stopped/error; inspect the exact path and backups before retrying.
 6. Read back `AGENTS.md`, `CLAUDE.md`, `aios-intake.md`, `data/state.json`, both skill trees and `.codex/agents/`. Compare the installed inventory with `MANIFEST.json`; use the current inventory, not a hard-coded old skill count. New roles use stable filenames; custom roles with the same declared name are detected even under different filenames, and conflicting copies stay outside native role folders. Detect `node --version`: Node.js 22+ permits `node scripts/verify-ceo.mjs` and CEO Desk. If absent/older, disclose that precise Desk/helper dependency, give the [official Node.js installation route](https://nodejs.org/en/download), and continue the file workflow; do not claim Desk ready or silently install software. No connector is mandatory.
-7. For this CEO preview, read the installed bni-second-brain skill and its codex-runtime.md first-company/source-registration section; reuse saved intake/profile facts and ask one missing relevant question at a time. Prepare the real company and inspected source registry internally, then start the requested workshop. Generic personal onboarding remains optional when the learner requests it; never restart a completed interview. A file-presence check does not prove native role or skill discovery; verify discovery in a new session in the recipient's folder when supported. Reading the skill directly can recover its method, but missing native dispatch remains BLOCKED and cannot be replaced with persona role-play.
+7. Read the installed onboard skill and saved intake first. On a fresh setup, offer one onboarding choice: **Quick start (recommended), Guided, Use my files, or Later**. Honor a mode already supplied, resume a paused mode, and never restart a completed interview. Use the chosen route in docs/ONBOARDING.md, then ask only missing relevant questions. Later means no further intake questions. Import means read only the selected sources. For CEO work, use the current bni-second-brain skill and first-company/source-registration contract to prepare the real company internally.
+8. Check only capabilities needed for the requested work, reusing any stated plan/app. Record observed/unknown/unavailable with scope/date; never infer APIFY access, quota, independent dispatch or permissions from a subscription name. No paid actor run, account connection, runtime installation or upgrade purchase is part of this check. A file-presence check does not prove native role or skill discovery; verify discovery in a new session in the recipient's folder when supported. Reading the skill directly can recover its method; unavailable native dispatch must be disclosed and cannot be described as executed independent agents. Complete supported file work or a clearly labelled manual mode.
 
 ## Preservation and recovery
 

@@ -1,91 +1,50 @@
-# WS2 Interactive CEO Desk
+# WS2: Market X-Ray using Apify
 
-## Goal
-Produce the learner's original interactive CEO Desk through the bundled local adapter.
-The source assets/CEO_DESK.html stays byte-for-byte unchanged; the served adapter connects
-its existing interface to authoritative data/state.json. Reuse WS1 evidence and profile.
-Run node scripts/ceo.mjs desk and use its returned URL. Do not regenerate or publish the app.
+## Outcome
+Understand one target customer problem and the alternatives customers can choose.
+Read WS1, profile and evidence limits. Apify is the preferred authorized collection route;
+a labelled export/public-page fallback preserves access for a ChatGPT Plus learner.
 
-## Execute internally
+## Internal prompt chain
+**1. Frame.** State audience, geography, use case, known alternatives and the decision this
+research informs. Include the status quo/do-nothing alternative. Ask one material gap.
+Do not infer a country-wide market from a single post.
 
-1. Ask only missing setup items, at most five short questions; accept a batch answer:
-   business/role; three priorities; actual tasks with owner/due/status; working hours,
-   timezone and Calendar range/route; preferred daily view. Reuse known answers. Derive
-   a stable lowercase workspace_id from the business only if unambiguous; show it in the
-   import preview. Unknown owners/dates remain blank. Any suggested task is proposed.
-2. Check actual Google Calendar tool availability only if that route was selected.
-   Reuse/ask date range and timezone; Asia/Vientiane may be proposed, not silently assumed
-   for foreign events. Read one day first, only title/start/end/ID. Show the actual tool,
-   range and retrieval timestamp, and ask the learner to compare one event. No descriptions,
-   attendees, event writes or invites. After confirmation read up to seven days if needed.
-   If inaccessible, diagnose once then use redacted screenshot/export/typed schedule or
-   unavailable. Access failure never means zero events. No secrets or extra permissions.
-3. Build minimal profile, priorities, tasks, Calendar evidence and workshop result links.
-   Calendar is an imported snapshot. A successful read in ChatGPT does not make the HTML
-   continuously connected, automatic, or authorized to write. State this before delivery.
-4. Validate all JSON types/dates/unique IDs and business scope against the contract below.
-   On refresh return a Calendar-only envelope to preserve local tasks. Read browser edits from the verified local state API. A standalone exported copy still
-   requires its backup before importing changes. Never merge workspaces.
-5. Serve the packaged original asset through the local adapter, not from a reconstructed design.
-   Return downloadable desk-data.json and unchanged HTML when supported. If file tools or
-   full asset access are unavailable, state the gap, provide JSON and a manual chat Desk
-   as PARTIAL, with interactive delivery/tests pending. Never claim it is the interactive
-   result. Open the returned localhost URL when a browser tool is available. Retain Import data,
-   Preview import, business/event/task checks and Apply import for manual imports.
-6. Ask the learner to add/edit/complete one task, reload, download backup and import it
-   back. Do not claim opening, persistence or restoration passed without actual evidence.
-   Write WS2_Checked_Output with source/check states and the next manual refresh.
+**2. Plan.** Follow [Apify collection](apify-collection.md). Save exact public targets,
+Actor/build/schema if checked, question, supported date window, record cap, cost scope and
+stop rule. Default core exercise: one relevant target, at most 25 top-level text items.
+If the owner explicitly authorizes comparative collection, use up to two targets and 50 total.
+Top/newest ordering can bias the sample. Plans and URLs are not collected evidence.
 
-## Data contract v1
+**3. Collect or fall back.** Run only after verified access, authorization and enforceable
+cost scope. Preserve actual run/dataset ID, build, input, status, returned count and usage.
+No supported integration/account/control -> learner runs in their account and supplies a
+redacted export, or use existing redacted CSV/screenshots/public offer pages.
+Modes: APIFY_LIVE, OWNER_EXPORT, PUBLIC_PAGE, PLAN_ONLY. Never claim Apify-tested for a manual
+upload. Zero rows or permissions failure is not no complaints or no demand.
 
-UTF-8 JSON object, not executable JavaScript. No credentials, contact details or private
-event descriptions. Strings are rendered as text. Empty owner/due means unknown.
+**4. Normalize.** One row per item: stable ID, target/source/date/text, optional rating,
+inclusion/exclusion reason and duplicate linkage. Strip names/handles/contact details not
+needed for analysis. Duplicate stable IDs may be excluded; identical text by different IDs
+is not automatically duplicate. Retain praise/neutral/off-topic/blank/error counts.
+Assign one primary theme per included message so totals reconcile. Secondary tags may overlap
+and must say so. Denominator = included unique messages, not inferred customers.
 
-```json
-{
-  "schema_version": 1,
-  "workspace_id": "my-business",
-  "fictional": false,
-  "profile": {"business": "[business]", "role": "CEO", "timezone": "Asia/Vientiane", "working_hours": "[hours]", "daily_view": "Today"},
-  "priorities": ["[priority 1]", "[priority 2]", "[priority 3]"],
-  "tasks": [{"id": "TASK-001", "title": "[real task]", "owner": "", "due": "", "status": "todo", "source_ids": ["[source]"], "review_status": "draft"}],
-  "calendar": {"mode": "unavailable", "source": "not in the data", "retrieved_at": "", "range_start": "", "range_end": "", "events": []},
-  "results": [{"workshop": "WS1", "title": "Business X-Ray", "status": "draft", "source": "[observed result identifier]"}]
-}
-```
+**5. Interpret and compare.** Show short literal quote/row IDs, n/N, source distribution,
+interpretation and alternative explanation for important themes. Compare actual competing
+offer, price scope/currency/date, proof, service/delivery and unanswered customer questions.
+Vendor claims remain vendor claims. Not found does not mean absent.
+Engagement/reviews do not establish sales, willingness to pay, market size or representativeness.
+Separate verified refund/loss, mentioned order value and unknown money; no causal ROI claim.
 
-- workspace_id: 1–64 lowercase letters/digits/hyphens/underscores, stable per business.
-- schema_version = 1. Full import requires profile, priorities, tasks, calendar, results,
-  fictional. Real data has fictional=false; explicit separate demo has fictional=true.
-- profile.timezone is a valid IANA timezone. Priorities at most three.
-- tasks at most 50; unique nonempty id/title; status todo/doing/waiting/done; due empty or
-  valid YYYY-MM-DD; review_status draft/checked/proposed. An owner is not acceptance.
-- calendar.mode connector-read/snapshot/demo/unavailable. connector-read requires an
-  observed successful ChatGPT tool read. source identifies tool/file. retrieved_at is
-  actual ISO datetime with offset for tool reads; otherwise supplied freshness or empty.
-  range_start/end empty or YYYY-MM-DD. No successful tool read means never connector-read.
-- events at most 100; unique id, title, start, end, source_id, timezone. Timed events use
-  ISO datetimes with offsets. All-day events use dates plus all_day=true and exclusive end.
-  end must be later than start. Preserve valid overlaps rather than silently removing them.
-- results at most 10; workshop WS1–WS5, title/status/source. A source name is plain text,
-  not a claim of a working URL or persistent Project source.
-- Calendar-only refresh = schema_version, workspace_id, calendar. It replaces only the
-  snapshot after preview/Apply; it must not overwrite tasks/profile.
-- Full restore replaces data only after explicit Apply import. Export a backup before
-  restoring over real work. Storage errors remain visible; never claim saved on failure.
+**6. Recommend and pass forward.** Deliver up to three supported hypotheses and one next
+research/offer test, including what could disprove them. Pass observations and limitations
+to WS3's company/customer/competitor comparison. Use [acceptance](workshop-2-acceptance.md).
+Save/export report, deidentified evidence table, receipt and [handoff](handoff-contract.md).
+No market data means PLAN_ONLY/PARTIAL, not a completed market conclusion.
 
-## Handoff and checks
-WS2_Checked_Output, at most 250 words: priorities, selected WS1 action, tasks/owners/dates,
-Calendar route/range/source/retrieval time, actual checks and unresolved limits, backup
-filename if observed, next manual refresh. Draft/PARTIAL until human checks support more.
+## Output contract
+Business/audience/geography/question; collection mode/receipt and actual source dates/caps;
+row reconciliation; themes n/N with quote IDs; competitor/status-quo comparison with URLs;
+observations vs hypotheses; sampling/access limits; recommended test and WS3 handoff.
 
-Check business plus three facts; one event/time and freshness; task add/edit/done/reload
-and backup/restore. Wrong workspace, malformed dates or duplicate IDs must be rejected
-before mutation. Preserve tasks on a Calendar-only update. Browser behavior is a real
-user check, never simulated acceptance from JSON generation.
-
-Minimum by minute 30: three priorities, one real task and an honest Calendar state.
-Stretch after Desk/backup checks: optional weekly time audit against three goals. Use
-five to seven buckets, percentage denominator defined, missing time and overlaps visible,
-Stop / Delegate / Give-to-AI proposals and one task, with no promised hours saved.
-End with "เริ่ม WS3". "อัปเดต Calendar" reuses this workflow and stable workspace ID.

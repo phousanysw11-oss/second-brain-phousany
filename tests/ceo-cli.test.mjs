@@ -125,3 +125,20 @@ test('Board source cannot traverse from allowed demo prefix into canonical state
  assert.notEqual(run.status,0,'A lexical allowed prefix must not permit a resolved path outside its scoped source directory.');
  await assert.rejects(fs.access(path.join(f.root,'work/ceo/evidence-packet.md')));
 });
+
+test('new course record keeps the old workshop meaning in history and supports optional Desk',async t=>{
+ const f=await fixture(t),s=f.initial;
+ const old={id:'WS2',title:'CEO Desk',path:'work/ceo/old-desk.md',sha256:'old-hash',status:'Draft',company_id:s.ceo.company.id};
+ s.ceo.results=[old];await f.state(s);
+ await f.write('work/ceo/new-market.md','# Synthetic market analysis\nExport-based, not a live Apify run.');
+ let run=f.cli('record','WS2','work/ceo/new-market.md','Draft');assert.equal(run.status,0,run.stderr);
+ let saved=JSON.parse(await fs.readFile(path.join(f.root,'data/state.json'),'utf8'));
+ assert.deepEqual(saved.ceo.result_history,[old]);
+ assert.equal(saved.ceo.results[0].title,'Market X-ray');
+ assert.equal(saved.ceo.results[0].course_version,'2026-10-08-four-workshops');
+ await f.write('work/ceo/desk.md','# Synthetic Desk evidence');
+ run=f.cli('record','CEO_DESK','work/ceo/desk.md','Draft');assert.equal(run.status,0,run.stderr);
+ saved=JSON.parse(await fs.readFile(path.join(f.root,'data/state.json'),'utf8'));
+ assert.deepEqual(saved.ceo.results.map(r=>r.id),['WS2','CEO_DESK']);
+ run=f.cli('record','WS2','work/ceo/new-market.md','Human reviewed');assert.notEqual(run.status,0);
+});

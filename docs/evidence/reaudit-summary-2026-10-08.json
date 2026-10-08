@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-08",
+  "scope": "Current four-workshop local preview; synthetic checks",
+  "state_cli": {
+    "passed": 20,
+    "failed": 0
+  },
+  "desk_browser": {
+    "passed": 13,
+    "source": "desk-browser-2026-10-08.json"
+  },
+  "installer_regression": {
+    "passed": 36,
+    "skipped": 2,
+    "reason": "junction creation unavailable"
+  },
+  "skill_static": {
+    "count": 35,
+    "entry_links": 102,
+    "roles": 8
+  },
+  "native_recipient_discovery": "NOT_TESTED",
+  "live_apify": "NOT_RUN",
+  "netlify_deploy": "NOT_RUN",
+  "human_acceptance": "NOT_RECORDED"
+}

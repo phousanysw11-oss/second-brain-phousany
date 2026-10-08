@@ -15,7 +15,7 @@ import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '4.0.0-ceo-preview'
+VERSION = '4.1.0-four-workshops-preview'
 BRANCH = 'codex/ceo-team-workshops'
 RAW = 'https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/' + BRANCH
 EXCLUDE = {'MY_SECOND_BRAIN.zip', 'MANIFEST.json', 'release.json', 'SHA256SUMS.txt',

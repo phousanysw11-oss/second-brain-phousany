@@ -1,3 +1,5 @@
+> Historical optional reference. Current four-workshop runtime overrides numbering, storage, and execution. This is not a main-course workshop. Board = AI_BOARD; Desk = CEO_DESK; Hidden Signals = HIDDEN_SIGNALS. Browser users use explicit artifact export, not local CLI assumptions.
+
 # WS5 templates and source-check rubric
 
 ## Output_Template_LO.md

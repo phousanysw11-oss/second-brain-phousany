@@ -1,10 +1,17 @@
-# CEO Team catalog
+# CEO capabilities and optional team
 
-Package version: ceo-team-1.0.0. Source review: 2026-10-07.
-This is a curated set of **20 CEO capabilities**, including two reused skills.
-The 14 existing utility skills remain intact; with 18 new skills there are **32 unique
-skill directories per host**. The six workshop segments and original Lao acceptance files
-remain unchanged in sequence and required outputs. Bonus methods do not add workshop time.
+Current course: four workshops, 2026-10-08. ChatGPT Plus ($20) is the baseline. Core work uses one assistant and saved handoffs; independent native agents are optional and consume additional usage. Skills are methods, not evidence that a learner account can dispatch native roles.
+
+There are 35 unique skills per host after this revision: the 14 retained utilities, 18 prior CEO skills and 3 new substantive workshop entries. See the generated release manifest for the exact inventory. Thin routers are assessed by their linked implementation, not line count.
+
+| Workshop | Skill | Output |
+|---|---|---|
+| WS1 | [Business X-ray](../.agents/skills/ceo-business-xray/SKILL.md) | Supported diagnosis and recommendation |
+| WS2 | [Market X-ray](../.agents/skills/ceo-market-xray/SKILL.md) | Dated market evidence with Apify/export provenance |
+| WS3 | [Winning Zone](../.agents/skills/ceo-winning-zone/SKILL.md) | Proposed positioning and bounded test |
+| WS4 | [Website builder](../.agents/skills/ceo-website-builder/SKILL.md) | Static site files and QA for Netlify Drop |
+
+Desk, Board, customer-signal analysis, Employee and Monday Brief remain optional utilities, outside these four workshop slots. Existing unversioned results retain their historical meaning. Read the [Plus guide](CHATGPT_PLUS_START.md), [Desk sharing guide](DESK_SHARING.md) and [acceptance](WORKSHOP_ACCEPTANCE.md).
 
 ## Eight native Codex roles
 
@@ -23,17 +30,17 @@ Role files omit model settings and inherit the user's model. Five Board seats ru
 on one packet before peer review. Specialist/reviewer files request read-only mode; live
 parent permissions still govern. No paid platform, new API key or separate agent install.
 
-## Twenty selected skills
+## Original capability inventory (retained utilities)
 
 | Skill | Result | Workshop / source |
 |---|---|---|
-| [bni-second-brain](../.agents/skills/bni-second-brain/SKILL.md) | One ordinary-language entry; correct segment and saved handoff | All six; existing workshop + original Codex integration |
+| [bni-second-brain](../.agents/skills/bni-second-brain/SKILL.md) | One ordinary-language entry; correct segment and saved handoff | All four; current router + saved handoffs |
 | [ceo-business-xray](../.agents/skills/ceo-business-xray/SKILL.md) | Business X-Ray: Analyze business revenue, margins, concentration and cash from supplied company files. | WS1; Existing workshop method, adapted runtime |
-| [ceo-desk](../.agents/skills/ceo-desk/SKILL.md) | CEO Desk: Open or update the original interactive CEO Desk and its saved priorities, tasks and calendar snapshot. | WS2; Existing workshop method, adapted runtime |
-| [ceo-hidden-signals](../.agents/skills/ceo-hidden-signals/SKILL.md) | Hidden Signals: Find recurring customer problems from deidentified messages with counts, quotes and one bounded test. | WS3; Existing WS3 + Corey customer-research |
-| [ceo-ai-board](../.agents/skills/ceo-ai-board/SKILL.md) | AI Board of Directors: Convene five independent native AI Board perspectives on one frozen evidence packet, then review and synthesize. | WS4; Existing WS4 + Alireza chief-of-staff |
-| [ceo-ai-employee](../.agents/skills/ceo-ai-employee/SKILL.md) | AI Employee: Build a narrow AI employee from approved company policy and test normal, missing-input and exception behavior. | WS5 employee; Existing workshop method, adapted runtime |
-| [ceo-monday-brief](../.agents/skills/ceo-monday-brief/SKILL.md) | Monday Brief: Prepare a Monday CEO Brief from saved workshop results, decisions and the original three priorities. | WS5 Monday; Existing workshop method, adapted runtime |
+| [ceo-desk](../.agents/skills/ceo-desk/SKILL.md) | CEO Desk: Open or update the original interactive CEO Desk and its saved priorities, tasks and calendar snapshot. | Optional Desk; retained original method, enriched local adapter |
+| [ceo-hidden-signals](../.agents/skills/ceo-hidden-signals/SKILL.md) | Hidden Signals: Find recurring customer problems from deidentified messages with counts, quotes and one bounded test. | Optional; retained customer research method |
+| [ceo-ai-board](../.agents/skills/ceo-ai-board/SKILL.md) | AI Board of Directors: Convene five independent native AI Board perspectives on one frozen evidence packet, then review and synthesize. | Optional; retained independent Board |
+| [ceo-ai-employee](../.agents/skills/ceo-ai-employee/SKILL.md) | AI Employee: Build a narrow AI employee from approved company policy and test normal, missing-input and exception behavior. | Optional employee; Existing workshop method, adapted runtime |
+| [ceo-monday-brief](../.agents/skills/ceo-monday-brief/SKILL.md) | Monday Brief: Prepare a Monday CEO Brief from saved workshop results, decisions and the original three priorities. | Optional Monday; Existing workshop method, adapted runtime |
 | [ceo-source-check](../.agents/skills/ceo-source-check/SKILL.md) | Evidence readiness: Check company source coverage, conflicts, definitions and provenance before consequential analysis. | All; New focused local method |
 | [ceo-kpi-report](../.agents/skills/ceo-kpi-report/SKILL.md) | KPI reporting: Report KPI movement using comparable definitions, denominators, currencies and periods. | Recurring / Monday; Original local adaptation + Anthropic variance-analysis |
 | [ceo-unit-economics](../.agents/skills/ceo-unit-economics/SKILL.md) | Unit economics: Calculate contribution, break-even and bounded unit scenarios from actual price and variable-cost inputs. | WS1 / Board; Existing workshop method, adapted runtime |
@@ -51,8 +58,7 @@ parent permissions still govern. No paid platform, new API key or separate agent
 For exact procedures and acceptance, read only the selected skill. Every new skill routes to
 the shared [runtime contract](../.agents/skills/bni-second-brain/references/codex-runtime.md).
 Identical new skill mirrors are packaged under .claude/skills for file compatibility; this
-does not establish native Codex role execution in Claude. A host lacking native dispatch
-must report that team step BLOCKED, not simulate it.
+does not establish native Codex role execution in Claude. A host lacking native dispatch must label independent team work unavailable. Core workshops continue with one assistant; never describe that as independent team review.
 
 ## Existing utilities retained
 

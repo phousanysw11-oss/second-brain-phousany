@@ -3,7 +3,7 @@
 set -euo pipefail
 destination=${1:-"$PWD"}
 archive=${2:-}
-expected='07f4a6388f1c32807171430a4be5d5557d4db12e71f1ebfc1e55f5303715041c'
+expected='82d8a2b9f39f136cb8fd250a86c10448aa26bb4be7acb78e3210e35f353ae4d9'
 url='https://raw.githubusercontent.com/phousanysw11-oss/second-brain-phousany/codex/ceo-team-workshops/MY_SECOND_BRAIN.zip'
 fail() { printf 'INSTALL STOPPED: %s\n' "$*" >&2; exit 1; }
 for command in unzip find cmp mkdir cat awk; do command -v "$command" >/dev/null || fail "Missing $command"; done
@@ -47,6 +47,8 @@ if [ -e "$destination" ] && [ ! -d "$destination" ]; then fail 'Destination must
 receipt="$destination/.second-brain-install.json"
 assert_plain "$receipt"
 manifest_sha=$(digest "$source_dir/MANIFEST.json")
+package_version=$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([A-Za-z0-9._-]*\)".*/\1/p' "$source_dir/MANIFEST.json")
+[ -n "$package_version" ] || fail 'Package version is missing from the verified manifest.'
 if [ -e "$receipt" ]; then
     grep -Eq '"manifest_sha256"[[:space:]]*:[[:space:]]*"'"$manifest_sha"'"' "$receipt" || fail 'This upgrade needs Python 3 already available to the AI. Nothing changed; use an available Python runtime or a new empty folder.'
     # Only personal scaffold may differ in the fallback; modified shipped code needs review.
@@ -80,5 +82,5 @@ while IFS= read -r -d '' file; do
     if [ ! -e "$target" ]; then (set -C; cat "$file" > "$target"); fi
     cmp -s "$file" "$target" || fail "Read-back failed: $relative"
 done < <(find "$source_dir" -type f -print0)
-(set -C; printf '{"package":"MY_SECOND_BRAIN","version":"4.0.0-ceo-preview","manifest_sha256":"%s","status":"installed"}\n' "$manifest_sha" > "$receipt")
-printf 'INSTALLED AND VERIFIED: %s\nNext: read the local onboard skill and ask one question at a time.\n' "$destination"
+(set -C; printf '{"package":"MY_SECOND_BRAIN","version":"%s","manifest_sha256":"%s","status":"installed"}\n' "$package_version" "$manifest_sha" > "$receipt")
+printf 'INSTALLED AND VERIFIED: %s\nNext: read the local onboard skill; offer quick, guided, import or later, or resume saved answers.\n' "$destination"

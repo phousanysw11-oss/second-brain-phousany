@@ -114,6 +114,37 @@ class InstallerTests(unittest.TestCase):
     def test_missing_file_repaired(self):
         self.run_install(expected='installed');(self.dest/'app/app.js').unlink()
         self.run_install(expected='repaired');self.assertEqual(NEW['app/app.js'],(self.dest/'app/app.js').read_bytes())
+    def test_new_onboarding_modes_never_replace_saved_intake(self):
+        self.legacy()
+        answers=b'Status: complete-with-gaps\nMode: import\nBusiness: My saved company\nLater correction: preserve me\n'
+        (self.dest/'aios-intake.md').write_bytes(answers)
+        self.run_install(expected='upgraded')
+        self.run_install(expected='already_installed')
+        self.assertEqual(answers,(self.dest/'aios-intake.md').read_bytes())
+    def test_deferred_intake_is_preserved_during_first_install(self):
+        self.dest.mkdir()
+        deferred=b'Status: deferred\nMode: later\nNext topic: resume when requested\n'
+        (self.dest/'aios-intake.md').write_bytes(deferred)
+        self.run_install(expected='installed')
+        self.assertEqual(deferred,(self.dest/'aios-intake.md').read_bytes())
+    def test_modified_onboarding_skill_staged_without_overwrite(self):
+        self.legacy()
+        skill=self.dest/'.agents/skills/onboard/SKILL.md'
+        custom=b'My carefully customized onboarding questions\n'
+        skill.write_bytes(custom)
+        result=self.run_install(expected='needs_review')
+        self.assertIn('.agents/skills/onboard/SKILL.md',result['conflicts'])
+        self.assertEqual(custom,skill.read_bytes())
+        staged=next((self.dest/installer.UPGRADES).glob('*/incoming/.agents/skills/onboard/SKILL.md'))
+        self.assertEqual(NEW['.agents/skills/onboard/SKILL.md'],staged.read_bytes())
+    def test_plain_browser_export_files_are_preserved(self):
+        self.legacy()
+        export=self.dest/'work/browser-handoff.md'
+        export.parent.mkdir(parents=True,exist_ok=True)
+        content=b'# Handoff\nCompany: chosen learner business\nSource E1: imported manually\n'
+        export.write_bytes(content)
+        self.run_install(expected='upgraded')
+        self.assertEqual(content,export.read_bytes())
     def test_interrupted_legacy_upgrade_resumes_from_checkpoint(self):
         self.legacy()
         receipt=self.dest/installer.RECEIPT

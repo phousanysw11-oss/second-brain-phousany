@@ -3,10 +3,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawn} from 'node:child_process';
-import {readState,saveState,projectState,validateState,sha256,toDesk} from '../app/ceo-state.mjs';
+import {readState,saveState,projectState,validateState,sha256,toDesk,toStandaloneDesk} from '../app/ceo-state.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const [command,...args]=process.argv.slice(2);
-const ids=['WS1','WS2','WS3','WS4','AI_EMPLOYEE','MONDAY_BRIEF'];
+const ids=['WS1','WS2','WS3','WS4','CEO_DESK','AI_BOARD','HIDDEN_SIGNALS','AI_EMPLOYEE','MONDAY_BRIEF'];
+const courseVersion='2026-10-08-four-workshops';
+const resultTitles={WS1:'Business X-ray',WS2:'Market X-ray',WS3:'Winning Zone',WS4:'Website',CEO_DESK:'CEO Desk',AI_BOARD:'AI Board',HIDDEN_SIGNALS:'Customer signals',AI_EMPLOYEE:'AI Employee',MONDAY_BRIEF:'Monday Brief'};
 async function sourceFiles(dir){const found=[];for(const e of await fs.readdir(path.join(root,dir),{withFileTypes:true}).catch(()=>[])){if(e.isSymbolicLink())continue;const p=dir+'/'+e.name;if(e.isDirectory())found.push(...await sourceFiles(p));else found.push(p)}return found}
 async function safeOutput(p){if(!p||!p.startsWith('work/ceo/')||p.includes('..')||p.includes('\\'))throw Error('Output must be a relative file under work/ceo/');const real=await fs.realpath(path.join(root,p));if(!real.startsWith(root+path.sep))throw Error('Output escapes project');return real}
 try{
@@ -28,8 +30,9 @@ try{
   const [id,p,status='Draft']=args;if(!ids.includes(id)||!['Draft','PARTIAL','Human reviewed'].includes(status))throw Error('Invalid result id/status');
   const content=await fs.readFile(await safeOutput(p));const s=await readState(root);if(!s.ceo?.company)throw Error('Company context required');
   if(status==='Human reviewed')throw Error('Human review needs an explicit reviewer/date/scope recorded through a reviewed state update, not an automatic record flag.');
-  const record={id,path:p,status,sha256:sha256(content),updated_at:new Date().toISOString(),company_id:s.ceo.company.id};
-  const next={...s,ceo:{...s.ceo,results:[...(s.ceo.results||[]).filter(r=>r.id!==id),record]}};
+  const record={id,title:resultTitles[id],course_version:courseVersion,path:p,status,sha256:sha256(content),updated_at:new Date().toISOString(),company_id:s.ceo.company.id};
+  const displaced=(s.ceo.results||[]).filter(r=>r.id===id);
+  const next={...s,ceo:{...s.ceo,result_history:[...(s.ceo.result_history||[]),...displaced],results:[...(s.ceo.results||[]).filter(r=>r.id!==id),record]}};
   console.log(JSON.stringify(await saveState(root,next),null,2));
  }else if(command==='packet'){
   const s=await readState(root);if(!s.ceo?.company)throw Error('Company context required');
@@ -51,9 +54,11 @@ try{
   }
   await fs.mkdir(path.join(root,'work/ceo'),{recursive:true});await fs.writeFile(path.join(root,'work/ceo/evidence-packet.md'),out);
   console.log(JSON.stringify({path:'work/ceo/evidence-packet.md',sha256:sha256(out),bytes:Buffer.byteLength(out),state_revision:s.revision}));
+ }else if(command==='desk-data-standalone'){
+  const s=await readState(root),d=toStandaloneDesk(s);await fs.mkdir(path.join(root,'work/ceo'),{recursive:true});await fs.writeFile(path.join(root,'work/ceo/desk-data-standalone.json'),JSON.stringify(d,null,2));console.log('work/ceo/desk-data-standalone.json\nLimited standalone copy, not a full backup: rich task fields and optional non-WS result rows are omitted. Keep the canonical state/full local backup.');
  }else if(command==='desk-data'){
   const d=toDesk(await readState(root));await fs.mkdir(path.join(root,'work/ceo'),{recursive:true});await fs.writeFile(path.join(root,'work/ceo/desk-data.json'),JSON.stringify(d,null,2));console.log('work/ceo/desk-data.json');
  }else if(command==='desk'){
   toDesk(await readState(root));const child=spawn(process.execPath,[path.join(root,'app/server.mjs')],{cwd:root,env:{...process.env,NO_BRAIN:'1',NO_OPEN:'1'},windowsHide:true,stdio:'inherit'});child.on('exit',code=>{process.exitCode=code||0});
- }else throw Error('Use init-demo (explicit demo only), context, update <state.json>, packet, record <id> <work/ceo/file.md> [Draft|PARTIAL], desk-data, desk');
+ }else throw Error('Use init-demo (explicit demo only), context, update <state.json>, packet, record <id> <work/ceo/file.md> [Draft|PARTIAL], desk-data, desk-data-standalone, desk');
 }catch(e){console.error(e.message);process.exitCode=1}

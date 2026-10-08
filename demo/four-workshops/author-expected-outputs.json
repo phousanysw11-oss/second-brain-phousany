@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "course_version": "2026-10-08-four-workshops",
+  "business_id": "lotus-home-demo",
+  "fictional": true,
+  "execution_mode": "single_assistant",
+  "review_status": "PARTIAL",
+  "human_review": null,
+  "live_apify": false,
+  "public_deployment": false,
+  "source_paths": [
+    "demo/company/sales.csv",
+    "demo/company/expenses.csv",
+    "demo/company/cash.csv",
+    "demo/company/obligations.csv",
+    "demo/company/receivables.csv",
+    "demo/company/feedback.csv",
+    "demo/four-workshops/source-profile.json"
+  ],
+  "ws1": {
+    "period": "2026-09",
+    "currency": "LAK",
+    "revenue": 7000000,
+    "excluded_ids": [
+      "S009",
+      "S010"
+    ],
+    "matched_subset_revenue": 6500000,
+    "matched_subset_cogs": 4020000,
+    "matched_subset_margin": 0.38153846153846155,
+    "overall_margin": null,
+    "operating_remainder": null,
+    "accounting_completeness": "unverified",
+    "top_product_ids": [
+      "P03",
+      "P01"
+    ],
+    "top_product_revenue": 3500000,
+    "top_product_share": 0.5,
+    "identifiable_customer_coverage": 0.7142857142857143,
+    "cash_as_of": "2026-10-07",
+    "obligations_window": [
+      "2026-10-07",
+      "2026-10-13"
+    ],
+    "cash": 1200000,
+    "known_due": 1400000,
+    "snapshot_gap": -200000,
+    "recommendation": "Verify dated cash and due payments before discretionary outflows; separately reconcile missing organizer COGS.",
+    "owner_status": "proposed",
+    "financial_conclusion": "incomplete source data"
+  },
+  "ws2": {
+    "collection_mode": "OWNER_EXPORT",
+    "collection_description": "Local synthetic export; no Apify run.",
+    "run_id": null,
+    "dataset_id": null,
+    "raw_count": 22,
+    "included_count": 20,
+    "excluded_ids": [
+      "F021",
+      "F022"
+    ],
+    "themes": {
+      "delivery": [
+        "F001",
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006"
+      ],
+      "price_clarity": [
+        "F007",
+        "F008",
+        "F009",
+        "F010"
+      ],
+      "packaging": [
+        "F011",
+        "F012",
+        "F013"
+      ],
+      "praise": [
+        "F014",
+        "F015",
+        "F016",
+        "F017"
+      ],
+      "no_issue": [
+        "F018"
+      ],
+      "unclassified": [
+        "F019",
+        "F020"
+      ]
+    },
+    "delivery_share": 0.3,
+    "complaint_rate": null,
+    "market_size": null,
+    "contrary_evidence_ids": [
+      "F016"
+    ],
+    "injection_row_ignored_as_instruction": "F020",
+    "recommendation": "Test clearer quotation and delivery-date communication; do not infer sales loss or market demand."
+  },
+  "ws3": {
+    "candidate": "Clear product information and quote expectations for household essentials",
+    "company_delivery_evidence": "partial",
+    "customer_value_evidence": "sample_only",
+    "differentiation": "unknown",
+    "status": "PROVISIONAL",
+    "winning_zone_proven": false,
+    "promise": "Explore household essentials and product information.",
+    "claims_excluded": [
+      "fastest delivery",
+      "lowest price",
+      "guaranteed on-time arrival",
+      "unique market leader",
+      "30% of customers complain"
+    ],
+    "test": {
+      "hypothesis": "Clearer quotation and date wording reduces unanswered questions.",
+      "method": "Owner-approved comprehension test with actual relevant customers, if separately authorized.",
+      "metric": "Proportion who can correctly state total price and the proposed delivery window; sample/timebox unset.",
+      "spend_approved": false
+    }
+  },
+  "ws4": {
+    "build_status": "BRIEF_READY",
+    "browser_checks": "UNVERIFIED",
+    "deployment": "NOT_DEPLOYED",
+    "brief_path": "demo/four-workshops/WS4_WEBSITE_BRIEF.md",
+    "public_source": "demo/four-workshops/source-profile.json#public_copy",
+    "private_data_excluded": true
+  }
+}
+

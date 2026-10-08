@@ -1,9 +1,9 @@
 {
   "branch": "codex/ceo-team-workshops",
-  "bytes": 2923590,
-  "files": 376,
+  "bytes": 3597996,
+  "files": 414,
   "macos_native_tested": false,
-  "manifest_sha256": "c9a9e886a4e9c470cf9a454561f063a5d24aaa1eba2dd89be0433df057d0765f",
+  "manifest_sha256": "573c0c5a22bfd0e5423a44767a08737b18549a85a38ddc5c8be0dc93de1fab82",
   "native_role_count": 8,
   "native_roles": [
     ".codex/agents/ceo_ai_employee_builder.toml",
@@ -16,7 +16,7 @@
     ".codex/agents/ceo_lao_business_advisor.toml"
   ],
   "package": "MY_SECOND_BRAIN.zip",
-  "sha256": "07f4a6388f1c32807171430a4be5d5557d4db12e71f1ebfc1e55f5303715041c",
+  "sha256": "82d8a2b9f39f136cb8fd250a86c10448aa26bb4be7acb78e3210e35f353ae4d9",
   "skill_names": [
     "3d-brain",
     "audit",
@@ -30,6 +30,7 @@
     "ceo-desk",
     "ceo-hidden-signals",
     "ceo-kpi-report",
+    "ceo-market-xray",
     "ceo-marketing-test",
     "ceo-meeting-followup",
     "ceo-monday-brief",
@@ -38,6 +39,8 @@
     "ceo-sop",
     "ceo-source-check",
     "ceo-unit-economics",
+    "ceo-website-builder",
+    "ceo-winning-zone",
     "finish-my-task",
     "grill-me",
     "level-up",
@@ -51,6 +54,6 @@
     "wiki-helper",
     "workspace-from-todos"
   ],
-  "skills_per_host": 32,
-  "version": "4.0.0-ceo-preview"
+  "skills_per_host": 35,
+  "version": "4.1.0-four-workshops-preview"
 }

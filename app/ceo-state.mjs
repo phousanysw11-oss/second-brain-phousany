@@ -3,6 +3,11 @@ import path from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 
 export const emptyCalendar=()=>({mode:'unavailable',source:'not in the data',retrieved_at:'',range_start:'',range_end:'',events:[]});
+const resultTitles={WS1:'Business X-Ray',WS2:'Market X-Ray',WS3:'Winning Zone',WS4:'Business Website',CEO_DESK:'CEO Desk',AI_BOARD:'AI Board',HIDDEN_SIGNALS:'Hidden Signals',AI_EMPLOYEE:'AI Employee',MONDAY_BRIEF:'Monday CEO Brief',WS5:'Legacy employee and brief'};
+const legacyTitles={WS1:'Business X-Ray',WS2:'CEO Desk',WS3:'Hidden Signals',WS4:'AI Board',WS5:'Employee and Monday Brief'};
+function resultTitle(r){const legacy=/^WS[1-5]$/.test(r.id)&&r.course_version!=='2026-10-08-four-workshops';const title=r.title||(legacy?legacyTitles[r.id]:resultTitles[r.id]);return legacy?String(title).slice(0,164)+' (legacy course)':title}
+const resultId=v=>Object.hasOwn(resultTitles,v);
+const deskTaskFields=['next','doneWhen','evidence','blocker','project','priority'];
 const fail=m=>{throw Error(m)};
 const str=(v,n=5000)=>typeof v==='string'&&v.length<=n;
 const date=v=>str(v,10)&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!isNaN(Date.parse(v))&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;
@@ -52,9 +57,9 @@ export async function saveState(root,next){
 }
 export function toDesk(s){
  if(!s.ceo?.company)fail('Company context is missing. Supply the business name/timezone, or explicitly request the synthetic demo.');
- if(s.tasks.length>50)fail('This original Desk supports 50 tasks. Keep the full state; select a bounded workflow before opening.');
+ if(s.tasks.length>2000)fail('Desk supports up to 2000 tasks. Archive completed work before adding more.');
  const c=s.ceo;
- return {schema_version:1,workspace_id:c.company.id,fictional:c.company.fictional,profile:{business:c.company.name,role:s.profile.role,timezone:c.company.timezone,working_hours:c.working_hours||'',daily_view:c.daily_view||'Today'},priorities:c.priorities||[],tasks:s.tasks.map(t=>({id:t.id,title:t.title,owner:t.owner||'',due:t.due||'',status:t.status==='blocked'?'waiting':t.status,source_ids:t.source_ids||[],review_status:t.review_status||'draft'})),calendar:c.calendar||emptyCalendar(),results:(c.results||[]).slice(-10).map(r=>({workshop:['AI_EMPLOYEE','MONDAY_BRIEF'].includes(r.id)?'WS5':r.id,title:r.title||r.id,status:r.status,source:r.path})).filter(r=>/^WS[1-5]$/.test(r.workshop))};
+ return {schema_version:1,workspace_id:c.company.id,fictional:c.company.fictional,profile:{business:c.company.name,role:s.profile.role,timezone:c.company.timezone,working_hours:c.working_hours||'',daily_view:c.daily_view||'Today'},priorities:c.priorities||[],tasks:s.tasks.map(t=>({id:t.id,title:t.title,owner:t.owner||'',due:t.due||'',status:t.status==='blocked'?'waiting':t.status,source_ids:t.source_ids||[],review_status:t.review_status||'draft',...Object.fromEntries(deskTaskFields.map(k=>[k,t[k]||'']))})),calendar:c.calendar||emptyCalendar(),results:(c.results||[]).filter(r=>resultId(r.id)).slice(-10).map(r=>({workshop:r.id,title:resultTitle(r),status:r.status,source:r.path}))};
 }
 export function validateCalendar(c){
 
@@ -65,15 +70,22 @@ export function validateCalendar(c){
  const ei=new Set();for(const e of c.events){if(!str(e.id,100)||!e.id||ei.has(e.id)||!str(e.title,180)||!e.title||!str(e.source_id,180)||!tz(e.timezone)||(e.all_day===true?(!date(e.start)||!date(e.end)):(!stamp(e.start)||!stamp(e.end)))||Date.parse(e.end)<=Date.parse(e.start))fail('Invalid Calendar event');ei.add(e.id)}
  return c;
 }
+export function toStandaloneDesk(s){
+ const d=toDesk(s);validateDesk(d);
+ if(d.tasks.length>50)fail('Standalone HTML supports 50 tasks. Use the local Desk for the full state; no tasks were truncated.');
+ if(d.tasks.some(t=>t.title.length>180||t.owner.length>80))fail('A task title/owner exceeds the original standalone limits. Use the local Desk; no text was truncated.');
+ if(d.calendar.source.length>500||d.calendar.retrieved_at.length>500)fail('Calendar source/freshness exceeds the original standalone limits. Use the local Desk; no text was truncated.');
+ return {...d,tasks:d.tasks.map(({id,title,owner,due,status,source_ids,review_status})=>({id,title,owner,due,status,source_ids,review_status})),results:d.results.filter(r=>/^WS[1-5]$/.test(r.workshop))};
+}
 export function validateDesk(d){
  if(!d||d.schema_version!==1||!/^[a-z0-9_-]{1,64}$/.test(d.workspace_id))fail('Invalid Desk workspace');
  validateCalendar(d.calendar);
  if(!('profile'in d))return 'calendar';
  if(typeof d.fictional!=='boolean'||!d.profile||!str(d.profile.business,120)||!d.profile.business||!str(d.profile.role,80)||!tz(d.profile.timezone)||!str(d.profile.working_hours,120)||!str(d.profile.daily_view,80))fail('Invalid Desk profile');
  if(!Array.isArray(d.priorities)||d.priorities.length>3||d.priorities.some(v=>!str(v,180)))fail('Invalid Desk priorities');
- if(!Array.isArray(d.tasks)||d.tasks.length>50)fail('Desk supports 50 tasks');
- const ids=new Set();for(const t of d.tasks){if(!/^[\w-]{1,80}$/.test(t.id)||ids.has(t.id)||!str(t.title,180)||!t.title.trim()||!str(t.owner,80)||!(t.due===''||date(t.due))||!['todo','doing','waiting','done'].includes(t.status)||!['draft','checked','proposed'].includes(t.review_status)||!Array.isArray(t.source_ids)||t.source_ids.length>15||t.source_ids.some(x=>!str(x,180)))fail('Invalid Desk task');ids.add(t.id)}
- if(!Array.isArray(d.results)||d.results.length>10||d.results.some(r=>!/^WS[1-5]$/.test(r.workshop)||!str(r.title,180)||!str(r.status,80)||!str(r.source,300)))fail('Invalid Desk results');
+ if(!Array.isArray(d.tasks)||d.tasks.length>2000)fail('Desk supports 2000 tasks');
+ const ids=new Set();for(const t of d.tasks){if(!/^[\w-]{1,80}$/.test(t.id)||ids.has(t.id)||!str(t.title,240)||!t.title.trim()||!str(t.owner,5000)||!(t.due===''||date(t.due))||!['todo','doing','waiting','done'].includes(t.status)||!['draft','checked','proposed'].includes(t.review_status)||!Array.isArray(t.source_ids)||t.source_ids.length>15||t.source_ids.some(x=>!str(x,180))||deskTaskFields.some(k=>k in t&&!str(t[k],5000)))fail('Invalid Desk task');ids.add(t.id)}
+ if(!Array.isArray(d.results)||d.results.length>10||d.results.some(r=>!resultId(r.workshop)||!str(r.title,180)||!str(r.status,80)||!str(r.source,300)))fail('Invalid Desk results');
  return 'full';
 }
 export function fromDesk(s,d){
@@ -81,7 +93,11 @@ export function fromDesk(s,d){
  if(!c||d.workspace_id!==c.company.id)fail('Backup belongs to another company');
  if(type==='calendar')return {...s,ceo:{...c,calendar:d.calendar}};
  if(d.fictional!==c.company.fictional)fail('Cannot mix synthetic and real company data');
- const tasks=d.tasks.map(t=>{const old=s.tasks.find(x=>x.id===t.id)||{};return {...old,...t,status:t.status==='waiting'?'blocked':t.status,...(t.status==='done'&&!old.evidence?{completion:{kind:'user_reported',at:new Date().toISOString(),source:'CEO Desk'}}:{})}});
+ const tasks=d.tasks.map(t=>{const old=s.tasks.find(x=>x.id===t.id)||{};
+  const completionChanged=['evidence','doneWhen'].some(k=>k in t&&t[k]!==old[k]);
+  const userDone=t.status==='done'&&(old.status!=='done'||completionChanged);
+  return {...old,...t,status:t.status==='waiting'?'blocked':t.status,...(userDone?{completion:{kind:'user_reported',at:new Date().toISOString(),source:'CEO Desk'}}:{})};
+ });
  return {...s,profile:{...s.profile,role:d.profile.role},tasks,ceo:{...c,company:{...c.company,name:d.profile.business,timezone:d.profile.timezone},working_hours:d.profile.working_hours,daily_view:d.profile.daily_view,priorities:d.priorities,calendar:d.calendar}};
 }
 export const sha256=s=>createHash('sha256').update(s).digest('hex');
@@ -90,6 +106,9 @@ export function servedDesk(html,s){
  // Preserve the distributed original; adapt only the served copy. Ignore browser caches.
  return html.replace(/(<script[^>]*id="initial-data"[^>]*>)[\s\S]*?(<\/script>)/,(_,a,b)=>a+JSON.stringify(d).replace(/</g,'\\u003c')+b)
  .replace(/try\{validate\(initial\);const active=localStorage[\s\S]*?\}render\(\);/, 'validate(initial);render();')
+ .replace('d.tasks.length<=50,\'Use up to 50 tasks.\'','d.tasks.length<=2000,\'Use up to 2000 tasks.\'')
+ .replace('text(t.title,180)&&t.title&&text(t.owner,80)','text(t.title,240)&&t.title&&text(t.owner,5000)')
+ .replace('/^WS[1-5]$/.test(r.workshop)', '/^(WS[1-5]|CEO_DESK|AI_BOARD|HIDDEN_SIGNALS|AI_EMPLOYEE|MONDAY_BRIEF)$/.test(r.workshop)')
  .replace('Refresh in ChatGPT, then import the new Calendar JSON.','Ask Codex to refresh the saved Calendar snapshot.')
  .replace('Copy this prompt into your own Project and invoke BNI CEO Desk. After checking the Calendar result, import its JSON here.','Ask Codex to update Calendar in this project. It can save the checked snapshot directly; manual JSON import is also available.')
  .replace('</body>','<script src="/ceo-desk-adapter.js"></script></body>');

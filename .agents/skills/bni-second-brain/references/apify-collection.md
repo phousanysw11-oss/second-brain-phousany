@@ -1,16 +1,46 @@
-# Apify collection contract
-Answer in the user's language. Read this reference before any Apify operation. Default mode is PLAN ONLY until the business owner supplies an authorized public post/video/place URL and approves that bounded run. Do not search for arbitrary unrelated targets.
-Use one source and 20-30 top-level text items for the core exercise. Confirm exact Actor, input schema, current account allowance, current pricing, remaining included credits and a run cap that prevents extra charges before starting. ChatGPT Plus does not include Apify charges. If you cannot prove the run stays within the approved no-extra-payment allowance, do not run it. Do not add billing, rent an Actor, enable a schedule or supply private cookies/tokens.
-Candidates verified in official publisher documentation on 7 October 2026:
-- Facebook comments: apify/facebook-comments-scraper. startUrls=[{url:OWNER_PUBLIC_POST_URL}], resultsLimit=25, includeNestedComments=false. Do not enable separately billed date filters. A Page URL is not a specific post.
-- TikTok comments: clockworks/tiktok-comments-scraper. postURLs=[OWNER_PUBLIC_VIDEO_URL], commentsPerPost=25, maxRepliesPerComment=0. Exclude errorCode rows from evidence and record the failure. Check current field support before running.
-- Google Maps reviews: compass/google-maps-reviews-scraper. startUrls=[{url:OWNER_PUBLIC_PLACE_URL}], maxReviews=25, reviewsSort=newest. The default maximum is very large; set 25 explicitly. Do not use a broad area search.
-Do not invent URL values, IDs, run completion or cost. If an Actor returns fewer records, use the actual number. Stop after one failed run rather than looping. Keep dataset/run ID, retrieval time, source URL, input limits, returned count and actual usage evidence.
-Map only observed output fields to message_id, platform, source_url, source_record_id, published_at, captured_at, text_original, rating_if_present, money_amount_if_explicit, currency, money_type, duplicate_of, included, exclusion_reason. Redact names, handles, avatars, contact details and irrelevant private content before sending to the learner Project. A row ID may point into the private raw export; do not expose a link containing a secret.
-One primary theme per unique relevant message; comments are unverified audience feedback, not automatically customers. Preserve praise, off-topic and empty rows in exclusion counts. Do not treat an empty result or permission failure as evidence of no complaints. Use only the selected business's feedback.
-Fallback: owner-provided redacted CSV, pasted comments with IDs/source/date, or screenshots whose text is checked by the owner. Label the collection manual, not Apify-tested. Never use Mekong Brew to fill a learner's missing evidence.
-Sources:
-https://docs.apify.com/integrations/chatgpt
-https://apify.com/apify/facebook-comments-scraper/input-schema
-https://apify.com/clockworks/tiktok-comments-scraper/input-schema
-https://apify.com/compass/google-maps-reviews-scraper/input-schema
+# Apify collection contract for WS2
+
+Apify is a separate account/service. ChatGPT Plus alone is not evidence of Apify access or
+credits. Do not require a subscription upgrade to complete analysis from a supplied export.
+
+## Before a live run
+Read the actual available integration/Actor documentation. Prepare the target-specific plan first:
+public target URL(s), selected Actor and build, observed input fields, result/date/order limits,
+question, expected output mapping, account allowance, current pricing and enforceable run cap.
+Default one target/25 top-level items; comparative scope up to two/50 total only when authorized.
+The user must have explicitly authorized targets and cost scope. Zero-extra-charge scope requires
+evidence the full run stays within that scope; a result cap alone does not cap all compute/rental
+charges. If cost controls cannot establish the boundary, prepare the plan/export path and stop
+only the live run. No billing setup, Actor rental, schedule, private cookie or token request.
+
+Candidate discovery routes (verify current input and pricing before use):
+- Public Facebook comments: https://apify.com/apify/facebook-comments-scraper
+- Public TikTok comments: https://apify.com/clockworks/tiktok-comments-scraper
+- Public Maps reviews: https://apify.com/compass/google-maps-reviews-scraper
+Do not blindly copy old field names into a new schema. A page URL is not always a post URL.
+Use only allowed public pages within the approved scope; do not bypass access controls.
+
+## Actual run and receipt
+Keep observed Actor/build, inputs, target/date/order limits, run/dataset IDs, terminal status,
+actual count, retrieval time and actual usage/cost evidence. No run means no run ID.
+Stop after one failed run and diagnose; do not loop spending. Fewer results mean fewer records.
+A failed or empty response is not evidence of no customer problems.
+Official run lifecycle/build guidance checked 2026-10-08:
+https://docs.apify.com/actors/running/runs-and-builds
+Current account cost/limits still require account-specific evidence.
+
+## Normalize and protect
+Map only observed fields to stable row ID, source URL/record ID, published/captured time, original
+text, rating if present, primary theme, included flag and exclusion/duplicate reason.
+Strip unnecessary names, handles, avatars and contacts before analysis sharing.
+Keep private raw exports outside public artifacts. Record exclusions; do not silently drop praise.
+One primary theme per unique relevant item; secondary overlapping labels must be marked.
+A commenter/reviewer is not automatically a verified customer.
+
+## Fallback and honest completion
+No integration/account/supported Actor/cost scope: guide the owner to the bounded Console plan
+or analyze an existing redacted export/pasted comments/screenshots/public offer pages.
+Label OWNER_EXPORT, PUBLIC_PAGE or PLAN_ONLY. Do not say APIFY_LIVE/Apify-tested.
+The learner can complete Market X-Ray from suitable exports; limitations remain visible.
+Never substitute the instructor's company or invented data for missing learner sources.
+

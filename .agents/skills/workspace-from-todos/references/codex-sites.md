@@ -2,21 +2,19 @@
 
 เริ่มจาก `workspace-from-todos` เพื่อจัดรายการงานและสร้าง workspace ในเครื่อง เพิ่ม `sites-building` → `sites-hosting` เฉพาะเมื่อผู้เรียนขอเผยแพร่และบัญชีมี Sites ที่ใช้งานได้
 
-## ติดตั้งในโปรเจกต์ของตัวเอง
+## ใช้ skill ที่มากับแพ็กเกจนี้
 
-ต้องมี Codex ที่เปิดโฟลเดอร์โปรเจกต์ได้ และ Node.js สำหรับ helper ของแพ็กเกจ เปิด terminal ในโฟลเดอร์ที่แตก ZIP ซึ่งมี `install.mjs` แล้วรัน:
+เปิดโฟลเดอร์ Second Brain นี้ใน Codex และอ่าน `.agents/skills/workspace-from-todos/SKILL.md` ได้ทันที ไม่ต้องติดตั้ง skill ซ้ำและไม่มีคำสั่ง `node ./install.mjs` สำหรับแพ็กเกจเต็มนี้
+
+การสร้าง workspace ใหม่ใช้ helper ที่แนบมาจริงจากรากโปรเจกต์:
 
 ```sh
-node ./install.mjs codex ../my-project
+node .agents/skills/workspace-from-todos/scripts/create-workspace.mjs ./my-workspace
 ```
 
-เปลี่ยน `../my-project` เป็นโฟลเดอร์โปรเจกต์ของตัวเอง ตัวติดตั้งจะหยุดถ้ามี skill ชื่อนี้อยู่แล้ว จากนั้นเปิดโปรเจกต์นั้นใน Codex และตรวจว่ามีไฟล์:
+ปลายทางต้องยังไม่มีอยู่ ต้องมี Node.js สำหรับ helper แต่ไม่ต้องติดตั้ง package เพิ่ม หากยังไม่มี Node ให้ใช้รายการงาน/brief ในแชตต่อและระบุว่า local app ยังไม่ได้สร้าง การติดตั้ง runtime เป็นขอบเขตแยก
 
-```text
-.agents/skills/workspace-from-todos/SKILL.md
-```
-
-ตำแหน่งนี้เป็น project skill ของ Codex การคัดลอกไฟล์ไม่ได้ติดตั้ง Sites หรือยืนยันสิทธิ์ของบัญชี หาก skill ยังไม่ปรากฏ ให้เปิดโปรเจกต์และเริ่ม session ใหม่ ตาม [เอกสารการโหลด skill ของ OpenAI](https://learn.chatgpt.com/docs/build-skills)
+การเห็นไฟล์ skill ไม่ยืนยันว่าเมนูหรือ Sites ใช้งานได้ เปิดโปรเจกต์ใน session ใหม่เมื่อเมนูยังไม่ refresh หรือให้ assistant อ่านไฟล์ตรงได้ ตรวจความสามารถจริงก่อนอ้างว่ามี Sites/hosting
 
 ## เริ่มใช้งาน
 
